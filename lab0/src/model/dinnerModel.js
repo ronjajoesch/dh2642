@@ -37,11 +37,27 @@ class DinnerModel {
     //Returns all ingredients for all the dishes on the menu.
     getAllIngredients() {
         //TODO Lab 0
+        this.menu.map(function (dish) {
+            return dish.ingredients;
+        })
     }
 
     //Returns the total price of the menu (all the ingredients multiplied by number of guests).
     getTotalMenuPrice() {
         //TODO Lab 0
+        let total = 0;
+
+        var ingredients;
+        this.menu.map(function (dish) {
+             ingredients = dish.ingredients;
+        });
+
+        ingredients.map(function (ingredient) {
+            total += ingredient.price;
+        });
+
+        return total;
+
     }
 
 
@@ -49,6 +65,7 @@ class DinnerModel {
     //it is removed from the menu and the new one added.
     addDishToMenu(id) {
         //TODO Lab 0
+
 
 
         // this.dishes.add(id);
@@ -61,8 +78,8 @@ class DinnerModel {
                 this.menu.push(dishObject);
             }
             else{
-                var item = this.menu.find(function(Item){
-                    return Item.type == dishObject.type;
+                var item = this.menu.find(function(item){
+                    return item.type == dishObject.type;
                 });
                 if (item != null){
                     this.removeDishFromMenu(item.id);

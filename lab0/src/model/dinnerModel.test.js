@@ -115,5 +115,6 @@ describe("DinnerModel", () => {
       // should now be removed
       expect(model.getFullMenu()).to.not.include(model.getDish(1));
     });
+
   });
 });

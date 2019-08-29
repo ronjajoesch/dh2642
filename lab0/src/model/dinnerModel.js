@@ -47,7 +47,7 @@ class DinnerModel {
         //TODO Lab 0
         let total = 0;
 
-        var ingredients;
+        let ingredients;
         this.menu.map(function (dish) {
              ingredients = dish.ingredients;
         });
@@ -66,22 +66,18 @@ class DinnerModel {
     addDishToMenu(id) {
         //TODO Lab 0
 
+        if (id != null && id !=undefined) {
 
-
-        // this.dishes.add(id);
-        if (id != null) {
-            // var addDish;
-
-            var dishObject = this.getDish(id);
+            let dishObject = this.getDish(id);
 
             if(this.menu.length == 0){
                 this.menu.push(dishObject);
             }
             else{
-                var item = this.menu.find(function(item){
+                let item = this.menu.find(function(item){
                     return item.type == dishObject.type;
                 });
-                if (item != null){
+                if (item != null && item != undefined){
                     this.removeDishFromMenu(item.id);
                 }
                 this.menu.push(dishObject);
@@ -92,7 +88,7 @@ class DinnerModel {
     //Removes dish from menu
     removeDishFromMenu(id) {
         //TODO Lab 0
-        var dishObjectID = this.getDish(id).id;
+        let dishObjectID = this.getDish(id).id;
         this.menu.pop(dishObjectID,1);
     }
 

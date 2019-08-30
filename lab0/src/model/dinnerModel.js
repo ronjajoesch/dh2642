@@ -121,12 +121,18 @@ class DinnerModel {
 
     //Returns a dish of specific ID
     getDish(id) {
-        for (let dsh of this.dishes) {
-            if (dsh.id === id) {
-                return dsh;
+
+        //console.log(id);
+        //console.log(this.dishes);
+        let thisDish = undefined;
+        this.dishes.forEach(function (dish) {
+            if (dish.id === id) {
+                console.log(dish);
+                thisDish = dish;
             }
-        }
-        return undefined;
+        })
+        return thisDish;
+
     }
 }
 

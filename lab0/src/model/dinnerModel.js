@@ -90,7 +90,7 @@ class DinnerModel {
         //TODO Lab 0
         let dishObjectIndex = undefined;
 
-        dishObjectIndex = this.dishes.findIndex(
+        dishObjectIndex = this.menu.findIndex(
             function (dish) {
                 return dish.id === id;
             }

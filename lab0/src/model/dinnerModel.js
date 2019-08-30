@@ -40,8 +40,9 @@ class DinnerModel {
         var allIngredients = [];
         for (let i =0; i <= this.menu.length; i++){
             allIngredients.push(this.menu[i].ingredient);
-            return allIngredients;
         }
+        
+        return allIngredients;
     }
 
     //Returns the total price of the menu (all the ingredients multiplied by number of guests).
@@ -54,7 +55,7 @@ class DinnerModel {
             ingredients.push(this.menu[i].ingredient);
         }
 
-        for (let x=0; x< ingredients.length; x++){
+        for (let x=0; x < ingredients.length; x++){
             total += ingredients[i].price;
         }
 

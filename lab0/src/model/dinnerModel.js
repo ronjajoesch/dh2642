@@ -53,7 +53,7 @@ class DinnerModel {
         });
 
         ingredients.map(function (ingredient) {
-            total += ingredient.price;
+            total += ingredient.price*this.nGuest;
         });
 
         return total;

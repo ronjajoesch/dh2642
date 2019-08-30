@@ -41,7 +41,7 @@ class DinnerModel {
         for (let i =0; i <= this.menu.length; i++){
             allIngredients.push(this.menu[i].ingredient);
         }
-        
+
         return allIngredients;
     }
 
@@ -56,7 +56,7 @@ class DinnerModel {
         }
 
         for (let x=0; x < ingredients.length; x++){
-            total += ingredients[i].price;
+            total += ingredients[i].price*this.nGuest;
         }
 
         return total;

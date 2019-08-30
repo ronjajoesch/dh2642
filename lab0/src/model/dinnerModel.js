@@ -49,7 +49,7 @@ class DinnerModel {
 
         let ingredients;
         this.menu.map(function (dish) {
-             ingredients = dish.ingredients;
+            ingredients = dish.ingredients;
         });
 
         ingredients.map(function (ingredient) {
@@ -66,18 +66,18 @@ class DinnerModel {
     addDishToMenu(id) {
         //TODO Lab 0
 
-        if (id != null && id !=undefined) {
+        if (id != null && id != undefined) {
 
             let dishObject = this.getDish(id);
 
-            if(this.menu.length == 0){
+            if (this.menu.length == 0) {
                 this.menu.push(dishObject);
             }
-            else{
-                let item = this.menu.find(function(item){
+            else {
+                let item = this.menu.find(function (item) {
                     return item.type == dishObject.type;
                 });
-                if (item != null && item != undefined){
+                if (item != null && item != undefined) {
                     this.removeDishFromMenu(item.id);
                 }
                 this.menu.push(dishObject);
@@ -89,7 +89,7 @@ class DinnerModel {
     removeDishFromMenu(id) {
         //TODO Lab 0
         let dishObjectID = this.getDish(id).id;
-        this.menu.pop(dishObjectID,1);
+        this.menu.pop(dishObjectID, 1);
     }
 
     //Returns all dishes of specific type (i.e. "starter", "main dish" or "dessert").
@@ -122,12 +122,9 @@ class DinnerModel {
     //Returns a dish of specific ID
     getDish(id) {
 
-        //console.log(id);
-        //console.log(this.dishes);
         let thisDish = undefined;
         this.dishes.forEach(function (dish) {
             if (dish.id === id) {
-                console.log(dish);
                 thisDish = dish;
             }
         })

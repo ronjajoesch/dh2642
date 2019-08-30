@@ -88,8 +88,15 @@ class DinnerModel {
     //Removes dish from menu
     removeDishFromMenu(id) {
         //TODO Lab 0
-        let dishObjectID = this.getDish(id).id;
-        this.menu.pop(dishObjectID, 1);
+        let dishObjectIndex = undefined;
+
+        dishObjectIndex = this.dishes.findIndex(
+            function (dish) {
+                return dish.id === id;
+            }
+        );
+
+        this.menu.pop(dishObjectIndex, 1);
     }
 
     //Returns all dishes of specific type (i.e. "starter", "main dish" or "dessert").

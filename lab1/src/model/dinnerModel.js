@@ -139,19 +139,26 @@ class DinnerModel {
 
     //Returns a dish of specific ID
     getDish(id) {
-        return new Promise(function(reject,resolve){
-            var Baseurl =  "http://sunset.nada.kth.se:8080/iprog/group/15/recipes/"+id+"/information";
-            console.log('the URLLLLLLLLLL is ', Baseurl);
-            fetch(Baseurl,{  method: 'GET',  
-            headers:{
-                'X-Mashape-Key': '3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767'
-              }})
 
-            .then(function(response) {
-                console.log('the responseeeee is ', response);
-                return resolve(response);
+        return new Promise(function (resolve, reject) {
+            var Baseurl = "http://sunset.nada.kth.se:8080/iprog/group/15/recipes/" + id + "/information";
+            fetch(Baseurl, {
+                method: 'GET',
+                headers: {
+                    'X-Mashape-Key': '3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767'
+                }
             })
-        })
+
+                //.then(handleHTTPError)
+                .then(response => response.json())
+                .then(function (response) {
+                    resolve(response);
+                    console.log(response);
+                })
+                .catch(console.error);
+
+        });
+
     }
 
     getAllDishesfromAPI(callback){

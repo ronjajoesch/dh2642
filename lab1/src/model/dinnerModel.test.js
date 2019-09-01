@@ -29,9 +29,9 @@ describe("DinnerModel", () => {
 
   describe("getting individual dishes", () => {
     it("gets the correct dish", (done) => {
-      model.getDish(559251)
+      model.getDish(547775)
       .then((data) => {
-        expect(data.title).to.equal("Breakfast Pizza");
+        expect(data.title).to.equal("Creamy Avocado Pasta");
         done();
       });
     }).timeout(10000);

@@ -11,9 +11,10 @@ class DinnerModel {
             }
             else{
                 console.log(result);
-                self.dishes = result;
-                apiResult = JSON.parse(self.dishes).results;
-
+                if(apiResult.length < 1){
+                    self.dishes = result;
+                    apiResult = JSON.parse(self.dishes).results;
+                }
             }
           });
       }
@@ -118,7 +119,6 @@ class DinnerModel {
         if (type == null && query == null || type == undefined && query == undefined) {
             return this.dishes;
         }
-
         return this.dishes.filter(function (dish) {
             let found = true;
             if (query) {
@@ -135,21 +135,23 @@ class DinnerModel {
             }
             return dish.type === type && found;
         });
-
     }
 
     //Returns a dish of specific ID
-    getDish(id,callback) {
+    getDish(id) {
+        return new Promise(function(reject,resolve){
+            var Baseurl =  "http://sunset.nada.kth.se:8080/iprog/group/15/recipes/"+id+"/information";
+            console.log('the URLLLLLLLLLL is ', Baseurl);
+            fetch(Baseurl,{  method: 'GET',  
+            headers:{
+                'X-Mashape-Key': '3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767'
+              }})
 
-        let thisDish = undefined;
-        apiResult.forEach(function (dish) {
-            if (dish.id === id) {
-                thisDish = dish;
-            }
+            .then(function(response) {
+                console.log('the responseeeee is ', response);
+                return resolve(response);
+            })
         })
-        callback(thisDish)
-      //  return thisDish;
-
     }
 
     getAllDishesfromAPI(callback){

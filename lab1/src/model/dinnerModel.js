@@ -100,60 +100,82 @@ class DinnerModel {
     //query argument, text, if passed only returns dishes that contain the query in name or one of the ingredients.
     //if you don't pass any query, all the dishes will be returned
     getAllDishes(type, query) {
+        //
+        if (type == null && query == null || type == undefined && query == undefined) {
+            let promise = new Promise(function (resolve, reject) {
+                let Baseurl = "http://localhost:8080/getDish/";
+                let corsURL = "https://cors-anywhere.herokuapp.com/";
+                let options;
 
-        let promise = new Promise(function (resolve, reject) {
-            let Baseurl = "http://localhost:8080/getDish/";
-            let corsURL = "https://cors-anywhere.herokuapp.com/";
-            let options;
-
-            if (type == null && query == null || type == undefined && query == undefined) {
-                options={};
-            }
-            else {
-                console.log('the tpye issss', type);
-                console.log('the query issss', query);
-                options = {
-                    "stype" : type,
-                    "squery" : query
-                }
-            }
-            fetch(Baseurl, {
-                method: 'GET', 
-                headers: {
-                    options
-                }
-            })
-                .then(response => response.json())
-                .then(function (response) {
-                    resolve(response.results);
+                fetch(Baseurl, {
+                    method: 'GET', 
+                    headers: {
+                    }
                 })
-                .catch(console.error);
-        });
-        finishedLoading(promise);
-        return promise;
+                    .then(response => response.json())
+                    .then(function (response) {
+                        resolve(response.results);
+                    })
+                    .catch(console.error);
+            });
+            finishedLoading(promise);
+            return promise;
+        }
+        else{
+
+            let promise = new Promise(function (resolve, reject) {
+                let Baseurl = "http://localhost:8080/getDish/";
+                let corsURL = "https://cors-anywhere.herokuapp.com/";
+                let options;
+                    console.log('the tpye issss', type);
+                    console.log('the query issss', query);
+    
+                fetch(Baseurl, {
+                    method: 'GET', 
+                    headers: {
+                        'stype': type,
+                        'squery': query
+                    }
+                })
+                    .then(response => response.json())
+                    .then(function (response) {
+                        resolve(response.results);
+                    })
+                    .catch(console.error);
+            });
+            finishedLoading(promise);
+            return promise;
+        }
 
     }
 
     //Returns a dish of specific ID
     getDish(id) {
-
+        var dId = id;
         let promise = new Promise(function (resolve, reject) {
             let corsURL = "https://cors-anywhere.herokuapp.com/";
-            var Baseurl = corsURL+"http://sunset.nada.kth.se:8080/iprog/group/15/recipes/" + id + "/information";
+            // var Baseurl = corsURL+"http://sunset.nada.kth.se:8080/iprog/group/15/recipes/" + id + "/information";
+            var Baseurl = "http://localhost:8080/getSingleDish/";
+
             fetch(Baseurl, {
                 method: 'GET',
                 headers: {
-                    'X-Mashape-Key': key
+                    dishId: dId
                 }
             })
-
                 .then(response => response.json())
+                .catch(function(err){
+                    console.log(err);
+                })
                 .then(function (response) {
                     resolve(response);
                 })
-                .catch(console.error);
-
-        });
+                .catch(function(err){
+                    console.log(err);
+                });
+        }).catch(function(error){
+            console.log(error)}
+            )
 
         finishedLoading(promise);
         return promise;
@@ -189,10 +211,6 @@ async function finishedLoading(promise) {
     loadingIndicator.style.display = "none";
 }
 
-
-/*var apiResult = [];
-var config = require('./tsconfig.json');*/
-var key = '3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767';
 
 // Deepfreeze
 // https://github.com/substack/deep-freeze/blob/master/index.js

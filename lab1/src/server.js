@@ -12,9 +12,7 @@ app.use((req, res, next) => {
 const api_Key = process.env.API_KEY;
 console.log(api_Key);
 app.get('/getDish', async function(req, response) {
-
         let Baseurl;
-      //  let corsURL = "https://cors-anywhere.herokuapp.com/";
 
         if (req.headers.stype == null && req.headers.squery == null || req.headers.stype == undefined && req.headers.squery == undefined) {
             Baseurl = "http://sunset.nada.kth.se:8080/iprog/group/15/recipes/search";
@@ -30,21 +28,46 @@ app.get('/getDish', async function(req, response) {
           headers: { 'X-Mashape-Key': api_Key }
         };
       
-axios.get(Baseurl,options)
-  .then(function (res) {
+        axios.get(Baseurl,options)
+        .then(function (res) {
+        // handle success
+        return response.send(res.data).status(200);
+        })
+        .catch(function (error) {
+        // handle error
+        console.log(error);
+        })
+       .finally(function () {
+       // always executed
+      });
+   });
+   app.get('/getSingleDish', async function(req, response) {
+    let apiRes = null;
+    Baseurl = "http://sunset.nada.kth.se:8080/iprog/group/15/recipes/" + req.headers.dishid + "/information";
+    console.log('the final URL is ',Baseurl);
+    const options = {
+      validateStatus: false,
+      method: 'GET',
+      headers: { 'X-Mashape-Key': api_Key }
+    };
+
+    axios.get(Baseurl,options)
+    .then(function (res) {
     // handle success
-    return response.send(res.data).status(200);
-  })
-  .catch(function (error) {
+     return response.send(res.data);
+    })
+    .catch(function (error) {
     // handle error
-    console.log(error);
-  })
-  .finally(function () {
-    // always executed
-  });
-    
+    return response.send(error.response);
+    })
+   .finally(function(){
+    console.log(something)
+    console.log(apiRes);
+   }) 
+
+   // always executed
 
 
-  });
+   });
 
   app.listen(8080, () => console.log(`app listening on port 8080!`));

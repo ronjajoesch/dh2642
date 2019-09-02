@@ -8,6 +8,7 @@ describe("DinnerModel", () => {
         model = new DinnerModel();
     });
 
+
     describe("number of guests", () => {
         it("can set and get number of guests", () => {
             model.setNumberOfGuests(0);
@@ -90,6 +91,7 @@ describe("DinnerModel", () => {
                     done();
                 });
         }).timeout(10000);
+
     });
 
     describe("loading indicator", () => {
@@ -97,4 +99,5 @@ describe("DinnerModel", () => {
             expect(document.getElementById("loader").style.display).to.equal("none");
         });
     });
+
 });

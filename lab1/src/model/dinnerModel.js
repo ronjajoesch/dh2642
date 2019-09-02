@@ -2,25 +2,25 @@
 class DinnerModel {
 
     constructor() {
-    var self = this;
-    if(apiResult.length < 1){
+        var self = this;
+        /*if (apiResult.length < 1) {
 
-        this.getAllDishesfromAPI(function(err,result){
-            if(err){
-                console.log(err);
-            }
-            else{
-                console.log(result);
-                if(apiResult.length < 1){
-                    self.dishes = result;
-                    apiResult = JSON.parse(self.dishes).results;
+            this.getAllDishesfromAPI(function (err, result) {
+                if (err) {
+                    console.log(err);
                 }
-            }
-          });
-      }
+                else {
+                    console.log(result);
+                    if (apiResult.length < 1) {
+                        self.dishes = result;
+                        apiResult = JSON.parse(self.dishes).results;
+                    }
+                }
+            });
+        }*/
 
-      self.nGuest = 0;
-      self.menu = [];
+        self.nGuest = 0;
+        self.menu = [];
     }
 
     setNumberOfGuests(num) {
@@ -66,7 +66,7 @@ class DinnerModel {
         });
 
         ingredients.map(function (ingredient) {
-            total += ingredient.price*this.nGuest;
+            total += ingredient.price * this.nGuest;
         });
 
         return total;
@@ -76,12 +76,11 @@ class DinnerModel {
 
     //Adds the passed dish to the menu. If the dish of that type already exists on the menu
     //it is removed from the menu and the new one added.
-    addDishToMenu(id) {
+    addDishToMenu(dishObject) {
         //TODO Lab 0
 
-        if (id != null && id != undefined) {
+        if (dishObject != null && dishObject != undefined) {
 
-            let dishObject = this.getDish(id);
 
             if (this.menu.length == 0) {
                 this.menu.push(dishObject);
@@ -99,13 +98,13 @@ class DinnerModel {
     }
 
     //Removes dish from menu
-    removeDishFromMenu(id) {
+    removeDishFromMenu(dishObject) {
         //TODO Lab 0
         let dishObjectIndex = undefined;
 
         dishObjectIndex = this.menu.findIndex(
             function (dish) {
-                return dish.id === id;
+                return dish.id === dishObject.id;
             }
         );
 
@@ -116,25 +115,33 @@ class DinnerModel {
     //query argument, text, if passed only returns dishes that contain the query in name or one of the ingredients.
     //if you don't pass any query, all the dishes will be returned
     getAllDishes(type, query) {
-        if (type == null && query == null || type == undefined && query == undefined) {
-            return this.dishes;
-        }
-        return this.dishes.filter(function (dish) {
-            let found = true;
-            if (query) {
-                found = false;
-                dish.ingredients.forEach(function (ingredient) {
-                    if (ingredient.name.indexOf(query) !== -1) {
-                        found = true;
-                    }
-                });
-                if (dish.name.indexOf(query) !== -1) {
-                    found = true;
-                    return dish.name;
-                }
+        return new Promise(function (resolve, reject) {
+            let Baseurl;
+            if (type == null && query == null || type == undefined && query == undefined) {
+                Baseurl = "http://sunset.nada.kth.se:8080/iprog/group/15/recipes/search";
             }
-            return dish.type === type && found;
+            else {
+                Baseurl = "http://sunset.nada.kth.se:8080/iprog/group/15/recipes/search?type=" + type + "%20course&query=" + query;
+            }
+
+            fetch(Baseurl, {
+                method: 'GET',
+                headers: {
+                    'X-Mashape-Key': key
+                }
+            })
+
+            //.then(handleHTTPError)
+                .then(response => response.json())
+                .then(function (response) {
+                    resolve(response.results);
+                })
+                .catch(console.error);
+
+
         });
+
+
     }
 
     //Returns a dish of specific ID
@@ -145,15 +152,14 @@ class DinnerModel {
             fetch(Baseurl, {
                 method: 'GET',
                 headers: {
-                    'X-Mashape-Key': '3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767'
+                    'X-Mashape-Key': key
                 }
             })
 
-                //.then(handleHTTPError)
+            //.then(handleHTTPError)
                 .then(response => response.json())
                 .then(function (response) {
                     resolve(response);
-                    console.log(response);
                 })
                 .catch(console.error);
 
@@ -161,28 +167,29 @@ class DinnerModel {
 
     }
 
-    getAllDishesfromAPI(callback){
-           let URL = "http://sunset.nada.kth.se:8080/iprog/group/15/recipes/search";
-           let xhr = new XMLHttpRequest();
-           xhr.open("GET", URL, true);
-           xhr.setRequestHeader("X-Mashape-Key", "3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767");
-           xhr.send();
-           xhr.onload = function() {
-               if (xhr.status != 200) { // analyze HTTP status of the response
-                callback(xhr.status,null);
-    
-               } else { // show the result
-                  // this.dishes = xhr.response;
-                  callback(null,xhr.response);
-               }
-             };
-             xhr.onerror = function() {
-             callback(xhr.status,null);
-             };
+    getAllDishesfromAPI(callback) {
+        let URL = "http://sunset.nada.kth.se:8080/iprog/group/15/recipes/search";
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", URL, true);
+        xhr.setRequestHeader("X-Mashape-Key", key);
+        xhr.send();
+        xhr.onload = function () {
+            if (xhr.status != 200) { // analyze HTTP status of the response
+                callback(xhr.status, null);
+
+            } else { // show the result
+                // this.dishes = xhr.response;
+                callback(null, xhr.response);
+            }
+        };
+        xhr.onerror = function () {
+            callback(xhr.status, null);
+        };
     }
 }
 
 var apiResult = [];
+var key = '3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767';
 
 // Deepfreeze
 // https://github.com/substack/deep-freeze/blob/master/index.js

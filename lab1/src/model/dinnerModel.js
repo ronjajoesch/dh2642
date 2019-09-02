@@ -75,7 +75,7 @@ class DinnerModel {
                     return item.type == dishObject.type;
                 });
                 if (item != null && item != undefined) {
-                    this.removeDishFromMenu(item.id);
+                    this.removeDishFromMenu(item);
                 }
                 this.menu.push(dishObject);
             }
@@ -100,9 +100,11 @@ class DinnerModel {
     //query argument, text, if passed only returns dishes that contain the query in name or one of the ingredients.
     //if you don't pass any query, all the dishes will be returned
     getAllDishes(type, query) {
+
         let promise = new Promise(function (resolve, reject) {
             let Baseurl;
             let corsURL = "https://cors-anywhere.herokuapp.com/";
+
             if (type == null && query == null || type == undefined && query == undefined) {
                 Baseurl = corsURL+"http://sunset.nada.kth.se:8080/iprog/group/15/recipes/search";
             }
@@ -145,7 +147,6 @@ class DinnerModel {
                 }
             })
 
-            //.then(handleHTTPError)
                 .then(response => response.json())
                 .then(function (response) {
                     resolve(response);
@@ -159,6 +160,7 @@ class DinnerModel {
 
     }
 
+    /*
     getAllDishesfromAPI(callback) {
         let URL = "http://sunset.nada.kth.se:8080/iprog/group/15/recipes/search";
         let xhr = new XMLHttpRequest();
@@ -176,7 +178,7 @@ class DinnerModel {
         xhr.onerror = function () {
             callback(xhr.status, null);
         };
-    }
+    }*/
 
 }
 
@@ -188,7 +190,8 @@ async function finishedLoading(promise) {
 }
 
 
-var apiResult = [];
+/*var apiResult = [];
+var config = require('./tsconfig.json');*/
 var key = '3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767';
 
 // Deepfreeze

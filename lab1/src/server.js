@@ -61,8 +61,6 @@ app.get('/getDish', async function(req, response) {
     return response.send(error.response);
     })
    .finally(function(){
-    console.log(something)
-    console.log(apiRes);
    }) 
 
    // always executed

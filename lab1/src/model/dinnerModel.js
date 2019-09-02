@@ -4,23 +4,6 @@ class DinnerModel {
     constructor() {
         var self = this;
 
-
-        /*if (apiResult.length < 1) {
-
-            this.getAllDishesfromAPI(function (err, result) {
-                if (err) {
-                    console.log(err);
-                }
-                else {
-                    console.log(result);
-                    if (apiResult.length < 1) {
-                        self.dishes = result;
-                        apiResult = JSON.parse(self.dishes).results;
-                    }
-                }
-            });
-        }*/
-
         self.nGuest = 0;
         self.menu = [];
     }
@@ -119,11 +102,12 @@ class DinnerModel {
     getAllDishes(type, query) {
         let promise = new Promise(function (resolve, reject) {
             let Baseurl;
+            let corsURL = "https://cors-anywhere.herokuapp.com/";
             if (type == null && query == null || type == undefined && query == undefined) {
-                Baseurl = "http://sunset.nada.kth.se:8080/iprog/group/15/recipes/search";
+                Baseurl = corsURL+"http://sunset.nada.kth.se:8080/iprog/group/15/recipes/search";
             }
             else {
-                Baseurl = "http://sunset.nada.kth.se:8080/iprog/group/15/recipes/search?type=" + type + "%20course&query=" + query;
+                Baseurl = corsURL+"http://sunset.nada.kth.se:8080/iprog/group/15/recipes/search?type=" + type + "%20course&query=" + query;
             }
 
             fetch(Baseurl, {
@@ -133,7 +117,6 @@ class DinnerModel {
                 }
             })
 
-            //.then(handleHTTPError)
                 .then(response => response.json())
                 .then(function (response) {
                     resolve(response.results);
@@ -153,7 +136,8 @@ class DinnerModel {
     getDish(id) {
 
         let promise = new Promise(function (resolve, reject) {
-            var Baseurl = "http://sunset.nada.kth.se:8080/iprog/group/15/recipes/" + id + "/information";
+            let corsURL = "https://cors-anywhere.herokuapp.com/";
+            var Baseurl = corsURL+"http://sunset.nada.kth.se:8080/iprog/group/15/recipes/" + id + "/information";
             fetch(Baseurl, {
                 method: 'GET',
                 headers: {
@@ -186,7 +170,6 @@ class DinnerModel {
                 callback(xhr.status, null);
 
             } else { // show the result
-                // this.dishes = xhr.response;
                 callback(null, xhr.response);
             }
         };

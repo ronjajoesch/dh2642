@@ -3,6 +3,8 @@ class DinnerModel {
 
     constructor() {
         var self = this;
+
+
         /*if (apiResult.length < 1) {
 
             this.getAllDishesfromAPI(function (err, result) {
@@ -115,7 +117,7 @@ class DinnerModel {
     //query argument, text, if passed only returns dishes that contain the query in name or one of the ingredients.
     //if you don't pass any query, all the dishes will be returned
     getAllDishes(type, query) {
-        return new Promise(function (resolve, reject) {
+        let promise = new Promise(function (resolve, reject) {
             let Baseurl;
             if (type == null && query == null || type == undefined && query == undefined) {
                 Baseurl = "http://sunset.nada.kth.se:8080/iprog/group/15/recipes/search";
@@ -141,13 +143,16 @@ class DinnerModel {
 
         });
 
+        finishedLoading(promise);
+        return promise;
+
 
     }
 
     //Returns a dish of specific ID
     getDish(id) {
 
-        return new Promise(function (resolve, reject) {
+        let promise = new Promise(function (resolve, reject) {
             var Baseurl = "http://sunset.nada.kth.se:8080/iprog/group/15/recipes/" + id + "/information";
             fetch(Baseurl, {
                 method: 'GET',
@@ -164,6 +169,9 @@ class DinnerModel {
                 .catch(console.error);
 
         });
+
+        finishedLoading(promise);
+        return promise;
 
     }
 
@@ -186,7 +194,16 @@ class DinnerModel {
             callback(xhr.status, null);
         };
     }
+
 }
+
+async function finishedLoading(promise) {
+    let loadingIndicator = document.getElementById("loader");
+    loadingIndicator.style.display = "";
+    await promise;
+    loadingIndicator.style.display = "none";
+}
+
 
 var apiResult = [];
 var key = '3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767';
@@ -207,4 +224,3 @@ function deepFreeze(o) {
 }
 
 //deepFreeze(dishesConst);
-

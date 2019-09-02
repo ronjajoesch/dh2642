@@ -102,35 +102,35 @@ class DinnerModel {
     getAllDishes(type, query) {
 
         let promise = new Promise(function (resolve, reject) {
-            let Baseurl;
+            let Baseurl = "http://localhost:8080/getDish/";
             let corsURL = "https://cors-anywhere.herokuapp.com/";
+            let options;
 
             if (type == null && query == null || type == undefined && query == undefined) {
-                Baseurl = corsURL+"http://sunset.nada.kth.se:8080/iprog/group/15/recipes/search";
+                options={};
             }
             else {
-                Baseurl = corsURL+"http://sunset.nada.kth.se:8080/iprog/group/15/recipes/search?type=" + type + "%20course&query=" + query;
+                console.log('the tpye issss', type);
+                console.log('the query issss', query);
+                options = {
+                    "stype" : type,
+                    "squery" : query
+                }
             }
-
             fetch(Baseurl, {
-                method: 'GET',
+                method: 'GET', 
                 headers: {
-                    'X-Mashape-Key': key
+                    options
                 }
             })
-
                 .then(response => response.json())
                 .then(function (response) {
                     resolve(response.results);
                 })
                 .catch(console.error);
-
-
         });
-
         finishedLoading(promise);
         return promise;
-
 
     }
 

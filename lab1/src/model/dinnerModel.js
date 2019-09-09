@@ -23,7 +23,7 @@ class DinnerModel {
     //Returns the dish that is on the menu for selected type
     getSelectedDish(type) {
         //TODO Lab 0
-        return this.getAllDishes();
+        return this.getAllDishes(type);
     }
 
     //Returns all the dishes on the menu.
@@ -124,12 +124,10 @@ class DinnerModel {
         else{
 
             let promise = new Promise(function (resolve, reject) {
-                let Baseurl = "http://localhost:8080/getDish/";
+                let Baseurl = "http://localhost:8080/getDish/";             // TODO put into constructor
                 let corsURL = "https://cors-anywhere.herokuapp.com/";
                 let options;
-                    console.log('the tpye issss', type);
-                    console.log('the query issss', query);
-    
+
                 fetch(Baseurl, {
                     method: 'GET', 
                     headers: {
@@ -143,7 +141,7 @@ class DinnerModel {
                     })
                     .catch(console.error);
             });
-            finishedLoading(promise);
+            finishedLoading(promise);  // TODO or put it in a .finally
             return promise;
         }
 

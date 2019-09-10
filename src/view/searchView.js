@@ -17,8 +17,7 @@ class SearchView {
 
 
     render(dishId) {
-
-        const sideMenu = this.container.appendChild(document.createElement('div'));
+        const sideMenu = this.container.querySelector(".row").appendChild(document.createElement('div'));
         sideMenu.className = "col-xs-12 col-sm-5 col-md-5 col-lg-4";
         const heading = sideMenu.appendChild(document.createElement('h4'));
         heading.innerText = "My Dinner";

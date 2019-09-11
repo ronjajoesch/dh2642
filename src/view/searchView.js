@@ -24,11 +24,13 @@ class SearchView {
 
         const people = sideMenu.appendChild(document.createElement('p'));
 
-        let select= '<text>People</text><select class="value-num-guests">';
+        let select= '<select id="some_Id" class="value-num-guests">';
         for(let i=1; i<11; i++){
           select += '<option value='+i+'>'+i+'</option>'
         }
         select += '</select>';
+
+        // select.value = this.model.nGuest;
 
         people.innerHTML = select;
 
@@ -67,6 +69,9 @@ class SearchView {
       buttonDiv.innerHTML = `<button id="startBtn" type="button" class="btn btn-md btn-primary">Confirm dinner</button>`;
 
       this.afterRender();
+      
+      let dropObject = document.getElementById("some_Id");
+      dropObject.value = this.model.nGuest;
   }
   
   afterRender() {

@@ -4,8 +4,8 @@ class DinnerModel {
   constructor() {
       var self = this;
 
-      self.nGuest = 0;
-      self.menu = [];
+          self.nGuest = 0;
+          self.menu = [];
   }
 
   setNumberOfGuests(num) {

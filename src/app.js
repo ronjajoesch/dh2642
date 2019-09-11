@@ -2,6 +2,9 @@ window.onload = function () {
   console.log("start");
   //We instantiate our model
   const model = new DinnerModel();
+  model.setNumberOfGuests(3);
+  // model.addDishToMenu(model.getAllDishes()[0]);
+  // model.addDishToMenu(model.getAllDishes()[1]);
 
   const container = document.getElementsByClassName("page-content")[0];
 

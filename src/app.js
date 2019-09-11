@@ -8,7 +8,6 @@ window.onload = function () {
  //TODO remove later -> dynamic
   model.getDish(1).then((dish1) =>{
     model.addDishToMenu(dish1);
-    console.log(model.getFullMenu());
 
   const container = document.getElementsByClassName("page-content")[0];
 

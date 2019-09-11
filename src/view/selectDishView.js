@@ -43,7 +43,7 @@ class SelectDishView {
         const selectDishDiv = this.container.querySelector(".row").appendChild(document.createElement('div'));
         selectDishDiv.className = "col-xs-12 col-sm-7 col-md-7 col-lg-8";
         const heading = selectDishDiv.appendChild(document.createElement('h4'));
-        heading.innerText = "My Dinner";
+        heading.innerText = "Select Dinner";
 
         const findDishDiv = selectDishDiv.appendChild(document.createElement('div'));
         findDishDiv.className = "row";
@@ -62,19 +62,26 @@ class SelectDishView {
             '<option value="Main Course">Main Course</option>' +
             '<option value="Dessert">Dessert</option></select>';
 
+        //TODO interactions
+        let type = "starter";
+        let query = "Pizza";
 
-
-
-        this.model.getAllDishes().then((data) => {
-
-              let imagesSrcs = data.map(function (dish) {
+        this.model.getAllDishes(type, query).then((data) => {
+            console.log(data);
+            let imagesSrcs = data.map(function (dish) {
                 //return "images/"+dish.image;  //TODO change to actual images
                 return "/dh2642/images/bakedbrie.jpg";
             });
 
-             let titles =  data.map(function (dish) {
+            let titles = data.map(function (dish) {
                 return dish.title;
             });
+
+            //add if description is available
+            /*let description =  data.map(function (dish) {
+                return dish.description;
+            });*/
+
 
             var self = this;
             titles.forEach(function (title, index) {
@@ -86,6 +93,12 @@ class SelectDishView {
                 let captionElement = document.createElement("figcaption");
                 captionElement.innerText = title;
                 childElement.appendChild(captionElement);
+
+                //add if description is available
+                /*let descriptionElement = document.createElement("p");
+                descriptionElement.innerText = description[index];
+                childElement.appendChild(descriptionElement);*/
+
                 contentDiv.appendChild(childElement);
             });
         });
@@ -100,7 +113,6 @@ class SelectDishView {
 
         let loadingIndicator = document.getElementById("loader");
         loadingIndicator.style.display = "none";
-
 
 
     }

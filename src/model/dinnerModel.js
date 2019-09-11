@@ -118,7 +118,6 @@ class DinnerModel {
                   })
                   .catch(console.error);
           });
-          finishedLoading(promise);
           return promise;
       }
       else{

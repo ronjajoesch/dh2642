@@ -10,8 +10,6 @@ window.onload = function () {
     model.addDishToMenu(dish1);
     console.log(model.getFullMenu());
 
-  });
-
   const container = document.getElementsByClassName("page-content")[0];
 
     //TODO ask how we should do this?
@@ -52,4 +50,7 @@ window.onload = function () {
      * of the specific view you're working with (see exampleView.js).
      */
 
+  });
+
 };
+

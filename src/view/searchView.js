@@ -17,6 +17,7 @@ class SearchView {
 
 
     render() {
+
         const sideMenu = this.container.querySelector(".row").appendChild(document.createElement('div'));
         sideMenu.className = "col-xs-12 col-sm-5 col-md-5 col-lg-4";
         const heading = sideMenu.appendChild(document.createElement('h4'));

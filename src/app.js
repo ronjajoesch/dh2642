@@ -2,11 +2,17 @@ window.onload = function () {
   console.log("start");
   //We instantiate our model
   const model = new DinnerModel();
-  model.setNumberOfGuests(3);
-    //We instantiate our model
-    const model = new DinnerModel();
+  model.setNumberOfGuests(3); //TODO change when dynamic
 
-    const container = document.getElementsByClassName("page-content")[0];
+
+ //TODO remove later -> dynamic
+  model.getDish(1).then((dish1) =>{
+    model.addDishToMenu(dish1);
+    console.log(model.getFullMenu());
+
+  });
+
+  const container = document.getElementsByClassName("page-content")[0];
 
     //TODO ask how we should do this?
     const view = document.querySelector("script[src = 'src/view/searchView.js']");

@@ -6,7 +6,9 @@ class DetailsView {
 
     render(dishId) {
         let dish = this.model.getDish(dishId).then((data) => {
+            console.log(data);
             return data;
+
         });
 
         console.log(dish);

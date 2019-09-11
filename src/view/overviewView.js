@@ -4,25 +4,46 @@ class OverviewView {
       this.model = model;
   }
 
+  get_image_element(src, width, height) {
+    let image = document.createElement("img");
+    image.src = src;
+    image.style.width = width;
+    image.height = height;
+    return image;
+  }
+
   // An example of creating HTML procedurally. Think about the pros and cons of this approach.
   render() {
-    const paragraph = this.container.appendChild(document.createElement('P'))
-    paragraph.innerHTML = "This dinner will be Awesome!";
 
-    const num_people_val = 3;
-    const paragraph2 = this.container.appendChild(document.createElement('P'))
-    const num_people = paragraph2.appendChild(document.createElement('SPAN'))
-    num_people.innerHTML = num_people_val;
-    paragraph2.innerHTML += " people are coming!";
+    const headingDiv = this.container.appendChild(document.createElement('div'));
+    headingDiv.className ="postIt";
+    const heading = headingDiv.appendChild(document.createElement('h3'));
+    heading.innerHTML = "My Dinner: "+this.model.nGuest+" people";
 
-    const paragraph3 = this.container.appendChild(document.createElement('P'))
-    paragraph3.innerHTML = "We will be eating the following:";
+    const div3 = this.container.appendChild(document.createElement("div"));
+    div3.innerHTML = "You will be eating the following:";
 
-    const list = this.container.appendChild(document.createElement('UL'))
+    const divDishes = div3.appendChild(document.createElement("div"));
+    divDishes.className = "row";
 
-    for(const food of ["Bread!", "Ham!", "Pizza!"]) {
-      list.appendChild(document.createElement('UL')).innerHTML = food;
-    }
+    let menu = this.model.getFullMenu();
+    console.log(menu);
+
+    var self = this;
+    menu.forEach(function (dish, index) {
+      let childElement = document.createElement("div");
+      childElement.className = "dish";
+      let img;
+      img = self.get_image_element(dish.image, 100, 100);
+      childElement.appendChild(img);
+      let captionElement = document.createElement("figcaption");
+      captionElement.innerText = dish.title;
+      childElement.appendChild(captionElement);
+
+      divDishes.appendChild(childElement);
+    });
+
+
 
     this.afterRender();
   }

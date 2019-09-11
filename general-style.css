@@ -9,3 +9,10 @@
     width: 200px;
 }
 
+.postIt{
+    background-color: lightgrey;
+    padding: 10px;
+}
+div{
+    padding: 5px;
+}

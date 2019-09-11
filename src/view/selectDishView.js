@@ -91,17 +91,17 @@ class SelectDishView {
         });
 
 
-
-
-
-
-        //this.make(contentDiv, "div", "dish", titles);
-
-        //let img = this.get_image_element("images/bakedbrie.jpg", 50, 50);
+        this.afterRender();
 
 
     }
 
     afterRender() {
+
+        let loadingIndicator = document.getElementById("loader");
+        loadingIndicator.style.display = "none";
+
+
+
     }
 }

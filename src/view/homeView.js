@@ -26,5 +26,7 @@ class HomeView {
 
   afterRender() {
     this.startBtn = this.container.getElementsByClassName("#startBtn");
+    let loadingIndicator = document.getElementById("loader");
+    loadingIndicator.style.display = "none";
   }
 }

@@ -141,7 +141,6 @@ class DinnerModel {
                   })
                   .catch(console.error);
           });
-          finishedLoading(promise);  // TODO or put it in a .finally
           return promise;
       }
 
@@ -174,19 +173,12 @@ class DinnerModel {
           console.log(error)}
           )
 
-      finishedLoading(promise);
       return promise;
 
   }
 
 }
 
-async function finishedLoading(promise) {
-  let loadingIndicator = document.getElementById("loader");
-  loadingIndicator.style.display = "";
-  await promise;
-  loadingIndicator.style.display = "none";
-}
 
 
 // Deepfreeze

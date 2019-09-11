@@ -70,5 +70,7 @@ class SearchView {
   }
   
   afterRender() {
+      let loadingIndicator = document.getElementById("loader");
+      loadingIndicator.style.display = "none";
   }
 }

@@ -14,7 +14,9 @@ class DetailsView {
 
     render(dishId) {
         this.model.getDish(dishId).then((dish) => {
-
+            var menu = this.model.getFullMenu();
+            console.log('THE TEST IS',menu);
+      
             console.log(dish);
             const selectDishDiv = this.container.querySelector(".row");
 
@@ -39,6 +41,23 @@ class DetailsView {
             let text = "Ingredients for "+this.model.nGuest+" people";
             title3.innerText=text;
             rightDetailsDiv.appendChild(title3P);
+
+            //
+            const tableDiv2 = rightDetailsDiv.appendChild(document.createElement('div'));
+            const table2 = tableDiv2.appendChild(document.createElement("table"));
+            table2.className = "table";
+            this.model.customMenu[0].extendedIngredients.forEach(elx => {
+                const tbody2 = table2.appendChild(document.createElement("tbody"));
+                tbody2.setAttribute("id","dishes");
+                const tr22 = tbody2.appendChild(document.createElement("tr"));   
+                const td22 = tr22.appendChild(document.createElement("td"));
+                td22.className="value-starter-name";
+                td22.innerText= elx.measures.metric.amount +" "+ elx.measures.metric.unitShort;
+                const td33 = tr22.appendChild(document.createElement("td"));
+                td33.className="value-starter-value";
+                td33.innerText=elx.name;
+            });
+
 
         });
 

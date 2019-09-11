@@ -44,10 +44,10 @@ class SearchView {
         th1.innerText="Dish Name";
         const th2 = tr1.appendChild(document.createElement("th"));
         th2.innerText = "Cost";
-        
+        let totalPrice = 0;
+        const tbody = table.appendChild(document.createElement("tbody"));
+
         menu[0].forEach(el => {
-          
-          const tbody = table.appendChild(document.createElement("tbody"));
           tbody.setAttribute("id","dishes");
           const tr2 = tbody.appendChild(document.createElement("tr"));   
           const td2 = tr2.appendChild(document.createElement("td"));
@@ -55,9 +55,15 @@ class SearchView {
           td2.innerText=el.title;
           const td3 = tr2.appendChild(document.createElement("td"));
           td3.className="value-starter-value";
-          td3.innerText=el.pricePerServing;
+          td3.innerText="SEK " + el.git;
+          totalPrice += el.pricePerServing;
         });
+         const tr3 = tbody.appendChild(document.createElement("tr"));   
+         const td4 = tr3.appendChild(document.createElement("td"));
+        // td3.className="value-starter-value";
+        var displayPrice = parseInt(totalPrice, 10);
 
+         td4.innerText="Total Cost: "+ +displayPrice;
 
 
 

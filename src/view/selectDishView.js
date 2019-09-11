@@ -4,10 +4,19 @@ class SelectDishView {
         this.model = model;
     }
 
-    make(element, type, children) {
+    get_image_element(src, width, height) {
+        let image = document.createElement("img");
+        image.src = src;
+        image.width = width;
+        image.height = height;
+        return image;
+    }
+
+    make(element, type, className, children) {
         if (children instanceof Array) {
-            children.forEach(function (child){
+            children.forEach(function (child) {
                 let childElement = document.createElement(type);
+                childElement.className = className;
                 childElement.append(child);
                 element.appendChild(childElement);
             });
@@ -37,9 +46,9 @@ class SelectDishView {
         heading.innerText = "My Dinner";
 
         const findDishDiv = selectDishDiv.appendChild(document.createElement('div'));
-        findDishDiv.className ="row";
+        findDishDiv.className = "row";
         const contentDiv = selectDishDiv.appendChild(document.createElement('div'));
-        contentDiv.className="row";
+        contentDiv.className = "row";
 
         const inputDiv = findDishDiv.appendChild(document.createElement("div"));
         const input = inputDiv.appendChild(document.createElement('input'))
@@ -48,14 +57,47 @@ class SelectDishView {
 
         const selectTypeDiv = findDishDiv.appendChild(document.createElement("div"));
         //TODO check which type of dished exist. Add all options.
-        selectTypeDiv.innerHTML =  '<select class="type-of-dish">' +
-                                '<option value="Starter">Starter</option>'+
-                                '<option value="Main Course">Main Course</option>'+
-                                '<option value="Dessert">Dessert</option></select>';
+        selectTypeDiv.innerHTML = '<select class="type-of-dish">' +
+            '<option value="Starter">Starter</option>' +
+            '<option value="Main Course">Main Course</option>' +
+            '<option value="Dessert">Dessert</option></select>';
 
 
-        this.make(contentDiv,"div", this.model.getAllDishes());
-        console.log(this.model.getAllDishes());
+
+
+        this.model.getAllDishes().then((data) => {
+
+              let imagesSrcs = data.map(function (dish) {
+                //return "images/"+dish.image;  //TODO change to actual images
+                return "/dh2642/images/bakedbrie.jpg";
+            });
+
+             let titles =  data.map(function (dish) {
+                return dish.title;
+            });
+
+            var self = this;
+            titles.forEach(function (title, index) {
+                let childElement = document.createElement("div");
+                childElement.className = "dish";
+                let img;
+                img = self.get_image_element(imagesSrcs[index], 100, 100);
+                childElement.appendChild(img);
+                let captionElement = document.createElement("figcaption");
+                captionElement.innerText = title;
+                childElement.appendChild(captionElement);
+                contentDiv.appendChild(childElement);
+            });
+        });
+
+
+
+
+
+
+        //this.make(contentDiv, "div", "dish", titles);
+
+        //let img = this.get_image_element("images/bakedbrie.jpg", 50, 50);
 
 
     }

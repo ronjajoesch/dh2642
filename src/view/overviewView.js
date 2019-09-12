@@ -43,7 +43,6 @@ class OverviewView {
     menu.forEach(function (dish, index) {
       let childElement = document.createElement("div");
       childElement.className = "dish";
-      //childElement.className = "";
       let img;
       img = self.get_image_element(dish.image, 100, 100);
       childElement.appendChild(img);
@@ -52,7 +51,7 @@ class OverviewView {
       captionElement.innerText = dish.title;
       childElement.appendChild(captionElement);
 
-      // Fr displaying the individual Prices.
+      // This part is for displaying the individual Prices.
       let priceElement = document.createElement("div");
       priceElement.className = "value-main-course-price"; 
       priceElement.innerText = "SEK" + " " +dish.pricePerServing;
@@ -77,8 +76,6 @@ class OverviewView {
     button.setAttribute("id","toPrintBtn");
     button.className = "btn btn-lg btn-primary";
     button.innerText = "Print Full recipe";
-
-
 
     this.afterRender();
 

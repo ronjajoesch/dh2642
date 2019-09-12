@@ -51,12 +51,6 @@ class SelectDishView {
                 return dish.title;
             });
 
-            //add if description is available --> don't delete
-            /*let description =  data.map(function (dish) {
-                return dish.description;
-            });*/
-
-
             var self = this;
             titles.forEach(function (title, index) {
                 let childElement = document.createElement("div");

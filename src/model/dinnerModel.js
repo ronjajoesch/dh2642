@@ -44,29 +44,11 @@ class DinnerModel {
     getTotalMenuPrice() {
         //TODO Lab 0
         let total = 0;
-
-        // has changed because of API
-        /*let ingredients;
-        this.menu.map(function (dish) {
-            ingredients = dish.ingredients;
-        });
-
-        ingredients.map(function (ingredient) {
-            total += ingredient.price * this.nGuest;
-        });*/
-
         this.menu.map(function (dish) {
             total += dish.pricePerServing;
-
         })
-
-
         return total;
-
     }
-
-
-
 
     addDishToMenu(dishObject) {
         //TODO Lab 0
@@ -89,7 +71,6 @@ class DinnerModel {
 
         }
     }
-
 
     //Removes dish from menu
     removeDishFromMenu(dishObject) {
@@ -130,7 +111,7 @@ class DinnerModel {
         } else {
 
             let promise = new Promise(function (resolve, reject) {
-                let Baseurl = "http://localhost:8080/getDish/";             // TODO put into constructor
+                let Baseurl = "http://localhost:8080/getDish/";        
                 let corsURL = "https://cors-anywhere.herokuapp.com/";
                 let options;
 
@@ -151,38 +132,6 @@ class DinnerModel {
         }
 
     }
-
-    //Returns a dish of specific ID
-    /*getDish(id) {
-        var dId = id;
-        let promise = new Promise(function (resolve, reject) {
-            let corsURL = "https://cors-anywhere.herokuapp.com/";
-            var Baseurl = "http://localhost:8080/getSingleDish/";
-
-            fetch(Baseurl, {
-                method: 'GET',
-                headers: {
-                    dishId: dId
-                }
-            })
-                .then(response => response.json())
-                .catch(function(err){
-                    console.log(err);
-                })
-                .then(function (response) {
-                    resolve(response);
-                })
-                .catch(function(err){
-                    console.log(err);
-                });
-        }).catch(function(error){
-            console.log(error)}
-            )
-
-        return promise;
-
-    }*/
-
 
     getDish(id) {
         var dId = id;
@@ -205,12 +154,8 @@ class DinnerModel {
                 });
 
         return promise;
-
     }
-
-
 }
-
 
 // Deepfreeze
 // https://github.com/substack/deep-freeze/blob/master/index.js

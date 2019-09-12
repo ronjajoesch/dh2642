@@ -42,17 +42,7 @@ class InstructionView {
             imgDiv.className = "col-sm-8 col-md-4 col-lg-4";
             let img = self.get_image_element(dish.image,"100%",100);
             const imgElement = imgDiv.appendChild(img);
-
-            // add if both instructions are required
-            /*const dishTextDiv = dishDiv.appendChild(document.createElement('div'));
-            dishTextDiv.className = "col-sm-4 col-md-4 col-lg-4";
-            const title = dishTextDiv.appendChild(document.createElement("h5"));
-            title.innerText = dish.title;
-            const description = dishTextDiv.appendChild(document.createElement("p"));
-            description.innerHTML = dish.instructions; */
-
             const instructionTextDiv = dishDiv.appendChild(document.createElement('div'));
-            //instructionTextDiv.className = "col-sm-4 col-md-4 col-lg-4"; // add if both instructions are required
             instructionTextDiv.className = "col-sm-8 col-md-8 col-lg-8";
             const instruction = instructionTextDiv.appendChild(document.createElement("p"));
 

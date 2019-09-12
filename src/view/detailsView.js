@@ -48,31 +48,29 @@ class DetailsView {
             descriptionDiv.innerHTML = dish.instructions;
             instructionDiv.appendChild(descriptionDiv);
 
-            let title3P = rightDetailsDiv.appendChild(document.createElement("p"));
-            let title3 = title3P.appendChild(document.createElement("h6"));
+            let title = rightDetailsDiv.appendChild(document.createElement("p"));
+            let title3 = title.appendChild(document.createElement("h6"));
             let text = "Ingredients for "+this.model.nGuest+" people";
             title3.innerText=text;
-            rightDetailsDiv.appendChild(title3P);
+            rightDetailsDiv.appendChild(title);
             
-            const tableDiv2 = rightDetailsDiv.appendChild(document.createElement('div'));
-            const table2 = tableDiv2.appendChild(document.createElement("table"));
-            table2.className = "table";
+            const tableDiv = rightDetailsDiv.appendChild(document.createElement('div'));
+            const table = tableDiv.appendChild(document.createElement("table"));
+            table.className = "table";
 
             menu.forEach(function(elx,i) {
-                const tbody2 = table2.appendChild(document.createElement("tbody"));
-                tbody2.setAttribute("id","dishes");
-                const tr22 = tbody2.appendChild(document.createElement("tr"));   
-                const td22 = tr22.appendChild(document.createElement("td"));
-                td22.className="value-starter-name";
-                td22.innerText= elx.extendedIngredients[i].measures.metric.amount +" "+ elx.extendedIngredients[i].measures.metric.unitShort;
-                const td33 = tr22.appendChild(document.createElement("td"));
-                td33.className="value-starter-value";
-                td33.innerText=elx.extendedIngredients[i].name;
-                
+                const tbody_1 = table.appendChild(document.createElement("tbody"));
+                tbody_1.setAttribute("id","dishes");
+                const tr_2 = tbody_1.appendChild(document.createElement("tr"));   
+                const td_2 = tr_2.appendChild(document.createElement("td"));
+                td_2.className="value-starter-name";
+                td_2.innerText= elx.extendedIngredients[i].measures.metric.amount +" "+ elx.extendedIngredients[i].measures.metric.unitShort;
+                const td_3 = tr_2.appendChild(document.createElement("td"));
+                td_3.className="value-starter-value";
+                td_3.innerText=elx.extendedIngredients[i].name;    
             });
-            const td44 = table2.appendChild(document.createElement("td"));    
+            const td44 = table.appendChild(document.createElement("td"));    
             td44.innerText="Total Cost: "+ +menu[0].pricePerServing;
-
         });
         this.afterRender();
     }

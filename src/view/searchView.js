@@ -52,7 +52,7 @@ class SearchView {
          const td4 = tr3.appendChild(document.createElement("td"));
          const totalDiv = td4.appendChild(document.createElement("div"));
          const totalText =totalDiv.appendChild(document.createElement("h5"));
-         totalText.innerText="Total Cost: KR";
+         totalText.innerText="Total Cost: SEK";
          const totalValue = totalDiv.appendChild(document.createElement("h5"));
          totalValue.className="value-total-price";
          totalValue.innerText = ""+totalPrice;

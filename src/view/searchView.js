@@ -7,7 +7,7 @@ class SearchView {
 
     render() {
       var menu = this.model.getFullMenu();
-      console.log('THE TEST IS',menu);
+
         const sideMenu = this.container.querySelector(".row").appendChild(document.createElement('div'));
         sideMenu.className = "col-xs-12 col-sm-5 col-md-5 col-lg-4";
         sideMenu.setAttribute("id","sideBarView");
@@ -22,10 +22,10 @@ class SearchView {
         }
         select += '</select>';
 
-        // select.value = this.model.nGuest;
 
         people.innerHTML = select;
         const tableDiv = sideMenu.appendChild(document.createElement('div'));
+        tableDiv.setAttribute("id","dishItems");
         const table = tableDiv.appendChild(document.createElement("table"));
         table.className = "table";
         const thead = table.appendChild(document.createElement("thead"));
@@ -41,17 +41,21 @@ class SearchView {
           tbody.setAttribute("id","dishes");
           const tr2 = tbody.appendChild(document.createElement("tr"));   
           const td2 = tr2.appendChild(document.createElement("td"));
-          td2.className="value-starter-name";
+          td2.className="value-main-course-name"; //TODO change to actual type
           td2.innerText=el.title;
           const td3 = tr2.appendChild(document.createElement("td"));
-          td3.className="value-starter-value";
+          td3.className="value-starter-value"; //TODO change to actual type
           td3.innerText="SEK " + el.pricePerServing;
           totalPrice += el.pricePerServing;
         });
          const tr3 = tbody.appendChild(document.createElement("tr"));   
          const td4 = tr3.appendChild(document.createElement("td"));
-        var displayPrice = parseInt(totalPrice, 10);
-         td4.innerText="Total Cost: "+ +displayPrice;
+         const totalDiv = td4.appendChild(document.createElement("div"));
+         const totalText =totalDiv.appendChild(document.createElement("h5"));
+         totalText.innerText="Total Cost: KR";
+         const totalValue = totalDiv.appendChild(document.createElement("h5"));
+         totalValue.className="value-total-price";
+         totalValue.innerText = ""+totalPrice;
 
       const buttonDiv = sideMenu.appendChild(document.createElement('div'));
       buttonDiv.innerHTML = `<button id="startBtn" type="button" class="btn btn-md btn-primary">Confirm dinner</button>`;
@@ -59,7 +63,8 @@ class SearchView {
       this.afterRender();
       
       let dropObject = document.getElementById("some_Id");
-      dropObject.value = this.model.nGuest;
+      dropObject.setAttribute("id","value-num-guests");
+      dropObject.value = this.model.getNumberOfGuests();
   }
   
   afterRender() {

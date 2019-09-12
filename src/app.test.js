@@ -6,6 +6,8 @@ describe("DinnerPlanner App", () => {
   let homeView = null;
   let searchView = null;
   let overviewView = null;
+
+// added because we don't hand over ids but dish objects
   let dish1 = {
     "vegetarian": false,
     "vegan": false,
@@ -471,6 +473,10 @@ describe("DinnerPlanner App", () => {
     });
 
     it("has a dish search container", () => {
+      //added because search container is in this view
+      const selectDishView = new SelectDishView(document.querySelector("#page-content"), model);
+      selectDishView.render();
+
       const dishSearch = document.getElementById("dishSearchView");
       expect(dishSearch).to.not.be.a("null");
     });
@@ -492,7 +498,7 @@ describe("DinnerPlanner App", () => {
       expect(valueHolders.length).to.be.above(0);
       for (let v of valueHolders) {
         expect(v).to.not.be.a("null");
-        expect(v.innerHTML).to.equal(""+model.getNumberOfGuests());
+        expect(v.value).to.equal(""+model.getNumberOfGuests()); // changed because we have a drop down menu
       }
     });
 

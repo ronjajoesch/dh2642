@@ -45,14 +45,21 @@ class DinnerModel {
         //TODO Lab 0
         let total = 0;
 
-        let ingredients;
+        // has changed because of API
+        /*let ingredients;
         this.menu.map(function (dish) {
             ingredients = dish.ingredients;
         });
 
         ingredients.map(function (ingredient) {
             total += ingredient.price * this.nGuest;
-        });
+        });*/
+
+        this.menu.map(function (dish) {
+            total += dish.pricePerServing;
+
+        })
+
 
         return total;
 

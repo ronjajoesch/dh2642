@@ -24,7 +24,8 @@ class SelectDishView {
         contentDiv.className = "row";
 
         const inputDiv = findDishDiv.appendChild(document.createElement("div"));
-        const input = inputDiv.appendChild(document.createElement('input'))
+        inputDiv.id = "dishSearchView";
+        const input = inputDiv.appendChild(document.createElement('input'));
         input.type = "text";
         input.id = "query";
 

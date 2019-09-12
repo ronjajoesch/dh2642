@@ -42,7 +42,7 @@ class DetailsView {
             title3.innerText=text;
             rightDetailsDiv.appendChild(title3P);
 
-            //
+
             const tableDiv2 = rightDetailsDiv.appendChild(document.createElement('div'));
             const table2 = tableDiv2.appendChild(document.createElement("table"));
             table2.className = "table";

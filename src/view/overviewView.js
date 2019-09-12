@@ -33,6 +33,7 @@ class OverviewView {
 
     var self = this;
     console.log(menu[0]);
+    let totalPrice = 0;
     menu.forEach(function (dish, index) {
       let childElement = document.createElement("div");
       childElement.className = "dish";
@@ -45,8 +46,19 @@ class OverviewView {
       captionElement.innerText = dish.title;
       childElement.appendChild(captionElement);
 
+      // Fr displaying the individual Prices.
+      let priceElement = document.createElement("pricecaption");
+      priceElement.className = "value-main-course-price"; 
+      priceElement.innerText = "SEK" + " " +dish.pricePerServing;
+      childElement.appendChild(priceElement);
       divDishes.appendChild(childElement);
+      totalPrice += dish.pricePerServing;
     });
+
+    let totalPricediv = document.createElement("div");
+    totalPricediv.innerText = "SEK" + " " + totalPrice;
+    divDishes.appendChild(totalPricediv);
+
 
     const bottom = div3.appendChild(document.createElement("div"));
     let button = bottom.appendChild(document.createElement("button"));

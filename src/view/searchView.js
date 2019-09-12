@@ -50,9 +50,7 @@ class SearchView {
         });
          const tr3 = tbody.appendChild(document.createElement("tr"));   
          const td4 = tr3.appendChild(document.createElement("td"));
-        // td3.className="value-starter-value";
         var displayPrice = parseInt(totalPrice, 10);
-
          td4.innerText="Total Cost: "+ +displayPrice;
 
       const buttonDiv = sideMenu.appendChild(document.createElement('div'));

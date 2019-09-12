@@ -65,44 +65,6 @@ class SearchView {
 
          td4.innerText="Total Cost: "+ +displayPrice;
 
-
-
-        // const tbody = table.appendChild("tbody");
-        // tbody.setAttribute = ('id','dishes');
-        // const tr3 = table.appendChild(document.createElement("tr"));
-        // const td1 = tr3.appendChild(document.createElement("td"));
-        // td1.innerText = "something";
-
- 
-        // tableDiv.innerHTML = `
-        //   <table class="table">
-        //     <thead>
-        //       <tr>
-        //         <th>Dish Name</th>
-        //         <th >Cost</th>
-        //       </tr>
-        //     </thead>
-        //     <tbody id="dishes">
-        //       <tr>
-        //         <td class="value-starter-name">++</td>
-        //         <td class="value-starter-value">Kr 100</td>
-        //       </tr>
-        //       <tr>
-        //         <td class="value-main-course-name">YYY</td>
-        //         <td class="value-main-course-value">Kr 100</td>
-        //       </tr>
-        //       <tr>
-        //         <td class="value-dessert-name">ZZZ</td>
-        //         <td class="value-dessert-value">Kr 400</td>
-        //       </tr>
-        //       <tr>
-        //         <td></td>
-        //         <td class="value-total-price">Kr 400</td>
-        //       </tr>
-        //     </tbody>
-        //   </table>`;
-
-
       const buttonDiv = sideMenu.appendChild(document.createElement('div'));
       buttonDiv.innerHTML = `<button id="startBtn" type="button" class="btn btn-md btn-primary">Confirm dinner</button>`;
 

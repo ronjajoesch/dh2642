@@ -4,6 +4,14 @@ class InstructionView {
         this.model = model;
     }
 
+    get_image_element(src, width, height) {
+        let image = document.createElement("img");
+        image.src = src;
+        image.style.width = width;
+        image.height = height;
+        return image;
+    }
+
     render() {
         const headingDiv = this.container.appendChild(document.createElement('div'));
         headingDiv.className ="postIt row";
@@ -18,8 +26,21 @@ class InstructionView {
         button.setAttribute("type","button");
         button.setAttribute("id","back");
         button.className = "btn btn-sm btn-primary";
-        buttonDiv.setAttribute("float", "right");
         button.innerText = "Go Back and edit dinner";
+
+        const bottomDiv = this.container.appendChild(document.createElement('div'));
+
+        var menu = this.model.getFullMenu();
+
+        var self = this;
+        menu.forEach(function(dish,i){
+            const dishDiv = bottomDiv.appendChild(document.createElement("div"));
+            dishDiv.className = "row";
+
+            let img = self.get_image_element(dish.image,"30%",100);
+            const imgElement = bottomDiv.appendChild(img);
+
+        });
 
 
         this.afterRender();

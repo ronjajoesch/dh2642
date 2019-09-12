@@ -72,7 +72,7 @@ class DinnerModel {
           }
           else {
               let item = this.menu.find(function (item) {
-                  return item.type == dishObject.type;
+                  return item.dishTypes == dishObject.dishTypes;
               });
               if (item != null && item != undefined) {
                   this.removeDishFromMenu(item);

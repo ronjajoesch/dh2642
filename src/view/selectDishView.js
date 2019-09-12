@@ -30,7 +30,7 @@ class SelectDishView {
         input.id = "query";
 
         const selectTypeDiv = findDishDiv.appendChild(document.createElement("div"));
-        //TODO check which type of dished exist. Add all options.
+        //TODO check which type of dishes exist. Add all options.
         selectTypeDiv.innerHTML = '<select class="type-of-dish">' +
             '<option value="Starter">Starter</option>' +
             '<option value="Main Course">Main Course</option>' +

@@ -10,6 +10,7 @@ class SearchView {
       console.log('THE TEST IS',menu);
         const sideMenu = this.container.querySelector(".row").appendChild(document.createElement('div'));
         sideMenu.className = "col-xs-12 col-sm-5 col-md-5 col-lg-4";
+        sideMenu.setAttribute("id","sideBarView");
         const heading = sideMenu.appendChild(document.createElement('h4'));
         heading.innerText = "My Dinner";
 

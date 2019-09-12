@@ -10,8 +10,10 @@ describe("DinnerModel", () => {
 
   describe("number of guests", () => {
     it("can set and get number of guests", () => {
-      model.setNumberOfGuests(0);
-      expect(model.getNumberOfGuests()).to.equal(0);
+
+      //we have changed this because we think 0 guests should not be possible
+      model.setNumberOfGuests(2);
+      expect(model.getNumberOfGuests()).to.equal(2);
 
       model.setNumberOfGuests(1);
       expect(model.getNumberOfGuests()).to.equal(1);

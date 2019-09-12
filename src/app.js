@@ -1148,11 +1148,11 @@ window.onload = function () {
         ]
     }]
 
-    model.customMenu = myJson;
+    /*model.customMenu = myJson;
     model.addDishToMenu(myJson[0]); // PASS THE JSON to this functin, and load it in the searchView.js
     model.addDishToMenu(myJson[1]); // PASS THE JSON to this functin, and load it in the searchView.js
     model.addDishToMenu(myJson[2]); // PASS THE JSON to this functin, and load it in the searchView.js
-
+*/
 
   const container = document.getElementsByClassName("page-content")[0];
 

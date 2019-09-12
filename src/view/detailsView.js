@@ -15,26 +15,38 @@ class DetailsView {
     render(dishId) {
         this.model.getDish(dishId).then((dish) => {
             var menu = this.model.getFullMenu();
-            console.log('THE TEST IS',menu);
-      
-            console.log(dish);
+
             const selectDishDiv = this.container.querySelector(".row");
+            const mainDiv = selectDishDiv.appendChild(document.createElement('div'));
+            mainDiv.className = "row col-xs-12 col-sm-7 col-md-7 col-lg-8";
 
-            const leftDetailsDiv = selectDishDiv.appendChild(document.createElement('div'));
-            leftDetailsDiv.className = "col-xs-12 col-sm-4 col-md-4 col-lg-4";
+            const leftDetailsDiv = mainDiv.appendChild(document.createElement('div'));
+            leftDetailsDiv.className = "col-xs-12 col-sm-12 col-md-6 col-lg-6";
 
-            const rightDetailsDiv = selectDishDiv.appendChild(document.createElement('div'));
-            rightDetailsDiv.className = "col-xs-12 col-sm-3 col-md-3 col-lg-4 postIt";
+            const rightDetailsDiv = mainDiv.appendChild(document.createElement('div'));
+            rightDetailsDiv.className = "col-xs-12 col-sm-12 col-md-6 col-lg-6 postIt";
 
             const heading = leftDetailsDiv.appendChild(document.createElement('h4'));
             heading.innerText = dish.title;
 
             let img = this.get_image_element(dish.image,"100%",200);
+            let imgDiv = leftDetailsDiv.appendChild(document.createElement("div"));
+            imgDiv.appendChild(img);
 
-            leftDetailsDiv.appendChild(img);
+            let buttonDiv = leftDetailsDiv.appendChild(document.createElement("div"));
+            let button = buttonDiv.appendChild(document.createElement("button"));
+            button.setAttribute("type","button");
+            button.setAttribute("id","back");
+            button.className = "btn btn-sm btn-primary";
+            button.innerText = "back to select dish";
+
+            let instructionDiv = leftDetailsDiv.appendChild(document.createElement("div"));
+
+            let instructionsTitle = instructionDiv.appendChild(document.createElement("h6"));
+            instructionsTitle.innerText = "Instructions";
             let descriptionDiv = document.createElement("div");
             descriptionDiv.innerHTML = dish.instructions;
-            leftDetailsDiv.appendChild(descriptionDiv);
+            instructionDiv.appendChild(descriptionDiv);
 
             let title3P = rightDetailsDiv.appendChild(document.createElement("p"));
             let title3 = title3P.appendChild(document.createElement("h6"));

@@ -51,7 +51,7 @@ class SelectDishView {
                 return dish.title;
             });
 
-            //add if description is available
+            //add if description is available --> don't delete
             /*let description =  data.map(function (dish) {
                 return dish.description;
             });*/

@@ -56,23 +56,13 @@ class DetailsView {
                 const td33 = tr22.appendChild(document.createElement("td"));
                 td33.className="value-starter-value";
                 td33.innerText=elx.extendedIngredients[i].name;
+                
             });
+            const td44 = table2.appendChild(document.createElement("td"));    
+            td44.innerText="Total Cost: "+ +menu[0].pricePerServing;
+
         });
-
-
-        /*
-        const findDishDiv = detailsDiv.appendChild(document.createElement('div'));
-        findDishDiv.className = "row";
-        const contentDiv = detailsDiv.appendChild(document.createElement('div'));
-        contentDiv.className = "row";
-
-        const inputDiv = findDishDiv.appendChild(document.createElement("div"));
-        const input = inputDiv.appendChild(document.createElement('input'))
-        input.type = "text";
-        input.id = "query";
-*/
         this.afterRender();
-
     }
 
     afterRender() {

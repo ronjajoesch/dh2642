@@ -4,17 +4,6 @@ class SearchView {
         this.model = model;
     }
 
-    makeTree(type, children) {
-        const element = document.createElement(type);
-        if (children instanceof Array) {
-            element.append(...children); // ES6 equivalent to element.append.apply (element, children)  
-        } else {
-            // probably one single string, to create a text Node, or one single Element  
-            element.append(children);
-        }
-        return element;
-    }
-
 
     render() {
       var menu = this.model.getFullMenu();

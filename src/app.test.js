@@ -10,7 +10,7 @@ describe("DinnerPlanner App", () => {
   beforeEach(() => {
     model = new DinnerModel();
     homeView = new HomeView(document.querySelector("#page-content"));
-    searchView = new SearchView(document.querySelector("#page-content"), model);
+    //searchView = new SearchView(document.querySelector("#page-content"), model);
     overviewView = new OverviewView(document.querySelector("#page-content"), model);
   });
 
@@ -22,9 +22,10 @@ describe("DinnerPlanner App", () => {
     });
   });
 
-  describe("Search view", () => {
+
+  /*describe("Search view", () => {
     beforeEach(() => {
-      model.addDishToMenu(559251);
+      //model.addDishToMenu(559251);
       searchView.render();
     });
 
@@ -77,10 +78,12 @@ describe("DinnerPlanner App", () => {
       }
     });
   });
+*/
+
 
   describe("Confirmation page", () => {
     beforeEach(() => {
-      model.addDishToMenu(559251);
+      //model.addDishToMenu(559251);
       overviewView.render();
     });
 

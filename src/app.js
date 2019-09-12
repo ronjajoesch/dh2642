@@ -6,9 +6,6 @@ window.onload = function () {
 
 
  //TODO remove later -> dynamic
- 
- // model.getDish(1).then((dish1) =>{
-    //model.addDishToMenu(dish1);
     const myJson = [{
         "vegetarian": false,
         "vegan": false,
@@ -1148,11 +1145,11 @@ window.onload = function () {
         ]
     }]
 
-    /*model.customMenu = myJson;
+    model.customMenu = myJson;
     model.addDishToMenu(myJson[0]); // PASS THE JSON to this functin, and load it in the searchView.js
     model.addDishToMenu(myJson[1]); // PASS THE JSON to this functin, and load it in the searchView.js
     model.addDishToMenu(myJson[2]); // PASS THE JSON to this functin, and load it in the searchView.js
-*/
+
 
   const container = document.getElementsByClassName("page-content")[0];
 

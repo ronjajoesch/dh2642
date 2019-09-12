@@ -34,6 +34,7 @@ describe("DinnerModel", () => {
       expect(model.getDish(559251) instanceof Promise).to.equal(true);
       done();
     });
+
     it("gets the correct dish", (done) => {
       model.getDish(559251)
       .then((data) => {
@@ -75,6 +76,7 @@ describe("DinnerModel", () => {
   describe("menu", () => {
     it("can add dishes", (done) => {
       model.addDishToMenu(559251);
+      console.log("menu",model.menu);
       expect(model.getFullMenu().length).to.equal(1);
       expect(model.getFullMenu()[0].id).to.equal(559251);
       done();

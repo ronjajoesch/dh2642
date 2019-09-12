@@ -16,10 +16,16 @@ class OverviewView {
   render() {
 
     const headingDiv = this.container.appendChild(document.createElement('div'));
-    headingDiv.className ="postIt";
+    headingDiv.className ="postIt row";
     const heading = headingDiv.appendChild(document.createElement('h3'));
-    heading.className = "value-num-guests";
-    heading.innerHTML = "My Dinner: "+this.model.nGuest+" people";
+    const guestsNum = headingDiv.appendChild(document.createElement("h3"));
+    guestsNum.className = "value-num-guests";
+    heading.innerHTML = "My Dinner: ";
+    guestsNum.innerHTML = ""+this.model.getNumberOfGuests();
+    const heading2 = headingDiv.appendChild(document.createElement('h3'));
+    heading2.innerHTML = " people are coming";
+
+
 
     const div3 = this.container.appendChild(document.createElement("div"));
     div3.setAttribute("id","overviewView");
@@ -47,7 +53,7 @@ class OverviewView {
       childElement.appendChild(captionElement);
 
       // Fr displaying the individual Prices.
-      let priceElement = document.createElement("pricecaption");
+      let priceElement = document.createElement("div");
       priceElement.className = "value-main-course-price"; 
       priceElement.innerText = "SEK" + " " +dish.pricePerServing;
       childElement.appendChild(priceElement);

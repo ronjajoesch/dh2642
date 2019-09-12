@@ -61,8 +61,11 @@ class OverviewView {
       totalPrice += dish.pricePerServing;
     });
 
-    let totalPricediv = document.createElement("div");
-    totalPricediv.innerText = "SEK" + " " + totalPrice;
+    let totalText = divDishes.appendChild(document.createElement("h5"));
+    totalText.innerText = "Total: SEK";
+    let totalPricediv = document.createElement("h5");
+    totalPricediv.className = "value-total-price";
+    totalPricediv.innerText = totalPrice;
     divDishes.appendChild(totalPricediv);
 
 

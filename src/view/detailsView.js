@@ -41,24 +41,22 @@ class DetailsView {
             let text = "Ingredients for "+this.model.nGuest+" people";
             title3.innerText=text;
             rightDetailsDiv.appendChild(title3P);
-
-            //
+            
             const tableDiv2 = rightDetailsDiv.appendChild(document.createElement('div'));
             const table2 = tableDiv2.appendChild(document.createElement("table"));
             table2.className = "table";
-            this.model.menu.extendedIngredients.forEach(elx => {
+
+            menu.forEach(function(elx,i) {
                 const tbody2 = table2.appendChild(document.createElement("tbody"));
                 tbody2.setAttribute("id","dishes");
                 const tr22 = tbody2.appendChild(document.createElement("tr"));   
                 const td22 = tr22.appendChild(document.createElement("td"));
                 td22.className="value-starter-name";
-                td22.innerText= elx.measures.metric.amount +" "+ elx.measures.metric.unitShort;
+                td22.innerText= elx.extendedIngredients[i].measures.metric.amount +" "+ elx.extendedIngredients[i].measures.metric.unitShort;
                 const td33 = tr22.appendChild(document.createElement("td"));
                 td33.className="value-starter-value";
-                td33.innerText=elx.name;
+                td33.innerText=elx.extendedIngredients[i].name;
             });
-
-
         });
 
 

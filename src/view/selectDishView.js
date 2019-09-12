@@ -68,7 +68,7 @@ class SelectDishView {
                 captionElement.innerText = title;
                 childElement.appendChild(captionElement);
 
-                //add if description is available
+                //add if description is available  --> don't delete
                 /*let descriptionElement = document.createElement("p");
                 descriptionElement.innerText = description[index];
                 childElement.appendChild(descriptionElement);*/

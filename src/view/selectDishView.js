@@ -12,33 +12,6 @@ class SelectDishView {
         return image;
     }
 
-    make(element, type, className, children) {
-        if (children instanceof Array) {
-            children.forEach(function (child) {
-                let childElement = document.createElement(type);
-                childElement.className = className;
-                childElement.append(child);
-                element.appendChild(childElement);
-            });
-        } else {
-            // probably one single string, to create a text Node, or one single Element  
-            element.append(children);
-        }
-        return element;
-    }
-
-    // use: document.body.append(make("div", make("ol", ["apple", "mango", "orange"].map(x => make("li", x))))
-    makeListTree(type, children) {
-        const element = document.createElement(type);
-        if (children instanceof Array) {
-            element.append(children); // ES6 equivalent to element.append.apply (element, children)  
-        } else {
-            // probably one single string, to create a text Node, or one single Element  
-            element.append(children);
-        }
-        return element;
-    }
-
     render() {
         const selectDishDiv = this.container.querySelector(".row").appendChild(document.createElement('div'));
         selectDishDiv.className = "col-xs-12 col-sm-7 col-md-7 col-lg-8";
@@ -63,14 +36,14 @@ class SelectDishView {
             '<option value="Dessert">Dessert</option></select>';
 
         //TODO interactions
-        let type = "starter";
+        let type = "Main Course";
         let query = "Pizza";
 
         this.model.getAllDishes(type, query).then((data) => {
             console.log(data);
             let imagesSrcs = data.map(function (dish) {
-                //return "images/"+dish.image;  //TODO change to actual images
-                return "/dh2642/images/bakedbrie.jpg";
+                return " https://spoonacular.com/recipeImages/"+dish.image;
+
             });
 
             let titles = data.map(function (dish) {

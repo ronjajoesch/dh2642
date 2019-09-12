@@ -47,7 +47,7 @@ class SearchView {
         let totalPrice = 0;
         const tbody = table.appendChild(document.createElement("tbody"));
 
-        menu[0].forEach(el => {
+       menu.forEach(el => {
           tbody.setAttribute("id","dishes");
           const tr2 = tbody.appendChild(document.createElement("tr"));   
           const td2 = tr2.appendChild(document.createElement("td"));

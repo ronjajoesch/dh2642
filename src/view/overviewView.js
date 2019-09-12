@@ -29,9 +29,10 @@ class OverviewView {
     divDishes.className = "row";
 
     let menu = this.model.getFullMenu();
-    console.log(menu);
+    
 
     var self = this;
+    console.log(menu[0]);
     menu.forEach(function (dish, index) {
       let childElement = document.createElement("div");
       childElement.className = "dish";
@@ -57,6 +58,7 @@ class OverviewView {
 
 
     this.afterRender();
+
   }
 
   afterRender() {

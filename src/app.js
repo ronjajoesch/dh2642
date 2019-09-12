@@ -323,8 +323,15 @@ window.onload = function () {
     "image": "https://spoonacular.com/recipeImages/559249-556x370.jpg",
     "imageType": "jpg",
     "cuisines": [],}]
+
     model.customMenu = myJson;
-    model.addDishToMenu(myJson); // PASS THE JSON to this functin, and load it in the searchView.js
+    model.addDishToMenu(myJson[0]); // PASS THE JSON to this functin, and load it in the searchView.js
+    model.addDishToMenu(myJson[1]); // PASS THE JSON to this functin, and load it in the searchView.js
+    model.addDishToMenu(myJson[2]); // PASS THE JSON to this functin, and load it in the searchView.js
+
+    console.log("json:", myJson[0]);
+    console.log("json:", myJson[1]);
+    console.log(model.menu);
    // console.log("test",dish1,dish2);
    // console.log(model.getFullMenu());
 

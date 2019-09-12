@@ -46,7 +46,7 @@ class DetailsView {
             const tableDiv2 = rightDetailsDiv.appendChild(document.createElement('div'));
             const table2 = tableDiv2.appendChild(document.createElement("table"));
             table2.className = "table";
-            this.model.customMenu[0].extendedIngredients.forEach(elx => {
+            this.model.menu.extendedIngredients.forEach(elx => {
                 const tbody2 = table2.appendChild(document.createElement("tbody"));
                 tbody2.setAttribute("id","dishes");
                 const tr22 = tbody2.appendChild(document.createElement("tr"));   

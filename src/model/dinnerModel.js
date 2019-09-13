@@ -4,7 +4,7 @@ class DinnerModel {
     constructor() {
         var self = this;
 
-        self.nGuest = 0;
+        self.nGuest = 1;
         self.menu = [];
     }
 
@@ -44,41 +44,31 @@ class DinnerModel {
     getTotalMenuPrice() {
         //TODO Lab 0
         let total = 0;
-
-        let ingredients;
         this.menu.map(function (dish) {
-            ingredients = dish.ingredients;
-        });
-
-        ingredients.map(function (ingredient) {
-            total += ingredient.price * this.nGuest;
-        });
-
+            total += dish.pricePerServing;
+        })
         return total;
-
     }
 
-
-    //Adds the passed dish to the menu. If the dish of that type already exists on the menu
-    //it is removed from the menu and the new one added.
     addDishToMenu(dishObject) {
         //TODO Lab 0
 
+        //Adds the passed dish to the menu. If the dish of that type already exists on the menu
+        //it is removed from the menu and the new one added.
+
         if (dishObject != null && dishObject != undefined) {
-
-
             if (this.menu.length == 0) {
                 this.menu.push(dishObject);
-            }
-            else {
+            } else {
                 let item = this.menu.find(function (item) {
-                    return item.type == dishObject.type;
+                    return item.dishTypes == dishObject.dishTypes;  //TODO check what types there are and maybe adjust code
                 });
                 if (item != null && item != undefined) {
                     this.removeDishFromMenu(item);
                 }
                 this.menu.push(dishObject);
             }
+
         }
     }
 
@@ -108,9 +98,8 @@ class DinnerModel {
                 let options;
 
                 fetch(Baseurl, {
-                    method: 'GET', 
-                    headers: {
-                    }
+                    method: 'GET',
+                    headers: {}
                 })
                     .then(response => response.json())
                     .then(function (response) {
@@ -118,18 +107,16 @@ class DinnerModel {
                     })
                     .catch(console.error);
             });
-            finishedLoading(promise);
             return promise;
-        }
-        else{
+        } else {
 
             let promise = new Promise(function (resolve, reject) {
-                let Baseurl = "http://localhost:8080/getDish/";             // TODO put into constructor
+                let Baseurl = "http://localhost:8080/getDish/";        
                 let corsURL = "https://cors-anywhere.herokuapp.com/";
                 let options;
 
                 fetch(Baseurl, {
-                    method: 'GET', 
+                    method: 'GET',
                     headers: {
                         'stype': type,
                         'squery': query
@@ -141,20 +128,17 @@ class DinnerModel {
                     })
                     .catch(console.error);
             });
-            finishedLoading(promise);  // TODO or put it in a .finally
             return promise;
         }
 
     }
 
-    //Returns a dish of specific ID
     getDish(id) {
         var dId = id;
-        let promise = new Promise(function (resolve, reject) {
-            let corsURL = "https://cors-anywhere.herokuapp.com/";
-            // var Baseurl = corsURL+"http://sunset.nada.kth.se:8080/iprog/group/15/recipes/" + id + "/information";
-            var Baseurl = "http://localhost:8080/getSingleDish/";
+        let corsURL = "https://cors-anywhere.herokuapp.com/";
+        var Baseurl = "http://localhost:8080/getSingleDish/";
 
+        let promise =
             fetch(Baseurl, {
                 method: 'GET',
                 headers: {
@@ -162,58 +146,23 @@ class DinnerModel {
                 }
             })
                 .then(response => response.json())
-                .catch(function(err){
-                    console.log(err);
-                })
                 .then(function (response) {
-                    resolve(response);
+                    return (response);
                 })
-                .catch(function(err){
+                .catch(function (err) {
                     console.log(err);
                 });
-        }).catch(function(error){
-            console.log(error)}
-            )
 
-        finishedLoading(promise);
         return promise;
-
     }
-
-    /*
-    getAllDishesfromAPI(callback) {
-        let URL = "http://sunset.nada.kth.se:8080/iprog/group/15/recipes/search";
-        let xhr = new XMLHttpRequest();
-        xhr.open("GET", URL, true);
-        xhr.setRequestHeader("X-Mashape-Key", key);
-        xhr.send();
-        xhr.onload = function () {
-            if (xhr.status != 200) { // analyze HTTP status of the response
-                callback(xhr.status, null);
-
-            } else { // show the result
-                callback(null, xhr.response);
-            }
-        };
-        xhr.onerror = function () {
-            callback(xhr.status, null);
-        };
-    }*/
-
 }
-
-async function finishedLoading(promise) {
-    let loadingIndicator = document.getElementById("loader");
-    loadingIndicator.style.display = "";
-    await promise;
-    loadingIndicator.style.display = "none";
-}
-
 
 // Deepfreeze
 // https://github.com/substack/deep-freeze/blob/master/index.js
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze
-function deepFreeze(o) {
+function
+
+deepFreeze(o) {
     Object.freeze(o);
     Object.getOwnPropertyNames(o).forEach(function (prop) {
         if (o.hasOwnProperty(prop)

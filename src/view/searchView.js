@@ -11,11 +11,15 @@ class SearchView {
         if(changeDetails.type === "nGuest"){
             this.changeNumGuests();
         }
+        if(changeDetails.type === "menu"){
+            this.displayMenuSelected();
+
+        }
     }
 
 
     render(id) {
-      var menu = this.model.getFullMenu();
+      let menu = this.model.getFullMenu();
 
         const sideMenu = this.container.querySelector(".row").appendChild(document.createElement('div'));
         sideMenu.setAttribute('id',id);
@@ -31,9 +35,10 @@ class SearchView {
           select += '<option value='+i+'>'+i+'</option>'
         }
         select += '</select>';
-
-
         people.innerHTML = select;
+
+        this.changeNumGuests();
+
         const tableDiv = sideMenu.appendChild(document.createElement('div'));
         tableDiv.setAttribute("id","dishItems");
         const table = tableDiv.appendChild(document.createElement("table"));
@@ -44,32 +49,13 @@ class SearchView {
         th1.innerText="Dish Name";
         const th2 = tr1.appendChild(document.createElement("th"));
         th2.innerText = "Cost";
-        let totalPrice = 0;
-        const tbody = table.appendChild(document.createElement("tbody"));
 
-       menu.forEach(el => {
-          tbody.setAttribute("id","dishes");
-          const tr2 = tbody.appendChild(document.createElement("tr"));   
-          const td2 = tr2.appendChild(document.createElement("td"));
-          td2.className="value-main-course-name"; //TODO change to actual type
-          td2.innerText=el.title;
-          const td3 = tr2.appendChild(document.createElement("td"));
-          td3.className="value-starter-value"; //TODO change to actual type
-          td3.innerText="SEK " + el.pricePerServing;
-          totalPrice += el.pricePerServing;
-        });
-         const tr3 = tbody.appendChild(document.createElement("tr"));   
-         const td4 = tr3.appendChild(document.createElement("td"));
-         const totalDiv = td4.appendChild(document.createElement("div"));
-         const totalText =totalDiv.appendChild(document.createElement("h5"));
-         totalText.innerText="Total Cost: SEK";
-         const totalValue = totalDiv.appendChild(document.createElement("h5"));
-         totalValue.className="value-total-price";
-         totalValue.innerText = ""+totalPrice;
+        const tbody = table.appendChild(document.createElement("tbody"));
+        tbody.setAttribute("id","tbodyMenu");
+        this.displayMenuSelected();
 
       const buttonDiv = sideMenu.appendChild(document.createElement('div'));
       buttonDiv.innerHTML = `<button id="startBtn" type="button" class="btn btn-md btn-primary">Confirm dinner</button>`;
-      
 
 
         this.afterRender();
@@ -78,6 +64,32 @@ class SearchView {
   changeNumGuests(){
       let dropObject = document.getElementById("num-guests");
       dropObject.value = this.model.getNumberOfGuests();
+  }
+
+  displayMenuSelected(){
+      let totalPrice = 0;
+      let menu = this.model.getFullMenu();
+      const tbody = document.getElementById("tbodyMenu");
+
+      menu.forEach(el => {
+          tbody.setAttribute("id","dishes");
+          const tr2 = tbody.appendChild(document.createElement("tr"));
+          const td2 = tr2.appendChild(document.createElement("td"));
+          td2.className="value-main-course-name"; //TODO change to actual type
+          td2.innerText=el.title;
+          const td3 = tr2.appendChild(document.createElement("td"));
+          td3.className="value-starter-value"; //TODO change to actual type
+          td3.innerText="SEK " + el.pricePerServing;
+          totalPrice += el.pricePerServing;
+      });
+      const tr3 = tbody.appendChild(document.createElement("tr"));
+      const td4 = tr3.appendChild(document.createElement("td"));
+      const totalDiv = td4.appendChild(document.createElement("div"));
+      const totalText =totalDiv.appendChild(document.createElement("h5"));
+      totalText.innerText="Total Cost: SEK";
+      const totalValue = totalDiv.appendChild(document.createElement("h5"));
+      totalValue.className="value-total-price";
+      totalValue.innerText = ""+totalPrice;
   }
   
   afterRender() {

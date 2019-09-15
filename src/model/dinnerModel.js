@@ -45,7 +45,6 @@ class DinnerModel extends Observable {
     }
 
     getNumberOfGuests() {
-
         return this.nGuest;
     }
 

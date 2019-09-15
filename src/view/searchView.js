@@ -8,6 +8,9 @@ class SearchView {
     update(model, changeDetails){
         // redraw just the portion affected by the changeDetails
         // or remove all graphics in the view, read the whole model and redraw
+        if(changeDetails.type === "nGuest"){
+            this.changeNumGuests();
+        }
     }
 
 
@@ -66,11 +69,14 @@ class SearchView {
 
       const buttonDiv = sideMenu.appendChild(document.createElement('div'));
       buttonDiv.innerHTML = `<button id="startBtn" type="button" class="btn btn-md btn-primary">Confirm dinner</button>`;
-
-      this.afterRender();
       
-      let dropObject = document.getElementById("some_Id");
-      dropObject.setAttribute("id","value-num-guests");
+
+
+        this.afterRender();
+  }
+
+  changeNumGuests(){
+      let dropObject = document.getElementById("num-guests");
       dropObject.value = this.model.getNumberOfGuests();
   }
   

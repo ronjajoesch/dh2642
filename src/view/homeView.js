@@ -7,7 +7,7 @@ class HomeView {
   // An example of creating HTML declaratively. Think about the pros and cons of this approach.
   render() {
     var content = /* template */ `
-    <div class="header d-flex align-items-center justify-content-center">
+    <div class="header d-flex align-items-center justify-content-center" id="homeView">
       <h1>Dinner Planner</h1>
     </div>
     <div class="container text-center full-vh d-flex align-items-center justify-content-center flex-column">
@@ -29,4 +29,12 @@ class HomeView {
     let loadingIndicator = document.getElementById("loader");
    // loadingIndicator.style.display = "none";
   }
+
+  show = function() {
+    this.style.display = 'block'; // try display = 'inline'
+  };
+
+hide = function() {
+    this.style.display = 'none';
+  };
 }

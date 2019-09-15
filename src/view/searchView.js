@@ -9,6 +9,7 @@ class SearchView {
       var menu = this.model.getFullMenu();
 
         const sideMenu = this.container.querySelector(".row").appendChild(document.createElement('div'));
+        sideMenu.setAttribute('id','searchView');
         sideMenu.className = "col-xs-12 col-sm-5 col-md-5 col-lg-4";
         sideMenu.setAttribute("id","sideBarView");
         const heading = sideMenu.appendChild(document.createElement('h4'));
@@ -71,4 +72,12 @@ class SearchView {
       let loadingIndicator = document.getElementById("loader");
       loadingIndicator.style.display = "none";
   }
+
+  show = function() {
+    this.style.display = 'block'; // try display = 'inline'
+  };
+
+hide = function() {
+    this.style.display = 'none';
+  };
 }

@@ -15,6 +15,8 @@ class InstructionView {
 
     render() {
         const headingDiv = this.container.appendChild(document.createElement('div'));
+        headingDiv.setAttribute('id','instructionView');
+
         headingDiv.className ="postIt row";
 
         const titleDiv = headingDiv.appendChild(document.createElement('div'));
@@ -63,4 +65,11 @@ class InstructionView {
         let loadingIndicator = document.getElementById("loader");
         loadingIndicator.style.display = "none";
     }
+    show = function() {
+        this.style.display = 'block'; // try display = 'inline'
+      };
+
+    hide = function() {
+        this.style.display = 'none';
+      };
 }

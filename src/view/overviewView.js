@@ -16,6 +16,8 @@ class OverviewView {
   render() {
 
     const headingDiv = this.container.appendChild(document.createElement('div'));
+    headingDiv.setAttribute('id','overviewView');
+
     headingDiv.className ="postIt row";
     const heading = headingDiv.appendChild(document.createElement('h3'));
     const guestsNum = headingDiv.appendChild(document.createElement("h3"));
@@ -85,4 +87,13 @@ class OverviewView {
     let loadingIndicator = document.getElementById("loader");
     loadingIndicator.style.display = "none";
   }
+
+  show = function() {
+    this.style.display = 'block'; // try display = 'inline'
+  };
+
+hide = function() {
+    this.style.display = 'none';
+  };
+
 }

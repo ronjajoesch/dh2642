@@ -1152,44 +1152,73 @@ window.onload = function () {
 
   const container = document.getElementsByClassName("page-content")[0];
 
-    //TODO ask how we should do this?
-    const view = document.querySelector("script[src = 'src/view/searchView.js']");
-    const view1 = document.querySelector("script[src = 'src/view/instructionsView.js']");
-    const view2 = document.querySelector("script[src = 'src/view/homeView.js']");
-    const view3 = document.querySelector("script[src = 'src/view/detailsView.js']");
-    const view4 = document.querySelector("script[src = 'src/view/overviewView.js']");
-    const view5 = document.querySelector("script[src = 'src/view/selectDishView.js']");
+    // //TODO ask how we should do this?
+    // const view = document.querySelector("script[src = 'src/view/searchView.js']");
+    // const view1 = document.querySelector("script[src = 'src/view/instructionsView.js']");
+    // const view2 = document.querySelector("script[src = 'src/view/homeView.js']");
+    // const view3 = document.querySelector("script[src = 'src/view/detailsView.js']");
+    // const view4 = document.querySelector("script[src = 'src/view/overviewView.js']");
+    // const view5 = document.querySelector("script[src = 'src/view/selectDishView.js']");
 
-    if (view != null || view != null) {
-        new SearchView(container, model).render();
-    }
-    if (view1 != null) {
-        new InstructionView(container, model).render();
-    }
-    if (view2 != null) {
-        new HomeView(container).render();
-    }
-    if (view3 != null) {
-        new DetailsView(container, model).render(model.getFullMenu()[0].id); // TODO not static
-    }
-    if (view4 != null) {
-        new OverviewView(container, model).render();
-    }
-    if (view5 != null) {
-        new SelectDishView(container, model).render();
-    }
-    //const view = new OverviewView(container, model);
-    //const view = new HomeView(container);
-    //const view = new SearchView(container,model);
-    //view.render();
+    // if (view != null || view != null) {
+    //     new SearchView(container, model).render();
+    // }
+    // if (view1 != null) {
+    //     new InstructionView(container, model).render();
+    // }
+    // if (view2 != null) {
+    //     new HomeView(container).render();
+    // }
+    // if (view3 != null) {
+    //     new DetailsView(container, model).render(model.getFullMenu()[0].id); // TODO not static
+    // }
+    // if (view4 != null) {
+    //     new OverviewView(container, model).render();
+    // }
+    // if (view5 != null) {
+    //     new SelectDishView(container, model).render();
+    // }
 
-    /**
-     * IMPORTANT: app.js is the only place where you are allowed to
-     * query for elements in the whole document.
-     * In other places you should limit the search only to the children
-     * of the specific view you're working with (see exampleView.js).
-     */
+    //
 
+    const homeView         = new HomeView(container),
+          searchView       = new SearchView(container, model),
+          instructionView  = new InstructionView(container, model),
+          detailsView      = new DetailsView(container, model),
+          overviewView     = new OverviewView(container, model),
+          selectDishView   = new SelectDishView(container, model);
 
- // });
+    function hideViews(){
+            homeView.hide();
+            detailsView.hide();
+            instructionView.hide();
+            overviewView.hide();
+            searchView.hide();
+            selectDishView.hide();
+        }
+
+  function displayView(viewName){
+        //first hide all views.
+        hideViews();
+
+        if(viewName === 'detailsView'){
+            detailsView.hide();
+        }
+        if(viewName === 'homeView'){
+            homeView.show();
+        }
+        if(viewName === 'instructionsView'){
+            instructionView.show();
+        }
+        if(viewName === 'overviewView'){
+            overviewView.show();
+        }
+        if(viewName === 'searchView'){
+            searchView.show();
+        }
+        if(viewName === 'selectDishView'){
+            selectDishView.show();
+        }        
+    }
+
 };

@@ -14,6 +14,8 @@ class SelectDishView {
 
     render() {
         const selectDishDiv = this.container.querySelector(".row").appendChild(document.createElement('div'));
+        selectDishDiv.setAttribute('id','selectDishView');
+
         selectDishDiv.className = "col-xs-12 col-sm-7 col-md-7 col-lg-8";
         const heading = selectDishDiv.appendChild(document.createElement('h4'));
         heading.innerText = "Select Dinner";
@@ -81,7 +83,13 @@ class SelectDishView {
 
         let loadingIndicator = document.getElementById("loader");
         loadingIndicator.style.display = "none";
-
-
     }
+
+    show = function() {
+        this.style.display = 'block'; // try display = 'inline'
+      };
+
+    hide = function() {
+        this.style.display = 'none';
+      };
 }

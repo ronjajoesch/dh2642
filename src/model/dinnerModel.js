@@ -1,7 +1,8 @@
 //DinnerModel class
-class DinnerModel {
+class DinnerModel extends Observable {
 
     constructor() {
+        super();
         var self = this;
 
         self.nGuest = 1;
@@ -9,32 +10,29 @@ class DinnerModel {
     }
 
     setNumberOfGuests(num) {
-        //TODO Lab 0
         if (num > 0) {
             this.nGuest = num;
         }
+        this.notifyObservers({type: "nGuest", index: this.nGuest});
     }
 
     getNumberOfGuests() {
-        //TODO Lab 0
+
         return this.nGuest;
     }
 
     //Returns the dish that is on the menu for selected type
     getSelectedDish(type) {
-        //TODO Lab 0
         return this.getAllDishes(type);
     }
 
     //Returns all the dishes on the menu.
     getFullMenu() {
-        //TODO Lab 0
         return this.menu;
     }
 
     //Returns all ingredients for all the dishes on the menu.
     getAllIngredients() {
-        //TODO Lab 0
         this.menu.map(function (dish) {
             return dish.ingredients;
         })
@@ -42,7 +40,6 @@ class DinnerModel {
 
     //Returns the total price of the menu (all the ingredients multiplied by number of guests).
     getTotalMenuPrice() {
-        //TODO Lab 0
         let total = 0;
         this.menu.map(function (dish) {
             total += dish.pricePerServing;
@@ -51,8 +48,6 @@ class DinnerModel {
     }
 
     addDishToMenu(dishObject) {
-        //TODO Lab 0
-
         //Adds the passed dish to the menu. If the dish of that type already exists on the menu
         //it is removed from the menu and the new one added.
 
@@ -70,11 +65,12 @@ class DinnerModel {
             }
 
         }
+        this.notifyObservers({type:"menu", index:this.menu});
     }
 
     //Removes dish from menu
     removeDishFromMenu(dishObject) {
-        //TODO Lab 0
+
         let dishObjectIndex = undefined;
 
         dishObjectIndex = this.menu.findIndex(
@@ -84,6 +80,7 @@ class DinnerModel {
         );
 
         this.menu.pop(dishObjectIndex, 1);
+        this.notifyObservers({type:"menu", index:this.menu});
     }
 
     //Returns all dishes of specific type (i.e. "starter", "main dish" or "dessert").
@@ -111,7 +108,7 @@ class DinnerModel {
         } else {
 
             let promise = new Promise(function (resolve, reject) {
-                let Baseurl = "http://localhost:8080/getDish/";        
+                let Baseurl = "http://localhost:8080/getDish/";
                 let corsURL = "https://cors-anywhere.herokuapp.com/";
                 let options;
 
@@ -175,3 +172,31 @@ deepFreeze(o) {
 }
 
 //deepFreeze(dishesConst);
+
+
+class Observable {
+    constructor() {
+        this._observers = [];
+    }
+
+    addObserver(observer) {
+        this._observers.push(observer);
+    }
+
+    //TODO test
+    removeObserver(observer) {
+        let i;
+        this._observers.filter(function (value, index) {
+            if (observer === value) {
+                i = index;
+            }
+        });
+        this._observers.splice(i, 1)
+    }
+
+    notifyObservers(changeDetails) {
+        this._observers.forEach(function (observer) {
+            observer.update(this, changeDetails);
+        })
+    }
+}

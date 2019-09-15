@@ -1,6 +1,34 @@
+
+class Observable {
+    constructor() {
+        this._observers = [];
+    }
+
+    addObserver(observer) {
+        this._observers.push(observer);
+    }
+
+    //TODO test
+    removeObserver(observer) {
+        let i;
+        this._observers.filter(function (value, index) {
+            if (observer === value) {
+                i = index;
+            }
+        });
+        this._observers.splice(i, 1)
+    }
+
+    notifyObservers(changeDetails) {
+        this._observers.forEach(function (observer) {
+            observer.update(this, changeDetails);
+        })
+    }
+}
+
+
 //DinnerModel class
 class DinnerModel extends Observable {
-
     constructor() {
         super();
         var self = this;
@@ -173,30 +201,3 @@ deepFreeze(o) {
 
 //deepFreeze(dishesConst);
 
-
-class Observable {
-    constructor() {
-        this._observers = [];
-    }
-
-    addObserver(observer) {
-        this._observers.push(observer);
-    }
-
-    //TODO test
-    removeObserver(observer) {
-        let i;
-        this._observers.filter(function (value, index) {
-            if (observer === value) {
-                i = index;
-            }
-        });
-        this._observers.splice(i, 1)
-    }
-
-    notifyObservers(changeDetails) {
-        this._observers.forEach(function (observer) {
-            observer.update(this, changeDetails);
-        })
-    }
-}

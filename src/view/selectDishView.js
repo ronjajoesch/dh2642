@@ -2,6 +2,12 @@ class SelectDishView {
     constructor(container, model) {
         this.container = container;
         this.model = model;
+        model.addObserver(this);
+    }
+
+    update(model, changeDetails){
+        // redraw just the portion affected by the changeDetails
+        // or remove all graphics in the view, read the whole model and redraw
     }
 
     get_image_element(src, width, height) {
@@ -38,9 +44,6 @@ class SelectDishView {
             '<option value="Main Course">Main Course</option>' +
             '<option value="Dessert">Dessert</option></select>';
 
-        //TODO interactions
-        let type = "Main Course";
-        let query = "Pizza";
 
         this.model.getAllDishes(type, query).then((data) => {
             console.log(data);

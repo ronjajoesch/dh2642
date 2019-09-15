@@ -2,6 +2,12 @@ class SearchView {
     constructor(container, model) {
         this.container = container;
         this.model = model;
+        model.addObserver(this);
+    }
+
+    update(model, changeDetails){
+        // redraw just the portion affected by the changeDetails
+        // or remove all graphics in the view, read the whole model and redraw
     }
 
 
@@ -17,7 +23,7 @@ class SearchView {
 
         const people = sideMenu.appendChild(document.createElement('p'));
 
-        let select= '<select id="some_Id" class="value-num-guests">';
+        let select= '<select id="num-guests" class="value-num-guests">';
         for(let i=1; i<11; i++){
           select += '<option value='+i+'>'+i+'</option>'
         }

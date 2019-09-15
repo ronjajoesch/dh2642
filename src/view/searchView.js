@@ -11,11 +11,11 @@ class SearchView {
     }
 
 
-    render() {
+    render(id) {
       var menu = this.model.getFullMenu();
 
         const sideMenu = this.container.querySelector(".row").appendChild(document.createElement('div'));
-        sideMenu.setAttribute('id','searchView');
+        sideMenu.setAttribute('id',id);
         sideMenu.className = "col-xs-12 col-sm-5 col-md-5 col-lg-4";
         sideMenu.setAttribute("id","sideBarView");
         const heading = sideMenu.appendChild(document.createElement('h4'));
@@ -79,11 +79,11 @@ class SearchView {
       loadingIndicator.style.display = "none";
   }
 
-  show = function() {
-    this.style.display = 'block'; // try display = 'inline'
+  show = function(id) {
+    document.getElementById(id).style.display="block"; 
   };
 
-hide = function() {
-    this.style.display = 'none';
+hide = function(id) {
+  document.getElementById(id).style.display="none";;
   };
 }

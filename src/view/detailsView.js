@@ -19,14 +19,14 @@ class DetailsView {
     }
 
 
-    render(dishId) {
+    render(dishId,divId) {
         this.model.getDish(dishId).then((dish) => {
             var menu = this.model.getFullMenu();
 
             const selectDishDiv = this.container.querySelector(".row");
             const mainDiv = selectDishDiv.appendChild(document.createElement('div'));
             mainDiv.className = "row col-xs-12 col-sm-7 col-md-7 col-lg-8";
-            mainDiv.setAttribute('id','detailsView');
+            mainDiv.setAttribute('id',divId);
             const leftDetailsDiv = mainDiv.appendChild(document.createElement('div'));
             leftDetailsDiv.className = "col-xs-12 col-sm-12 col-md-6 col-lg-6";
 
@@ -88,11 +88,11 @@ class DetailsView {
 
     }
 
-    show = function() {
-        this.style.display = 'block'; // try display = 'inline'
+    show = function(divId) {
+        document.getElementById(divId).style.display="block"; 
       };
 
-    hide = function() {
-        this.style.display = 'none';
+    hide = function(divId) {
+        document.getElementById(divId).style.display="none";;
       };
 }

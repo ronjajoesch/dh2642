@@ -1181,20 +1181,20 @@ window.onload = function () {
 
     //
 
-    const homeView         = new HomeView(container),
-          searchView       = new SearchView(container, model),
-          instructionView  = new InstructionView(container, model),
-          detailsView      = new DetailsView(container, model),
-          overviewView     = new OverviewView(container, model),
-          selectDishView   = new SelectDishView(container, model);
+    const homeView         = new HomeView(container).render('homeView'),
+          searchView       = new SearchView(container, model).render('searchView'),
+          instructionView  = new InstructionView(container, model).render('instructionView'),
+          detailsView      = new DetailsView(container, model).render(null,'detailsView'), //pass actual dishID
+          overviewView     = new OverviewView(container, model).render('overviewView'),
+          selectDishView   = new SelectDishView(container, model).render('selectDishView');
 
     function hideViews(){
-            homeView.hide();
+            homeView.hide('homeView');
             detailsView.hide();
             instructionView.hide();
-            overviewView.hide();
-            searchView.hide();
-            selectDishView.hide();
+            overviewView.hide('overviewView');
+            searchView.hide('searchView');
+            selectDishView.hide('selectDishView');
         }
 
   function displayView(viewName){
@@ -1205,19 +1205,19 @@ window.onload = function () {
             detailsView.hide();
         }
         if(viewName === 'homeView'){
-            homeView.show();
+            homeView.show('homeView');
         }
         if(viewName === 'instructionsView'){
-            instructionView.show();
+            instructionView.show('instructionsView');
         }
         if(viewName === 'overviewView'){
-            overviewView.show();
+            overviewView.show('overviewView');
         }
         if(viewName === 'searchView'){
-            searchView.show();
+            searchView.show('searchView');
         }
         if(viewName === 'selectDishView'){
-            selectDishView.show();
+            selectDishView.show('selectDishView');
         }        
     }
 

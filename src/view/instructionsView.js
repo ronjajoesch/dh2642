@@ -19,9 +19,9 @@ class InstructionView {
     }
 
 
-    render() {
+    render(id) {
         const headingDiv = this.container.appendChild(document.createElement('div'));
-        headingDiv.setAttribute('id','instructionView');
+        headingDiv.setAttribute('id',id);
 
         headingDiv.className ="postIt row";
 
@@ -71,11 +71,11 @@ class InstructionView {
         let loadingIndicator = document.getElementById("loader");
         loadingIndicator.style.display = "none";
     }
-    show = function() {
-        this.style.display = 'block'; // try display = 'inline'
+    show = function(id) {
+        document.getElementById(id).style.display="block"; 
       };
 
-    hide = function() {
-        this.style.display = 'none';
+    hide = function(id) {
+        document.getElementById(id).style.display="none";;
       };
 }

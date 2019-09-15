@@ -1,11 +1,11 @@
 window.onload = function () {
-  console.log("start");
-  //We instantiate our model
-  const model = new DinnerModel();
-  model.setNumberOfGuests(4); //TODO change when dynamic
+    console.log("start");
+    //We instantiate our model
+    const model = new DinnerModel();
+    model.setNumberOfGuests(4); //TODO change when dynamic
 
 
- //TODO remove later -> dynamic
+    //TODO remove later -> dynamic
     const myJson = [{
         "vegetarian": false,
         "vegan": false,
@@ -439,718 +439,718 @@ window.onload = function () {
             }
         ]
     },
-    {
-        "vegetarian": false,
-        "vegan": false,
-        "glutenFree": false,
-        "dairyFree": true,
-        "veryHealthy": false,
-        "cheap": false,
-        "veryPopular": false,
-        "sustainable": false,
-        "weightWatcherSmartPoints": 1,
-        "gaps": "no",
-        "lowFodmap": false,
-        "ketogenic": false,
-        "whole30": false,
-        "sourceUrl": "http://www.thekitchn.com/other-two-veg-recipes-notes-85779",
-        "spoonacularSourceUrl": "https://spoonacular.com/anchovies-appetizer-with-breadcrumbs-scallions-2",
-        "aggregateLikes": 0,
-        "spoonacularScore": 32.0,
-        "healthScore": 4.0,
-        "creditsText": "bla5@bla.com",
-        "sourceName": "The Kitchn",
-        "pricePerServing": 82.06,
-        "extendedIngredients": [
-            {
-                "id": 15001,
-                "aisle": "Seafood",
-                "image": "fresh-anchovies.jpg",
-                "consitency": "solid",
-                "name": "anchovies",
-                "original": "6 oz marinated anchovies",
-                "originalString": "6 oz marinated anchovies",
-                "originalName": "marinated anchovies",
-                "amount": 6.0,
-                "unit": "oz",
-                "meta": [],
-                "metaInformation": [],
-                "measures": {
-                    "us": {
-                        "amount": 6.0,
-                        "unitShort": "oz",
-                        "unitLong": "ounces"
-                    },
-                    "metric": {
-                        "amount": 170.097,
-                        "unitShort": "g",
-                        "unitLong": "grams"
-                    }
-                }
-            },
-            {
-                "id": 18064,
-                "aisle": "Bakery/Bread",
-                "image": "white-bread.jpg",
-                "consitency": "solid",
-                "name": "bread",
-                "original": "2 oz day-old bread",
-                "originalString": "2 oz day-old bread",
-                "originalName": "day-old bread",
-                "amount": 2.0,
-                "unit": "oz",
-                "meta": [],
-                "metaInformation": [],
-                "measures": {
-                    "us": {
-                        "amount": 2.0,
-                        "unitShort": "oz",
-                        "unitLong": "ounces"
-                    },
-                    "metric": {
-                        "amount": 56.699,
-                        "unitShort": "g",
-                        "unitLong": "grams"
-                    }
-                }
-            },
-            {
-                "id": 11215,
-                "aisle": "Produce",
-                "image": "garlic.jpg",
-                "consitency": "solid",
-                "name": "garlic clove",
-                "original": "1/2 garlic clove",
-                "originalString": "1/2 garlic clove",
-                "originalName": "garlic clove",
-                "amount": 0.5,
-                "unit": "",
-                "meta": [],
-                "metaInformation": [],
-                "measures": {
-                    "us": {
-                        "amount": 0.5,
-                        "unitShort": "",
-                        "unitLong": ""
-                    },
-                    "metric": {
-                        "amount": 0.5,
-                        "unitShort": "",
-                        "unitLong": ""
-                    }
-                }
-            },
-            {
-                "id": 4053,
-                "aisle": "Oil, Vinegar, Salad Dressing",
-                "image": "olive-oil.jpg",
-                "consitency": "liquid",
-                "name": "olive oil",
-                "original": "2 tsps olive oil plus 1/4 for drizzling",
-                "originalString": "2 tsps olive oil plus 1/4 for drizzling",
-                "originalName": "olive oil plus 1/4 for drizzling",
-                "amount": 2.0,
-                "unit": "tsps",
-                "meta": [
-                    "for drizzling"
-                ],
-                "metaInformation": [
-                    "for drizzling"
-                ],
-                "measures": {
-                    "us": {
-                        "amount": 2.0,
-                        "unitShort": "tsps",
-                        "unitLong": "teaspoons"
-                    },
-                    "metric": {
-                        "amount": 2.0,
-                        "unitShort": "tsps",
-                        "unitLong": "teaspoons"
-                    }
-                }
-            },
-            {
-                "id": 11291,
-                "aisle": "Produce",
-                "image": "spring-onions.jpg",
-                "consitency": "solid",
-                "name": "scallions",
-                "original": "2 whole scallions, julienned",
-                "originalString": "2 whole scallions, julienned",
-                "originalName": "whole scallions, julienned",
-                "amount": 2.0,
-                "unit": "",
-                "meta": [
-                    "whole",
-                    "julienned"
-                ],
-                "metaInformation": [
-                    "whole",
-                    "julienned"
-                ],
-                "measures": {
-                    "us": {
-                        "amount": 2.0,
-                        "unitShort": "",
-                        "unitLong": ""
-                    },
-                    "metric": {
-                        "amount": 2.0,
-                        "unitShort": "",
-                        "unitLong": ""
-                    }
-                }
-            }
-        ],
-        "id": 2,
-        "title": "Anchovies Appetizer With Breadcrumbs & Scallions",
-        "readyInMinutes": 15,
-        "servings": 8,
-        "image": "https://spoonacular.com/recipeImages/2-556x370.jpg",
-        "imageType": "jpg",
-        "cuisines": [],
-        "dishTypes": [
-            "antipasti",
-            "starter",
-            "snack",
-            "appetizer",
-            "antipasto",
-            "hor d'oeuvre"
-        ],
-        "diets": [
-            "dairy free",
-            "pescatarian"
-        ],
-        "occasions": [],
-        "winePairing": {},
-        "instructions": "<ol><li>Preheat oven to 400 F.</li><li>Remove crusts from bread and cut into bite-sized croutons.</li><li>Rub garlic in bottom of a small oven-safe skillet, add 2 teaspoons olive oil.</li><li> Rub croutons in oil until they absorb it all. </li><li>Bake for 7-10 minutes or until deep golden brown. </li><li>Remove and set aside.</li><li>Slice anchovies in thirds. </li><li>Toss with scallions. </li><li>Divide into small cups, ramekins or bowls between 4 and 8 ounces and nestle in the croutons.</li></ol>",
-        "analyzedInstructions": [
-            {
-                "name": "",
-                "steps": [
-                    {
-                        "number": 1,
-                        "step": "Preheat oven to 400 F.",
-                        "ingredients": [],
-                        "equipment": [
-                            {
-                                "id": 404784,
-                                "name": "oven",
-                                "image": "oven.jpg",
-                                "temperature": {
-                                    "number": 400.0,
-                                    "unit": "Fahrenheit"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "number": 2,
-                        "step": "Remove crusts from bread and cut into bite-sized croutons.Rub garlic in bottom of a small oven-safe skillet, add 2 teaspoons olive oil. Rub croutons in oil until they absorb it all.",
-                        "ingredients": [
-                            {
-                                "id": 4053,
-                                "name": "olive oil",
-                                "image": "olive-oil.jpg"
-                            },
-                            {
-                                "id": 11215,
-                                "name": "garlic",
-                                "image": "garlic.png"
-                            },
-                            {
-                                "id": 18064,
-                                "name": "bread",
-                                "image": "white-bread.jpg"
-                            }
-                        ],
-                        "equipment": [
-                            {
-                                "id": 404645,
-                                "name": "frying pan",
-                                "image": "pan.png"
-                            },
-                            {
-                                "id": 404784,
-                                "name": "oven",
-                                "image": "oven.jpg"
-                            }
-                        ]
-                    },
-                    {
-                        "number": 3,
-                        "step": "Bake for 7-10 minutes or until deep golden brown.",
-                        "ingredients": [],
-                        "equipment": [],
-                        "length": {
-                            "number": 10,
-                            "unit": "minutes"
+        {
+            "vegetarian": false,
+            "vegan": false,
+            "glutenFree": false,
+            "dairyFree": true,
+            "veryHealthy": false,
+            "cheap": false,
+            "veryPopular": false,
+            "sustainable": false,
+            "weightWatcherSmartPoints": 1,
+            "gaps": "no",
+            "lowFodmap": false,
+            "ketogenic": false,
+            "whole30": false,
+            "sourceUrl": "http://www.thekitchn.com/other-two-veg-recipes-notes-85779",
+            "spoonacularSourceUrl": "https://spoonacular.com/anchovies-appetizer-with-breadcrumbs-scallions-2",
+            "aggregateLikes": 0,
+            "spoonacularScore": 32.0,
+            "healthScore": 4.0,
+            "creditsText": "bla5@bla.com",
+            "sourceName": "The Kitchn",
+            "pricePerServing": 82.06,
+            "extendedIngredients": [
+                {
+                    "id": 15001,
+                    "aisle": "Seafood",
+                    "image": "fresh-anchovies.jpg",
+                    "consitency": "solid",
+                    "name": "anchovies",
+                    "original": "6 oz marinated anchovies",
+                    "originalString": "6 oz marinated anchovies",
+                    "originalName": "marinated anchovies",
+                    "amount": 6.0,
+                    "unit": "oz",
+                    "meta": [],
+                    "metaInformation": [],
+                    "measures": {
+                        "us": {
+                            "amount": 6.0,
+                            "unitShort": "oz",
+                            "unitLong": "ounces"
+                        },
+                        "metric": {
+                            "amount": 170.097,
+                            "unitShort": "g",
+                            "unitLong": "grams"
                         }
-                    },
-                    {
-                        "number": 4,
-                        "step": "Remove and set aside.Slice anchovies in thirds. Toss with scallions. Divide into small cups, ramekins or bowls between 4 and 8 ounces and nestle in the croutons.",
-                        "ingredients": [
-                            {
-                                "id": 15001,
-                                "name": "anchovies",
-                                "image": "anchovies.jpg"
-                            },
-                            {
-                                "id": 11291,
-                                "name": "green onions",
-                                "image": "spring-onions.jpg"
+                    }
+                },
+                {
+                    "id": 18064,
+                    "aisle": "Bakery/Bread",
+                    "image": "white-bread.jpg",
+                    "consitency": "solid",
+                    "name": "bread",
+                    "original": "2 oz day-old bread",
+                    "originalString": "2 oz day-old bread",
+                    "originalName": "day-old bread",
+                    "amount": 2.0,
+                    "unit": "oz",
+                    "meta": [],
+                    "metaInformation": [],
+                    "measures": {
+                        "us": {
+                            "amount": 2.0,
+                            "unitShort": "oz",
+                            "unitLong": "ounces"
+                        },
+                        "metric": {
+                            "amount": 56.699,
+                            "unitShort": "g",
+                            "unitLong": "grams"
+                        }
+                    }
+                },
+                {
+                    "id": 11215,
+                    "aisle": "Produce",
+                    "image": "garlic.jpg",
+                    "consitency": "solid",
+                    "name": "garlic clove",
+                    "original": "1/2 garlic clove",
+                    "originalString": "1/2 garlic clove",
+                    "originalName": "garlic clove",
+                    "amount": 0.5,
+                    "unit": "",
+                    "meta": [],
+                    "metaInformation": [],
+                    "measures": {
+                        "us": {
+                            "amount": 0.5,
+                            "unitShort": "",
+                            "unitLong": ""
+                        },
+                        "metric": {
+                            "amount": 0.5,
+                            "unitShort": "",
+                            "unitLong": ""
+                        }
+                    }
+                },
+                {
+                    "id": 4053,
+                    "aisle": "Oil, Vinegar, Salad Dressing",
+                    "image": "olive-oil.jpg",
+                    "consitency": "liquid",
+                    "name": "olive oil",
+                    "original": "2 tsps olive oil plus 1/4 for drizzling",
+                    "originalString": "2 tsps olive oil plus 1/4 for drizzling",
+                    "originalName": "olive oil plus 1/4 for drizzling",
+                    "amount": 2.0,
+                    "unit": "tsps",
+                    "meta": [
+                        "for drizzling"
+                    ],
+                    "metaInformation": [
+                        "for drizzling"
+                    ],
+                    "measures": {
+                        "us": {
+                            "amount": 2.0,
+                            "unitShort": "tsps",
+                            "unitLong": "teaspoons"
+                        },
+                        "metric": {
+                            "amount": 2.0,
+                            "unitShort": "tsps",
+                            "unitLong": "teaspoons"
+                        }
+                    }
+                },
+                {
+                    "id": 11291,
+                    "aisle": "Produce",
+                    "image": "spring-onions.jpg",
+                    "consitency": "solid",
+                    "name": "scallions",
+                    "original": "2 whole scallions, julienned",
+                    "originalString": "2 whole scallions, julienned",
+                    "originalName": "whole scallions, julienned",
+                    "amount": 2.0,
+                    "unit": "",
+                    "meta": [
+                        "whole",
+                        "julienned"
+                    ],
+                    "metaInformation": [
+                        "whole",
+                        "julienned"
+                    ],
+                    "measures": {
+                        "us": {
+                            "amount": 2.0,
+                            "unitShort": "",
+                            "unitLong": ""
+                        },
+                        "metric": {
+                            "amount": 2.0,
+                            "unitShort": "",
+                            "unitLong": ""
+                        }
+                    }
+                }
+            ],
+            "id": 2,
+            "title": "Anchovies Appetizer With Breadcrumbs & Scallions",
+            "readyInMinutes": 15,
+            "servings": 8,
+            "image": "https://spoonacular.com/recipeImages/2-556x370.jpg",
+            "imageType": "jpg",
+            "cuisines": [],
+            "dishTypes": [
+                "antipasti",
+                "starter",
+                "snack",
+                "appetizer",
+                "antipasto",
+                "hor d'oeuvre"
+            ],
+            "diets": [
+                "dairy free",
+                "pescatarian"
+            ],
+            "occasions": [],
+            "winePairing": {},
+            "instructions": "<ol><li>Preheat oven to 400 F.</li><li>Remove crusts from bread and cut into bite-sized croutons.</li><li>Rub garlic in bottom of a small oven-safe skillet, add 2 teaspoons olive oil.</li><li> Rub croutons in oil until they absorb it all. </li><li>Bake for 7-10 minutes or until deep golden brown. </li><li>Remove and set aside.</li><li>Slice anchovies in thirds. </li><li>Toss with scallions. </li><li>Divide into small cups, ramekins or bowls between 4 and 8 ounces and nestle in the croutons.</li></ol>",
+            "analyzedInstructions": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "number": 1,
+                            "step": "Preheat oven to 400 F.",
+                            "ingredients": [],
+                            "equipment": [
+                                {
+                                    "id": 404784,
+                                    "name": "oven",
+                                    "image": "oven.jpg",
+                                    "temperature": {
+                                        "number": 400.0,
+                                        "unit": "Fahrenheit"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "number": 2,
+                            "step": "Remove crusts from bread and cut into bite-sized croutons.Rub garlic in bottom of a small oven-safe skillet, add 2 teaspoons olive oil. Rub croutons in oil until they absorb it all.",
+                            "ingredients": [
+                                {
+                                    "id": 4053,
+                                    "name": "olive oil",
+                                    "image": "olive-oil.jpg"
+                                },
+                                {
+                                    "id": 11215,
+                                    "name": "garlic",
+                                    "image": "garlic.png"
+                                },
+                                {
+                                    "id": 18064,
+                                    "name": "bread",
+                                    "image": "white-bread.jpg"
+                                }
+                            ],
+                            "equipment": [
+                                {
+                                    "id": 404645,
+                                    "name": "frying pan",
+                                    "image": "pan.png"
+                                },
+                                {
+                                    "id": 404784,
+                                    "name": "oven",
+                                    "image": "oven.jpg"
+                                }
+                            ]
+                        },
+                        {
+                            "number": 3,
+                            "step": "Bake for 7-10 minutes or until deep golden brown.",
+                            "ingredients": [],
+                            "equipment": [],
+                            "length": {
+                                "number": 10,
+                                "unit": "minutes"
                             }
-                        ],
-                        "equipment": [
-                            {
-                                "id": 404781,
-                                "name": "ramekin",
-                                "image": "ramekin.jpg"
-                            },
-                            {
-                                "id": 404783,
-                                "name": "bowl",
-                                "image": "bowl.jpg"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "vegetarian": false,
-        "vegan": false,
-        "glutenFree": true,
-        "dairyFree": false,
-        "veryHealthy": false,
-        "cheap": false,
-        "veryPopular": false,
-        "sustainable": false,
-        "weightWatcherSmartPoints": 6,
-        "gaps": "no",
-        "lowFodmap": false,
-        "ketogenic": false,
-        "whole30": false,
-        "preparationMinutes": 25,
-        "cookingMinutes": 35,
-        "sourceUrl": "http://www.epicurious.com/recipes/food/views/Caesar-Salad-with-Sourdough-Croutons-361234",
-        "spoonacularSourceUrl": "https://spoonacular.com/caesar-salad-with-sourdough-croutons-670",
-        "aggregateLikes": 0,
-        "spoonacularScore": 76.0,
-        "healthScore": 52.0,
-        "creditsText": "Epicurious",
-        "sourceName": "Epicurious",
-        "pricePerServing": 187.75,
-        "extendedIngredients": [
-            {
-                "id": 15001,
-                "aisle": "Seafood",
-                "image": "fresh-anchovies.jpg",
-                "consitency": "solid",
-                "name": "anchovy",
-                "original": "4 anchovy fillets, finely chopped",
-                "originalString": "4 anchovy fillets, finely chopped",
-                "originalName": "anchovy fillets, finely chopped",
-                "amount": 4.0,
-                "unit": "fillet",
-                "meta": [
-                    "finely chopped"
-                ],
-                "metaInformation": [
-                    "finely chopped"
-                ],
-                "measures": {
-                    "us": {
-                        "amount": 4.0,
-                        "unitShort": "fillet",
-                        "unitLong": "fillets"
-                    },
-                    "metric": {
-                        "amount": 4.0,
-                        "unitShort": "fillet",
-                        "unitLong": "fillets"
-                    }
+                        },
+                        {
+                            "number": 4,
+                            "step": "Remove and set aside.Slice anchovies in thirds. Toss with scallions. Divide into small cups, ramekins or bowls between 4 and 8 ounces and nestle in the croutons.",
+                            "ingredients": [
+                                {
+                                    "id": 15001,
+                                    "name": "anchovies",
+                                    "image": "anchovies.jpg"
+                                },
+                                {
+                                    "id": 11291,
+                                    "name": "green onions",
+                                    "image": "spring-onions.jpg"
+                                }
+                            ],
+                            "equipment": [
+                                {
+                                    "id": 404781,
+                                    "name": "ramekin",
+                                    "image": "ramekin.jpg"
+                                },
+                                {
+                                    "id": 404783,
+                                    "name": "bowl",
+                                    "image": "bowl.jpg"
+                                }
+                            ]
+                        }
+                    ]
                 }
-            },
-            {
-                "id": 18242,
-                "aisle": "Oil, Vinegar, Salad Dressing",
-                "image": "croutons.png",
-                "consitency": "solid",
-                "name": "croutons",
-                "original": "1 1/2 cups sourdough croutons",
-                "originalString": "1 1/2 cups sourdough croutons",
-                "originalName": "sourdough croutons",
-                "amount": 1.5,
-                "unit": "cups",
-                "meta": [],
-                "metaInformation": [],
-                "measures": {
-                    "us": {
-                        "amount": 1.5,
-                        "unitShort": "cups",
-                        "unitLong": "cups"
-                    },
-                    "metric": {
-                        "amount": 354.882,
-                        "unitShort": "ml",
-                        "unitLong": "milliliters"
-                    }
-                }
-            },
-            {
-                "id": 1002046,
-                "aisle": "Condiments",
-                "image": "dijon-mustard.jpg",
-                "consitency": "liquid",
-                "name": "dijon mustard",
-                "original": "1 tablespoon Dijon mustard",
-                "originalString": "1 tablespoon Dijon mustard",
-                "originalName": "Dijon mustard",
-                "amount": 1.0,
-                "unit": "tablespoon",
-                "meta": [],
-                "metaInformation": [],
-                "measures": {
-                    "us": {
-                        "amount": 1.0,
-                        "unitShort": "Tbsp",
-                        "unitLong": "Tbsp"
-                    },
-                    "metric": {
-                        "amount": 1.0,
-                        "unitShort": "Tbsp",
-                        "unitLong": "Tbsp"
-                    }
-                }
-            },
-            {
-                "id": 11215,
-                "aisle": "Produce",
-                "image": "garlic.jpg",
-                "consitency": "solid",
-                "name": "garlic cloves",
-                "original": "2 garlic cloves, minced",
-                "originalString": "2 garlic cloves, minced",
-                "originalName": "garlic cloves, minced",
-                "amount": 2.0,
-                "unit": "",
-                "meta": [
-                    "minced"
-                ],
-                "metaInformation": [
-                    "minced"
-                ],
-                "measures": {
-                    "us": {
-                        "amount": 2.0,
-                        "unitShort": "",
-                        "unitLong": ""
-                    },
-                    "metric": {
-                        "amount": 2.0,
-                        "unitShort": "",
-                        "unitLong": ""
-                    }
-                }
-            },
-            {
-                "id": 9152,
-                "aisle": "Produce",
-                "image": "lemon-juice.jpg",
-                "consitency": "liquid",
-                "name": "lemon juice",
-                "original": "1 tablespoon fresh lemon juice",
-                "originalString": "1 tablespoon fresh lemon juice",
-                "originalName": "fresh lemon juice",
-                "amount": 1.0,
-                "unit": "tablespoon",
-                "meta": [
-                    "fresh"
-                ],
-                "metaInformation": [
-                    "fresh"
-                ],
-                "measures": {
-                    "us": {
-                        "amount": 1.0,
-                        "unitShort": "Tbsp",
-                        "unitLong": "Tbsp"
-                    },
-                    "metric": {
-                        "amount": 1.0,
-                        "unitShort": "Tbsp",
-                        "unitLong": "Tbsp"
-                    }
-                }
-            },
-            {
-                "id": 4053,
-                "aisle": "Oil, Vinegar, Salad Dressing",
-                "image": "olive-oil.jpg",
-                "consitency": "liquid",
-                "name": "olive oil",
-                "original": "1/3 cup extra-virgin olive oil",
-                "originalString": "1/3 cup extra-virgin olive oil",
-                "originalName": "extra-virgin olive oil",
-                "amount": 0.3333333333333333,
-                "unit": "cup",
-                "meta": [
-                    "extra-virgin"
-                ],
-                "metaInformation": [
-                    "extra-virgin"
-                ],
-                "measures": {
-                    "us": {
-                        "amount": 0.333,
-                        "unitShort": "cups",
-                        "unitLong": "cups"
-                    },
-                    "metric": {
-                        "amount": 78.863,
-                        "unitShort": "ml",
-                        "unitLong": "milliliters"
-                    }
-                }
-            },
-            {
-                "id": 1033,
-                "aisle": "Cheese",
-                "image": "parmesan.jpg",
-                "consitency": "solid",
-                "name": "parmesan cheese",
-                "original": "3/4 cup grated Parmesan cheese, divided",
-                "originalString": "3/4 cup grated Parmesan cheese, divided",
-                "originalName": "grated Parmesan cheese, divided",
-                "amount": 0.75,
-                "unit": "cup",
-                "meta": [
-                    "divided",
-                    "grated"
-                ],
-                "metaInformation": [
-                    "divided",
-                    "grated"
-                ],
-                "measures": {
-                    "us": {
-                        "amount": 0.75,
-                        "unitShort": "cups",
-                        "unitLong": "cups"
-                    },
-                    "metric": {
-                        "amount": 177.441,
-                        "unitShort": "ml",
-                        "unitLong": "milliliters"
-                    }
-                }
-            },
-            {
-                "id": 11297,
-                "aisle": "Produce",
-                "image": "parsley.jpg",
-                "consitency": "solid",
-                "name": "parsley",
-                "original": "Chopped fresh Italian parsley",
-                "originalString": "Chopped fresh Italian parsley",
-                "originalName": "Chopped fresh Italian parsley",
-                "amount": 6.0,
-                "unit": "servings",
-                "meta": [
-                    "fresh",
-                    "italian",
-                    "chopped"
-                ],
-                "metaInformation": [
-                    "fresh",
-                    "italian",
-                    "chopped"
-                ],
-                "measures": {
-                    "us": {
-                        "amount": 6.0,
-                        "unitShort": "servings",
-                        "unitLong": "servings"
-                    },
-                    "metric": {
-                        "amount": 6.0,
-                        "unitShort": "servings",
-                        "unitLong": "servings"
-                    }
-                }
-            },
-            {
-                "id": 1022068,
-                "aisle": "Oil, Vinegar, Salad Dressing",
-                "image": "red-wine-vinegar.jpg",
-                "consitency": "liquid",
-                "name": "red wine vinegar",
-                "original": "1 tablespoon red wine vinegar",
-                "originalString": "1 tablespoon red wine vinegar",
-                "originalName": "red wine vinegar",
-                "amount": 1.0,
-                "unit": "tablespoon",
-                "meta": [
-                    "red"
-                ],
-                "metaInformation": [
-                    "red"
-                ],
-                "measures": {
-                    "us": {
-                        "amount": 1.0,
-                        "unitShort": "Tbsp",
-                        "unitLong": "Tbsp"
-                    },
-                    "metric": {
-                        "amount": 1.0,
-                        "unitShort": "Tbsp",
-                        "unitLong": "Tbsp"
-                    }
-                }
-            },
-            {
-                "id": 10011251,
-                "aisle": "Produce",
-                "image": "romaine.jpg",
-                "consitency": "solid",
-                "name": "romaine hearts",
-                "original": "2 large hearts of romaine lettuce, torn into bite-size pieces (about 12 cups)",
-                "originalString": "2 large hearts of romaine lettuce, torn into bite-size pieces (about 12 cups)",
-                "originalName": "large hearts of romaine lettuce, torn into bite-size pieces (about",
-                "amount": 12.0,
-                "unit": "cups",
-                "meta": [],
-                "metaInformation": [],
-                "measures": {
-                    "us": {
-                        "amount": 12.0,
-                        "unitShort": "cups",
-                        "unitLong": "cups"
-                    },
-                    "metric": {
-                        "amount": 2.839,
-                        "unitShort": "l",
-                        "unitLong": "liters"
-                    }
-                }
-            },
-            {
-                "id": 6971,
-                "aisle": "Condiments",
-                "image": "dark-sauce.jpg",
-                "consitency": "liquid",
-                "name": "worcestershire sauce",
-                "original": "11/2 teaspoons Worcestershire sauce",
-                "originalString": "11/2 teaspoons Worcestershire sauce",
-                "originalName": "Worcestershire sauce",
-                "amount": 5.5,
-                "unit": "teaspoons",
-                "meta": [],
-                "metaInformation": [],
-                "measures": {
-                    "us": {
-                        "amount": 5.5,
-                        "unitShort": "tsps",
-                        "unitLong": "teaspoons"
-                    },
-                    "metric": {
-                        "amount": 5.5,
-                        "unitShort": "tsps",
-                        "unitLong": "teaspoons"
-                    }
-                }
-            }
-        ],
-        "id": 670,
-        "title": "Caesar Salad with Sourdough Croutons",
-        "readyInMinutes": 60,
-        "servings": 6,
-        "image": "https://spoonacular.com/recipeImages/670-556x370.jpg",
-        "imageType": "jpg",
-        "cuisines": [
-            "american"
-        ],
-        "dishTypes": [
-            "salad"
-        ],
-        "diets": [
-            "gluten free",
-            "pescatarian"
-        ],
-        "occasions": [],
-        "winePairing": {
-            "pairedWines": [],
-            "pairingText": "",
-            "productMatches": []
+            ]
         },
-        "instructions": "Preparation                                                        Whisk first 6 ingredients in small bowl.Gradually whisk in oil, then 1/2 cup cheese.                                                                Toss lettuce, croutons, 1/4 cup cheese,and dressing in bowl. Sprinkle with parsleyand season to taste with pepper.                                                                         Per serving: 258 calories, 19 g fat, 3 g fiber                            Nutritional analysis provided by                                        Bon Appétit",
-        "analyzedInstructions": [
-            {
-                "name": "",
-                "steps": [
-                    {
-                        "number": 1,
-                        "step": "Whisk first 6 ingredients in small bowl.Gradually whisk in oil, then 1/2 cup cheese.",
-                        "ingredients": [],
-                        "equipment": [
-                            {
-                                "id": 404661,
-                                "name": "whisk",
-                                "image": "whisk.png"
-                            },
-                            {
-                                "id": 404783,
-                                "name": "bowl",
-                                "image": "bowl.jpg"
-                            }
-                        ]
-                    },
-                    {
-                        "number": 2,
-                        "step": "Toss lettuce, croutons, 1/4 cup cheese,and dressing in bowl. Sprinkle with parsleyand season to taste with pepper.",
-                        "ingredients": [
-                            {
-                                "id": 18242,
-                                "name": "croutons",
-                                "image": "croutons.png"
-                            }
-                        ],
-                        "equipment": [
-                            {
-                                "id": 404783,
-                                "name": "bowl",
-                                "image": "bowl.jpg"
-                            }
-                        ]
-                    },
-                    {
-                        "number": 3,
-                        "step": "Per serving: 258 calories, 19 g fat, 3 g fiber",
-                        "ingredients": [],
-                        "equipment": []
-                    },
-                    {
-                        "number": 4,
-                        "step": "Bon Appétit",
-                        "ingredients": [],
-                        "equipment": []
+        {
+            "vegetarian": false,
+            "vegan": false,
+            "glutenFree": true,
+            "dairyFree": false,
+            "veryHealthy": false,
+            "cheap": false,
+            "veryPopular": false,
+            "sustainable": false,
+            "weightWatcherSmartPoints": 6,
+            "gaps": "no",
+            "lowFodmap": false,
+            "ketogenic": false,
+            "whole30": false,
+            "preparationMinutes": 25,
+            "cookingMinutes": 35,
+            "sourceUrl": "http://www.epicurious.com/recipes/food/views/Caesar-Salad-with-Sourdough-Croutons-361234",
+            "spoonacularSourceUrl": "https://spoonacular.com/caesar-salad-with-sourdough-croutons-670",
+            "aggregateLikes": 0,
+            "spoonacularScore": 76.0,
+            "healthScore": 52.0,
+            "creditsText": "Epicurious",
+            "sourceName": "Epicurious",
+            "pricePerServing": 187.75,
+            "extendedIngredients": [
+                {
+                    "id": 15001,
+                    "aisle": "Seafood",
+                    "image": "fresh-anchovies.jpg",
+                    "consitency": "solid",
+                    "name": "anchovy",
+                    "original": "4 anchovy fillets, finely chopped",
+                    "originalString": "4 anchovy fillets, finely chopped",
+                    "originalName": "anchovy fillets, finely chopped",
+                    "amount": 4.0,
+                    "unit": "fillet",
+                    "meta": [
+                        "finely chopped"
+                    ],
+                    "metaInformation": [
+                        "finely chopped"
+                    ],
+                    "measures": {
+                        "us": {
+                            "amount": 4.0,
+                            "unitShort": "fillet",
+                            "unitLong": "fillets"
+                        },
+                        "metric": {
+                            "amount": 4.0,
+                            "unitShort": "fillet",
+                            "unitLong": "fillets"
+                        }
                     }
-                ]
-            }
-        ]
-    }]
+                },
+                {
+                    "id": 18242,
+                    "aisle": "Oil, Vinegar, Salad Dressing",
+                    "image": "croutons.png",
+                    "consitency": "solid",
+                    "name": "croutons",
+                    "original": "1 1/2 cups sourdough croutons",
+                    "originalString": "1 1/2 cups sourdough croutons",
+                    "originalName": "sourdough croutons",
+                    "amount": 1.5,
+                    "unit": "cups",
+                    "meta": [],
+                    "metaInformation": [],
+                    "measures": {
+                        "us": {
+                            "amount": 1.5,
+                            "unitShort": "cups",
+                            "unitLong": "cups"
+                        },
+                        "metric": {
+                            "amount": 354.882,
+                            "unitShort": "ml",
+                            "unitLong": "milliliters"
+                        }
+                    }
+                },
+                {
+                    "id": 1002046,
+                    "aisle": "Condiments",
+                    "image": "dijon-mustard.jpg",
+                    "consitency": "liquid",
+                    "name": "dijon mustard",
+                    "original": "1 tablespoon Dijon mustard",
+                    "originalString": "1 tablespoon Dijon mustard",
+                    "originalName": "Dijon mustard",
+                    "amount": 1.0,
+                    "unit": "tablespoon",
+                    "meta": [],
+                    "metaInformation": [],
+                    "measures": {
+                        "us": {
+                            "amount": 1.0,
+                            "unitShort": "Tbsp",
+                            "unitLong": "Tbsp"
+                        },
+                        "metric": {
+                            "amount": 1.0,
+                            "unitShort": "Tbsp",
+                            "unitLong": "Tbsp"
+                        }
+                    }
+                },
+                {
+                    "id": 11215,
+                    "aisle": "Produce",
+                    "image": "garlic.jpg",
+                    "consitency": "solid",
+                    "name": "garlic cloves",
+                    "original": "2 garlic cloves, minced",
+                    "originalString": "2 garlic cloves, minced",
+                    "originalName": "garlic cloves, minced",
+                    "amount": 2.0,
+                    "unit": "",
+                    "meta": [
+                        "minced"
+                    ],
+                    "metaInformation": [
+                        "minced"
+                    ],
+                    "measures": {
+                        "us": {
+                            "amount": 2.0,
+                            "unitShort": "",
+                            "unitLong": ""
+                        },
+                        "metric": {
+                            "amount": 2.0,
+                            "unitShort": "",
+                            "unitLong": ""
+                        }
+                    }
+                },
+                {
+                    "id": 9152,
+                    "aisle": "Produce",
+                    "image": "lemon-juice.jpg",
+                    "consitency": "liquid",
+                    "name": "lemon juice",
+                    "original": "1 tablespoon fresh lemon juice",
+                    "originalString": "1 tablespoon fresh lemon juice",
+                    "originalName": "fresh lemon juice",
+                    "amount": 1.0,
+                    "unit": "tablespoon",
+                    "meta": [
+                        "fresh"
+                    ],
+                    "metaInformation": [
+                        "fresh"
+                    ],
+                    "measures": {
+                        "us": {
+                            "amount": 1.0,
+                            "unitShort": "Tbsp",
+                            "unitLong": "Tbsp"
+                        },
+                        "metric": {
+                            "amount": 1.0,
+                            "unitShort": "Tbsp",
+                            "unitLong": "Tbsp"
+                        }
+                    }
+                },
+                {
+                    "id": 4053,
+                    "aisle": "Oil, Vinegar, Salad Dressing",
+                    "image": "olive-oil.jpg",
+                    "consitency": "liquid",
+                    "name": "olive oil",
+                    "original": "1/3 cup extra-virgin olive oil",
+                    "originalString": "1/3 cup extra-virgin olive oil",
+                    "originalName": "extra-virgin olive oil",
+                    "amount": 0.3333333333333333,
+                    "unit": "cup",
+                    "meta": [
+                        "extra-virgin"
+                    ],
+                    "metaInformation": [
+                        "extra-virgin"
+                    ],
+                    "measures": {
+                        "us": {
+                            "amount": 0.333,
+                            "unitShort": "cups",
+                            "unitLong": "cups"
+                        },
+                        "metric": {
+                            "amount": 78.863,
+                            "unitShort": "ml",
+                            "unitLong": "milliliters"
+                        }
+                    }
+                },
+                {
+                    "id": 1033,
+                    "aisle": "Cheese",
+                    "image": "parmesan.jpg",
+                    "consitency": "solid",
+                    "name": "parmesan cheese",
+                    "original": "3/4 cup grated Parmesan cheese, divided",
+                    "originalString": "3/4 cup grated Parmesan cheese, divided",
+                    "originalName": "grated Parmesan cheese, divided",
+                    "amount": 0.75,
+                    "unit": "cup",
+                    "meta": [
+                        "divided",
+                        "grated"
+                    ],
+                    "metaInformation": [
+                        "divided",
+                        "grated"
+                    ],
+                    "measures": {
+                        "us": {
+                            "amount": 0.75,
+                            "unitShort": "cups",
+                            "unitLong": "cups"
+                        },
+                        "metric": {
+                            "amount": 177.441,
+                            "unitShort": "ml",
+                            "unitLong": "milliliters"
+                        }
+                    }
+                },
+                {
+                    "id": 11297,
+                    "aisle": "Produce",
+                    "image": "parsley.jpg",
+                    "consitency": "solid",
+                    "name": "parsley",
+                    "original": "Chopped fresh Italian parsley",
+                    "originalString": "Chopped fresh Italian parsley",
+                    "originalName": "Chopped fresh Italian parsley",
+                    "amount": 6.0,
+                    "unit": "servings",
+                    "meta": [
+                        "fresh",
+                        "italian",
+                        "chopped"
+                    ],
+                    "metaInformation": [
+                        "fresh",
+                        "italian",
+                        "chopped"
+                    ],
+                    "measures": {
+                        "us": {
+                            "amount": 6.0,
+                            "unitShort": "servings",
+                            "unitLong": "servings"
+                        },
+                        "metric": {
+                            "amount": 6.0,
+                            "unitShort": "servings",
+                            "unitLong": "servings"
+                        }
+                    }
+                },
+                {
+                    "id": 1022068,
+                    "aisle": "Oil, Vinegar, Salad Dressing",
+                    "image": "red-wine-vinegar.jpg",
+                    "consitency": "liquid",
+                    "name": "red wine vinegar",
+                    "original": "1 tablespoon red wine vinegar",
+                    "originalString": "1 tablespoon red wine vinegar",
+                    "originalName": "red wine vinegar",
+                    "amount": 1.0,
+                    "unit": "tablespoon",
+                    "meta": [
+                        "red"
+                    ],
+                    "metaInformation": [
+                        "red"
+                    ],
+                    "measures": {
+                        "us": {
+                            "amount": 1.0,
+                            "unitShort": "Tbsp",
+                            "unitLong": "Tbsp"
+                        },
+                        "metric": {
+                            "amount": 1.0,
+                            "unitShort": "Tbsp",
+                            "unitLong": "Tbsp"
+                        }
+                    }
+                },
+                {
+                    "id": 10011251,
+                    "aisle": "Produce",
+                    "image": "romaine.jpg",
+                    "consitency": "solid",
+                    "name": "romaine hearts",
+                    "original": "2 large hearts of romaine lettuce, torn into bite-size pieces (about 12 cups)",
+                    "originalString": "2 large hearts of romaine lettuce, torn into bite-size pieces (about 12 cups)",
+                    "originalName": "large hearts of romaine lettuce, torn into bite-size pieces (about",
+                    "amount": 12.0,
+                    "unit": "cups",
+                    "meta": [],
+                    "metaInformation": [],
+                    "measures": {
+                        "us": {
+                            "amount": 12.0,
+                            "unitShort": "cups",
+                            "unitLong": "cups"
+                        },
+                        "metric": {
+                            "amount": 2.839,
+                            "unitShort": "l",
+                            "unitLong": "liters"
+                        }
+                    }
+                },
+                {
+                    "id": 6971,
+                    "aisle": "Condiments",
+                    "image": "dark-sauce.jpg",
+                    "consitency": "liquid",
+                    "name": "worcestershire sauce",
+                    "original": "11/2 teaspoons Worcestershire sauce",
+                    "originalString": "11/2 teaspoons Worcestershire sauce",
+                    "originalName": "Worcestershire sauce",
+                    "amount": 5.5,
+                    "unit": "teaspoons",
+                    "meta": [],
+                    "metaInformation": [],
+                    "measures": {
+                        "us": {
+                            "amount": 5.5,
+                            "unitShort": "tsps",
+                            "unitLong": "teaspoons"
+                        },
+                        "metric": {
+                            "amount": 5.5,
+                            "unitShort": "tsps",
+                            "unitLong": "teaspoons"
+                        }
+                    }
+                }
+            ],
+            "id": 670,
+            "title": "Caesar Salad with Sourdough Croutons",
+            "readyInMinutes": 60,
+            "servings": 6,
+            "image": "https://spoonacular.com/recipeImages/670-556x370.jpg",
+            "imageType": "jpg",
+            "cuisines": [
+                "american"
+            ],
+            "dishTypes": [
+                "salad"
+            ],
+            "diets": [
+                "gluten free",
+                "pescatarian"
+            ],
+            "occasions": [],
+            "winePairing": {
+                "pairedWines": [],
+                "pairingText": "",
+                "productMatches": []
+            },
+            "instructions": "Preparation                                                        Whisk first 6 ingredients in small bowl.Gradually whisk in oil, then 1/2 cup cheese.                                                                Toss lettuce, croutons, 1/4 cup cheese,and dressing in bowl. Sprinkle with parsleyand season to taste with pepper.                                                                         Per serving: 258 calories, 19 g fat, 3 g fiber                            Nutritional analysis provided by                                        Bon Appétit",
+            "analyzedInstructions": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "number": 1,
+                            "step": "Whisk first 6 ingredients in small bowl.Gradually whisk in oil, then 1/2 cup cheese.",
+                            "ingredients": [],
+                            "equipment": [
+                                {
+                                    "id": 404661,
+                                    "name": "whisk",
+                                    "image": "whisk.png"
+                                },
+                                {
+                                    "id": 404783,
+                                    "name": "bowl",
+                                    "image": "bowl.jpg"
+                                }
+                            ]
+                        },
+                        {
+                            "number": 2,
+                            "step": "Toss lettuce, croutons, 1/4 cup cheese,and dressing in bowl. Sprinkle with parsleyand season to taste with pepper.",
+                            "ingredients": [
+                                {
+                                    "id": 18242,
+                                    "name": "croutons",
+                                    "image": "croutons.png"
+                                }
+                            ],
+                            "equipment": [
+                                {
+                                    "id": 404783,
+                                    "name": "bowl",
+                                    "image": "bowl.jpg"
+                                }
+                            ]
+                        },
+                        {
+                            "number": 3,
+                            "step": "Per serving: 258 calories, 19 g fat, 3 g fiber",
+                            "ingredients": [],
+                            "equipment": []
+                        },
+                        {
+                            "number": 4,
+                            "step": "Bon Appétit",
+                            "ingredients": [],
+                            "equipment": []
+                        }
+                    ]
+                }
+            ]
+        }]
 
     model.addDishToMenu(myJson[0]); // PASS THE JSON to this functin, and load it in the searchView.js
     model.addDishToMenu(myJson[1]); // PASS THE JSON to this functin, and load it in the searchView.js
     model.addDishToMenu(myJson[2]); // PASS THE JSON to this functin, and load it in the searchView.js
 
 
-  const container = document.getElementsByClassName("page-content")[0];
+    const container = document.getElementsByClassName("page-content")[0];
 
     // //TODO ask how we should do this?
     // const view = document.querySelector("script[src = 'src/view/searchView.js']");
@@ -1181,44 +1181,44 @@ window.onload = function () {
 
     //
 
-    const homeView         = new HomeView(container).render('homeView'),
-          searchView       = new SearchView(container, model).render('searchView'),
-          instructionView  = new InstructionView(container, model).render('instructionView'),
-          detailsView      = new DetailsView(container, model).render(null,'detailsView'), //pass actual dishID
-          overviewView     = new OverviewView(container, model).render('overviewView'),
-          selectDishView   = new SelectDishView(container, model).render('selectDishView');
+    const homeView = new HomeView(container).render(),
+        searchView = new SearchView(container, model).render('searchView'),
+        instructionView = new InstructionView(container, model).render('instructionView'),
+        detailsView = new DetailsView(container, model).render(1, 'detailsView'), //pass actual dishID
+        overviewView = new OverviewView(container, model).render('overviewView'),
+        selectDishView = new SelectDishView(container, model).render('selectDishView');
 
-    function hideViews(){
-            homeView.hide('homeView');
-            detailsView.hide();
-            instructionView.hide();
-            overviewView.hide('overviewView');
-            searchView.hide('searchView');
-            selectDishView.hide('selectDishView');
-        }
+    function hideViews() {
+        homeView.hide('homeView');
+        detailsView.hide('detailsView');
+        instructionView.hide('instructionsView');
+        overviewView.hide('overviewView');
+        searchView.hide('searchView');
+        selectDishView.hide('selectDishView');
+    }
 
-  function displayView(viewName){
+    function displayView(viewName) {
         //first hide all views.
         hideViews();
 
-        if(viewName === 'detailsView'){
-            detailsView.hide();
+        if (viewName === 'detailsView') {
+            detailsView.show('detailsView');
         }
-        if(viewName === 'homeView'){
+        if (viewName === 'homeView') {
             homeView.show('homeView');
         }
-        if(viewName === 'instructionsView'){
+        if (viewName === 'instructionsView') {
             instructionView.show('instructionsView');
         }
-        if(viewName === 'overviewView'){
+        if (viewName === 'overviewView') {
             overviewView.show('overviewView');
         }
-        if(viewName === 'searchView'){
+        if (viewName === 'searchView') {
             searchView.show('searchView');
         }
-        if(viewName === 'selectDishView'){
+        if (viewName === 'selectDishView') {
             selectDishView.show('selectDishView');
-        }        
+        }
     }
 
 };

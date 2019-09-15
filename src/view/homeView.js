@@ -10,6 +10,9 @@ class HomeView {
     <div class="header d-flex align-items-center justify-content-center" id="homeView">
       <h1>Dinner Planner</h1>
     </div>
+        <div id="loader" class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
     <div class="container text-center full-vh d-flex align-items-center justify-content-center flex-column">
         <p class="text-center p-max-width">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel laoreet orci. Nullam ut iaculis diam. Aliquam
@@ -19,6 +22,7 @@ class HomeView {
         <div class="spacing-medium"></div>
         <button id="startBtn" type="button" class="btn btn-lg btn-primary">Create new dinner</button>
       </div>
+       <div class="row"></div>
     `;
     this.container.innerHTML = content;
     this.afterRender();

@@ -44,7 +44,8 @@ class SelectDishView {
             '<option value="Main Course">Main Course</option>' +
             '<option value="Dessert">Dessert</option></select>';
 
-
+        let type = undefined;
+        let query = undefined;
         this.model.getAllDishes(type, query).then((data) => {
             console.log(data);
             let imagesSrcs = data.map(function (dish) {

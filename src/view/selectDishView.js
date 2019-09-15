@@ -12,9 +12,9 @@ class SelectDishView {
         return image;
     }
 
-    render() {
+    render(id) {
         const selectDishDiv = this.container.querySelector(".row").appendChild(document.createElement('div'));
-        selectDishDiv.setAttribute('id','selectDishView');
+        selectDishDiv.setAttribute('id',id);
 
         selectDishDiv.className = "col-xs-12 col-sm-7 col-md-7 col-lg-8";
         const heading = selectDishDiv.appendChild(document.createElement('h4'));
@@ -85,11 +85,12 @@ class SelectDishView {
         loadingIndicator.style.display = "none";
     }
 
-    show = function() {
-        this.style.display = 'block'; // try display = 'inline'
+    show = function(id) {
+         // try display = 'inline'
+        document.getElementById(id).style.display="block"; 
       };
 
-    hide = function() {
-        this.style.display = 'none';
+    hide = function(id) {
+        document.getElementById(id).style.display="none";;
       };
 }

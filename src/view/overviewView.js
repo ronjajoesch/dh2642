@@ -13,10 +13,10 @@ class OverviewView {
   }
 
   // An example of creating HTML procedurally. Think about the pros and cons of this approach.
-  render() {
+  render(id) {
 
     const headingDiv = this.container.appendChild(document.createElement('div'));
-    headingDiv.setAttribute('id','overviewView');
+    headingDiv.setAttribute('id',id);
 
     headingDiv.className ="postIt row";
     const heading = headingDiv.appendChild(document.createElement('h3'));
@@ -88,12 +88,12 @@ class OverviewView {
     loadingIndicator.style.display = "none";
   }
 
-  show = function() {
-    this.style.display = 'block'; // try display = 'inline'
+  show = function(id) {
+    document.getElementById(id).style.display="block"; 
   };
 
-hide = function() {
-    this.style.display = 'none';
-  };
+hide = function(id) {
+  document.getElementById(id).style.display="none";;
+};
 
 }

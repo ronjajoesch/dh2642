@@ -9,10 +9,10 @@ class SearchView {
         // redraw just the portion affected by the changeDetails
         // or remove all graphics in the view, read the whole model and redraw
         if(changeDetails.type === "nGuest"){
-            this.changeNumGuests();
+            model.changeNumGuests();
         }
         if(changeDetails.type === "menu"){
-            this.displayMenuSelected();
+            model.displayMenuSelected();
 
         }
     }

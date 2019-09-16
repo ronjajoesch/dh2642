@@ -62,7 +62,7 @@ class SelectDishView {
                 let childElement = document.createElement("div");
                 childElement.className = "dish";
                 let img;
-                img = self.get_image_element(imagesSrcs[index], 100, 100);
+                img = self.get_image_element(imagesSrcs[index], 100, 100);  // TODO object-fit: cover
                 childElement.appendChild(img);
                 let captionElement = document.createElement("figcaption");
                 captionElement.innerText = title;

@@ -8,8 +8,15 @@ class DetailsView {
     update(model, changeDetails){
         // redraw just the portion affected by the changeDetails
         // or remove all graphics in the view, read the whole model and redraw
+
+        if(changeDetails.type === "nGuest"){
+            model.changeNumGuests();
+        }
+
+        //TODO think if we need more functionality here
     }
 
+    // TODO object-fit: cover
     get_image_element(src, width, height) {
         let image = document.createElement("img");
         image.src = src;
@@ -65,19 +72,19 @@ class DetailsView {
             const table = tableDiv.appendChild(document.createElement("table"));
             table.className = "table";
 
-            menu.forEach(function(elx,i) {
+            dish.extendedIngredients.forEach(function(ingredient,i) {
                 const tbody_1 = table.appendChild(document.createElement("tbody"));
                 tbody_1.setAttribute("id","dishes");
                 const tr_2 = tbody_1.appendChild(document.createElement("tr"));   
                 const td_2 = tr_2.appendChild(document.createElement("td"));
                 td_2.className="value-starter-name";
-                td_2.innerText= elx.extendedIngredients[i].measures.metric.amount +" "+ elx.extendedIngredients[i].measures.metric.unitShort;
+                td_2.innerText= ingredient.measures.metric.amount +" "+ ingredient.measures.metric.unitShort;
                 const td_3 = tr_2.appendChild(document.createElement("td"));
                 td_3.className="value-starter-value";
-                td_3.innerText=elx.extendedIngredients[i].name;    
+                td_3.innerText=ingredient.name;
             });
             const td44 = table.appendChild(document.createElement("td"));    
-            td44.innerText="Total Cost: "+ +menu[0].pricePerServing;
+            td44.innerText="Total Cost: "+ +dish.pricePerServing*this.model.nGuest;
         });
         this.afterRender();
     }

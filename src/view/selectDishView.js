@@ -19,7 +19,7 @@ class SelectDishView {
         return image;
     }
 
-    render(id) {
+    render(id,type,query) {
         const selectDishDiv = this.container.querySelector(".row").appendChild(document.createElement('div'));
         selectDishDiv.setAttribute('id',id);
 
@@ -45,10 +45,17 @@ class SelectDishView {
             '<option value="Main Course">Main Course</option>' +
             '<option value="Dessert">Dessert</option></select>';
 
-        let type = undefined;
-        let query = undefined;
-        this.model.getAllDishes(type, query).then((data) => {
-            console.log(data);
+        contentDiv.setAttribute("id","dishes-select-dish-div")
+        this.displayDishesSelection(this.model,type,query);
+
+        this.afterRender();
+
+
+    }
+
+    displayDishesSelection(model,type,query){
+        let contentDiv = document.getElementById("dishes-select-dish-div");
+        model.getAllDishes(type, query).then((data) => {
             let imagesSrcs = data.map(function (dish) {
                 return " https://spoonacular.com/recipeImages/"+dish.image;
 
@@ -66,7 +73,7 @@ class SelectDishView {
                 img = self.get_image_element(imagesSrcs[index], 100, 100);  // TODO object-fit: cover
                 childElement.appendChild(img);
                 let captionElement = document.createElement("figcaption");
-                captionElement.innerText = title;
+                captionElement.innerText = ""+title;
                 childElement.appendChild(captionElement);
 
                 //add if description is available  --> don't delete
@@ -77,11 +84,6 @@ class SelectDishView {
                 contentDiv.appendChild(childElement);
             });
         });
-
-
-        this.afterRender();
-
-
     }
 
     afterRender() {

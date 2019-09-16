@@ -41,32 +41,7 @@ class OverviewView {
 
     const divDishes = div3.appendChild(document.createElement("div"));
     divDishes.className = "row";
-
-    let menu = this.model.getFullMenu();
-    
-
-    var self = this;
-    console.log(menu[0]);
-    let totalPrice = 0;
-    menu.forEach(function (dish, index) {
-      let childElement = document.createElement("div");
-      childElement.className = "dish";
-      let img;
-      img = self.get_image_element(dish.image, 100, 100);
-      childElement.appendChild(img);
-      let captionElement = document.createElement("figcaption");
-      captionElement.className = "value-main-course-name";  //TODO fix so it relates to type of dish
-      captionElement.innerText = dish.title;
-      childElement.appendChild(captionElement);
-
-      // This part is for displaying the individual Prices.
-      let priceElement = document.createElement("div");
-      priceElement.className = "value-main-course-price"; 
-      priceElement.innerText = "SEK" + " " +dish.pricePerServing;
-      childElement.appendChild(priceElement);
-      divDishes.appendChild(childElement);
-      totalPrice += dish.pricePerServing;
-    });
+    divDishes.setAttribute("id","div-dishes")
 
     let totalDiv = div3.appendChild(document.createElement("div"));
     totalDiv.className="row";
@@ -74,9 +49,10 @@ class OverviewView {
     totalText.innerText = "Total: SEK";
     let totalPricediv = document.createElement("h5");
     totalPricediv.className = "value-total-price";
-    totalPricediv.innerText = totalPrice;
+    totalPricediv.setAttribute("id","total-price-overview")
     totalDiv.appendChild(totalPricediv);
 
+    this.loadDishesAndTotal();
 
     const bottom = div3.appendChild(document.createElement("div"));
     let button = bottom.appendChild(document.createElement("button"));
@@ -92,6 +68,37 @@ class OverviewView {
   afterRender() {
     let loadingIndicator = document.getElementById("loader");
     loadingIndicator.style.display = "none";
+  }
+
+  loadDishesAndTotal(){
+    let menu = this.model.getFullMenu();
+    var self = this;
+    let totalPrice = 0;
+
+    let divDishes = document.getElementById("div-dishes");
+
+    menu.forEach(function (dish, index) {
+      let childElement = document.createElement("div");
+      childElement.className = "dish";
+      let img;
+      img = self.get_image_element(dish.image, 100, 100);
+      childElement.appendChild(img);
+      let captionElement = document.createElement("figcaption");
+      captionElement.className = "value-main-course-name";  //TODO fix so it relates to type of dish
+      captionElement.innerText = dish.title;
+      childElement.appendChild(captionElement);
+
+      // This part is for displaying the individual Prices.
+      let priceElement = document.createElement("div");
+      priceElement.className = "value-main-course-price";
+      priceElement.innerText = "SEK" + " " +dish.pricePerServing;
+      childElement.appendChild(priceElement);
+      divDishes.appendChild(childElement);
+      totalPrice += dish.pricePerServing;
+
+      let totalPricediv = document.getElementById("total-price-overview");
+      totalPricediv.innerText = totalPrice;
+    });
   }
 
   show = function(id) {

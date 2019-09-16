@@ -12,7 +12,7 @@ class OverviewView {
       this.loadDishesAndTotal(model);
     }
     if(changeDetails.type === "nGuest"){
-      //this.changeNumGuests();
+      this.changeNumGuests(model);
       this.loadDishesAndTotal(model);
     }
   }

@@ -9,10 +9,10 @@ class SearchView {
         // redraw just the portion affected by the changeDetails
         // or remove all graphics in the view, read the whole model and redraw
         if(changeDetails.type === "nGuest"){
-            this.changeNumGuests();
+            this.changeNumGuests(model);
         }
         if(changeDetails.type === "menu"){
-            this.displayMenuSelected();
+            this.displayMenuSelected(model);
 
         }
     }
@@ -37,7 +37,7 @@ class SearchView {
         select += '</select>';
         people.innerHTML = select;
 
-        this.changeNumGuests();
+        this.changeNumGuests(this.model);
 
         const tableDiv = sideMenu.appendChild(document.createElement('div'));
         tableDiv.setAttribute("id","dishItems");
@@ -52,7 +52,7 @@ class SearchView {
 
         const tbody = table.appendChild(document.createElement("tbody"));
         tbody.setAttribute("id","tbodyMenu");
-        this.displayMenuSelected();
+        this.displayMenuSelected(this.model);
 
       const buttonDiv = sideMenu.appendChild(document.createElement('div'));
       buttonDiv.innerHTML = `<button id="startBtn" type="button" class="btn btn-md btn-primary">Confirm dinner</button>`;
@@ -61,14 +61,14 @@ class SearchView {
         this.afterRender();
   }
 
-  changeNumGuests(){
+  changeNumGuests(model){
       let dropObject = document.getElementById("num-guests");
-      dropObject.value = this.model.getNumberOfGuests();
+      dropObject.value = model.getNumberOfGuests();
   }
 
-  displayMenuSelected(){
+  displayMenuSelected(model){
       let totalPrice = 0;
-      let menu = this.model.getFullMenu();
+      let menu = model.getFullMenu();
       const tbody = document.getElementById("tbodyMenu");
 
       menu.forEach(el => {

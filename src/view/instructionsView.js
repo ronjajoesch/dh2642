@@ -18,6 +18,10 @@ class InstructionView {
         return image;
     }
 
+    changeNumGuests(model){
+        const heading = document.getElementById("people-title-instruction");
+        heading.innerHTML = "My Dinner: "+model.getNumberOfGuests()+" people";
+    }
 
     render(id) {
         const headingDiv = this.container.appendChild(document.createElement('div'));
@@ -28,7 +32,8 @@ class InstructionView {
         const titleDiv = headingDiv.appendChild(document.createElement('div'));
         const heading = titleDiv.appendChild(document.createElement('h3'));
         heading.className = "value-num-guests";
-        heading.innerHTML = "My Dinner: "+this.model.nGuest+" people";
+        heading.setAttribute("id","people-title-instruction");
+        this.changeNumGuests(this.model);
 
         const buttonDiv = headingDiv.appendChild(document.createElement('div'));
         let button = buttonDiv.appendChild(document.createElement("button"));

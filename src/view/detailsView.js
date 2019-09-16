@@ -10,10 +10,18 @@ class DetailsView {
         // or remove all graphics in the view, read the whole model and redraw
 
         if(changeDetails.type === "nGuest"){
-            model.changeNumGuests();
+            this.changeNumGuests(model);
         }
 
         //TODO think if we need more functionality here
+    }
+
+    changeNumGuests(model){
+        let title3 = document.getElementById("people-title");
+        title3.value = this.model.getNumberOfGuests();
+
+        let text = "Ingredients for "+model.getNumberOfGuests()+" people";
+        title3.innerText=text;
     }
 
     // TODO object-fit: cover
@@ -64,9 +72,9 @@ class DetailsView {
 
             let title = rightDetailsDiv.appendChild(document.createElement("p"));
             let title3 = title.appendChild(document.createElement("h6"));
-            let text = "Ingredients for "+this.model.nGuest+" people";
-            title3.innerText=text;
+            title3.setAttribute("id","people-title");
             rightDetailsDiv.appendChild(title);
+            this.changeNumGuests(this.model);
             
             const tableDiv = rightDetailsDiv.appendChild(document.createElement('div'));
             const table = tableDiv.appendChild(document.createElement("table"));

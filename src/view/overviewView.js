@@ -8,6 +8,13 @@ class OverviewView {
   update(model, changeDetails){
     // redraw just the portion affected by the changeDetails
     // or remove all graphics in the view, read the whole model and redraw
+    if(changeDetails.type === "menu"){
+      this.loadDishesAndTotal(model);
+    }
+    if(changeDetails.type === "nGuest"){
+      //this.changeNumGuests();
+      this.loadDishesAndTotal(model);
+    }
   }
 
   get_image_element(src, width, height) {
@@ -29,10 +36,10 @@ class OverviewView {
     const guestsNum = headingDiv.appendChild(document.createElement("h3"));
     guestsNum.className = "value-num-guests";
     heading.innerHTML = "My Dinner: ";
-    guestsNum.innerHTML = ""+this.model.getNumberOfGuests();
+    guestsNum.setAttribute("id","people-title-overview")
+    this.changeNumGuests(this.model);
     const heading2 = headingDiv.appendChild(document.createElement('h3'));
     heading2.innerHTML = " people are coming";
-
 
 
     const div3 = this.container.appendChild(document.createElement("div"));
@@ -52,7 +59,7 @@ class OverviewView {
     totalPricediv.setAttribute("id","total-price-overview")
     totalDiv.appendChild(totalPricediv);
 
-    this.loadDishesAndTotal();
+    this.loadDishesAndTotal(this.model);
 
     const bottom = div3.appendChild(document.createElement("div"));
     let button = bottom.appendChild(document.createElement("button"));
@@ -70,8 +77,13 @@ class OverviewView {
     loadingIndicator.style.display = "none";
   }
 
-  loadDishesAndTotal(){
-    let menu = this.model.getFullMenu();
+  changeNumGuests(model){
+    const guestsNum = document.getElementById("people-title-overview");
+    guestsNum.innerHTML = ""+model.getNumberOfGuests();
+  }
+
+  loadDishesAndTotal(model){
+    let menu = model.getFullMenu();
     var self = this;
     let totalPrice = 0;
 

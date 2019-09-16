@@ -16,13 +16,6 @@ class DetailsView {
         //TODO think if we need more functionality here
     }
 
-    changeNumGuests(model){
-        let title3 = document.getElementById("people-title");
-        title3.value = this.model.getNumberOfGuests();
-
-        let text = "Ingredients for "+model.getNumberOfGuests()+" people";
-        title3.innerText=text;
-    }
 
     // TODO object-fit: cover
     get_image_element(src, width, height) {
@@ -101,6 +94,14 @@ class DetailsView {
         let loadingIndicator = document.getElementById("loader");
         loadingIndicator.style.display = "none";
 
+    }
+
+    changeNumGuests(model){
+        let title3 = document.getElementById("people-title");
+        title3.value = this.model.getNumberOfGuests();
+
+        let text = "Ingredients for "+model.getNumberOfGuests()+" people";
+        title3.innerText=text;
     }
 
     show = function(divId) {

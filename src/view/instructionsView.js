@@ -8,6 +8,12 @@ class InstructionView {
     update(model, changeDetails){
         // redraw just the portion affected by the changeDetails
         // or remove all graphics in the view, read the whole model and redraw
+        if(changeDetails.type === "menu"){
+            this.displayDishes(model);
+        }
+        if(changeDetails.type === "nGuest"){
+            this.changeNumGuests(model);
+        }
     }
 
     get_image_element(src, width, height) {
@@ -18,10 +24,6 @@ class InstructionView {
         return image;
     }
 
-    changeNumGuests(model){
-        const heading = document.getElementById("people-title-instruction");
-        heading.innerHTML = "My Dinner: "+model.getNumberOfGuests()+" people";
-    }
 
     render(id) {
         const headingDiv = this.container.appendChild(document.createElement('div'));
@@ -43,10 +45,17 @@ class InstructionView {
         button.innerText = "Go Back and edit dinner";
 
         const bottomDiv = this.container.appendChild(document.createElement('div'));
+        bottomDiv.setAttribute("id","dishes-instructions")
+        this.displayDishes(this.model);
 
-        var menu = this.model.getFullMenu();
+        this.afterRender();
+    }
 
+    displayDishes(model){
+        var menu = model.getFullMenu();
         var self = this;
+        let bottomDiv = document.getElementById("dishes-instructions");
+
         menu.forEach(function(dish,i){
             const dishDiv = bottomDiv.appendChild(document.createElement("div"));
             dishDiv.className = "row";
@@ -67,9 +76,11 @@ class InstructionView {
             instruction.innerHTML = html;
 
         });
+    }
 
-
-        this.afterRender();
+    changeNumGuests(model){
+        const heading = document.getElementById("people-title-instruction");
+        heading.innerHTML = "My Dinner: "+model.getNumberOfGuests()+" people";
     }
 
     afterRender() {

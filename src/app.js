@@ -47,12 +47,13 @@ window.onload = function () {
         hideViews();
 
         if (viewName === detailsView) {
+            show(searchView);
             show(detailsView);
         }
         if (viewName === homeView) {
             show(homeView);
         }
-        if (viewName === instructionsView) {
+        if (viewName === instructionView) {
             show(instructionView);
         }
         if (viewName === overviewView) {
@@ -62,11 +63,15 @@ window.onload = function () {
             show(searchView);
         }
         if (viewName === selectDishView) {
+            show(searchView);
             show(selectDishView);
         }
     }
 
 
-    //hideViews();
-    //displayView("homeView");
+    displayView(homeView);
+    //displayView(selectDishView);
+    //displayView(overviewView);
+    //displayView(instructionView);
+    //displayView(detailsView);
 };

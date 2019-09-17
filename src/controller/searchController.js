@@ -2,6 +2,7 @@ var DishSearchController = function (view, model, mainController) {
 
   // attach an event listener to the button
     view.container.on('click', '#searchView', function() {
+        //TODO check this
         mainController.currentDishId = $(this).attr('data-dishid');
         mainController.changeTo('dishDetails');
     });

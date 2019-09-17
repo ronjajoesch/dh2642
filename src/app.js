@@ -2,16 +2,6 @@ window.onload = function () {
     console.log("start");
     //We instantiate our model
     const model = new DinnerModel();
-    model.setNumberOfGuests(4); //TODO change when dynamic
-
-
-    //TODO remove later -> dynamic
-    const myJson = [];
-
-    model.addDishToMenu(myJson[0]); // PASS THE JSON to this functin, and load it in the searchView.js
-    model.addDishToMenu(myJson[1]); // PASS THE JSON to this functin, and load it in the searchView.js
-    model.addDishToMenu(myJson[2]); // PASS THE JSON to this functin, and load it in the searchView.js
-
 
     const container = document.getElementsByClassName("page-content")[0];
 
@@ -21,13 +11,14 @@ window.onload = function () {
       };
 
 
-    const homeView = new HomeView(container).render(),
-        searchView = new SearchView(container, model,MainController).render('searchView'),
+    const homeView = new HomeView(container).render();
+        const searchView = new SearchView(container, model,MainController).render('searchView'),
         instructionView = new InstructionView(container, model,MainController).render('instructionView'),
-        detailsView = new DetailsView(container, model,MainController).render(1, 'detailsView'), //pass actual dishID
+        detailsView = new DetailsView(container, model,MainController).render(null, 'detailsView'), // TODO pass actual dishID
         overviewView = new OverviewView(container, model,MainController).render('overviewView'),
         selectDishView = new SelectDishView(container, model,MainController).render('selectDishView');
 
+        /*
     function hideViews() {
         homeView.hide('homeView');
         detailsView.hide('detailsView');
@@ -61,4 +52,50 @@ window.onload = function () {
         }
     }
 
+*/
+
+    show = function (divId) {
+        document.getElementById(divId).style.display = "block";
+    };
+
+    hide = function (divId) {
+        document.getElementById(divId).style.display = "none";
+    };
+
+    function hideViews() {
+        hide('homeView');
+        //hide('detailsView');
+        //hide('instructionsView');
+        //hide('overviewView');
+        //hide('searchView');
+        //hide('selectDishView');
+    }
+
+    function displayView(viewName) {
+        //first hide all views.
+        hideViews();
+
+        if (viewName === 'detailsView') {
+            show('detailsView');
+        }
+        if (viewName === 'homeView') {
+            show('homeView');
+        }
+        if (viewName === 'instructionsView') {
+            show('instructionsView');
+        }
+        if (viewName === 'overviewView') {
+            show('overviewView');
+        }
+        if (viewName === 'searchView') {
+            show('searchView');
+        }
+        if (viewName === 'selectDishView') {
+            show('selectDishView');
+        }
+    }
+
+
+    hideViews();
+    //displayView("homeView");
 };

@@ -24,7 +24,6 @@ class SearchView {
         const sideMenu = this.container.querySelector(".row").appendChild(document.createElement('div'));
         sideMenu.setAttribute('id',id);
         sideMenu.className = "col-xs-12 col-sm-5 col-md-5 col-lg-4";
-        sideMenu.setAttribute("id","sideBarView");
         const heading = sideMenu.appendChild(document.createElement('h4'));
         heading.innerText = "My Dinner";
 
@@ -96,12 +95,4 @@ class SearchView {
       let loadingIndicator = document.getElementById("loader");
       loadingIndicator.style.display = "none";
   }
-
-  show = function(id) {
-    document.getElementById(id).style.display="block"; 
-  };
-
-hide = function(id) {
-  document.getElementById(id).style.display="none";;
-  };
 }

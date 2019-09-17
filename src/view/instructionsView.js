@@ -26,8 +26,11 @@ class InstructionView {
 
 
     render(id) {
-        const headingDiv = this.container.appendChild(document.createElement('div'));
-        headingDiv.setAttribute('id',id);
+        const mainDiv = this.container.querySelector("#no-row");
+        const instructionDiv = mainDiv.appendChild(document.createElement('div'));
+        instructionDiv.setAttribute('id',id);
+
+        const headingDiv = instructionDiv.appendChild(document.createElement('div'));
 
         headingDiv.className ="postIt row";
 
@@ -44,7 +47,7 @@ class InstructionView {
         button.className = "btn btn-sm btn-primary";
         button.innerText = "Go Back and edit dinner";
 
-        const bottomDiv = this.container.appendChild(document.createElement('div'));
+        const bottomDiv = instructionDiv.appendChild(document.createElement('div'));
         bottomDiv.setAttribute("id","dishes-instructions")
         this.displayDishes(this.model);
 
@@ -87,11 +90,4 @@ class InstructionView {
         let loadingIndicator = document.getElementById("loader");
         loadingIndicator.style.display = "none";
     }
-    show = function(id) {
-        document.getElementById(id).style.display="block"; 
-      };
-
-    hide = function(id) {
-        document.getElementById(id).style.display="none";;
-      };
 }

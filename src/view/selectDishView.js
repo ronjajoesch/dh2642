@@ -91,13 +91,4 @@ class SelectDishView {
         let loadingIndicator = document.getElementById("loader");
         loadingIndicator.style.display = "none";
     }
-
-    show = function(id) {
-         // try display = 'inline'
-        document.getElementById(id).style.display="block"; 
-      };
-
-    hide = function(id) {
-        document.getElementById(id).style.display="none";;
-      };
 }

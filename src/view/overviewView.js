@@ -28,8 +28,11 @@ class OverviewView {
   // An example of creating HTML procedurally. Think about the pros and cons of this approach.
   render(id) {
 
-    const headingDiv = this.container.appendChild(document.createElement('div'));
-    headingDiv.setAttribute('id',id);
+    const mainDiv = this.container.querySelector("#no-row");
+    const overViewDiv = mainDiv.appendChild(document.createElement('div'));
+    overViewDiv.setAttribute('id',id);
+    const headingDiv = overViewDiv.appendChild(document.createElement('div'));
+
 
     headingDiv.className ="postIt row";
     const heading = headingDiv.appendChild(document.createElement('h3'));
@@ -42,8 +45,7 @@ class OverviewView {
     heading2.innerHTML = " people are coming";
 
 
-    const div3 = this.container.appendChild(document.createElement("div"));
-    div3.setAttribute("id","overviewView");
+    const div3 = overViewDiv.appendChild(document.createElement("div"));
     div3.innerHTML = "You will be eating the following:";
 
     const divDishes = div3.appendChild(document.createElement("div"));
@@ -112,13 +114,5 @@ class OverviewView {
       totalPricediv.innerText = totalPrice;
     });
   }
-
-  show = function(id) {
-    document.getElementById(id).style.display="block"; 
-  };
-
-hide = function(id) {
-  document.getElementById(id).style.display="none";;
-};
 
 }

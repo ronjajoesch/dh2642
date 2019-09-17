@@ -8,51 +8,22 @@ window.onload = function () {
     var MainController = {
         currentDishId: null,
         displayView: displayView
-      };
+    };
 
+    let searchView = 'searchView',
+        homeView = "homeView",
+        instructionView = 'instructionView',
+        detailsView = 'detailsView',
+        overviewView = 'overviewView',
+        selectDishView = 'selectDishView';
 
-    const homeView = new HomeView(container).render();
-        const searchView = new SearchView(container, model,MainController).render('searchView'),
-        instructionView = new InstructionView(container, model,MainController).render('instructionView'),
-        detailsView = new DetailsView(container, model,MainController).render(null, 'detailsView'), // TODO pass actual dishID
-        overviewView = new OverviewView(container, model,MainController).render('overviewView'),
-        selectDishView = new SelectDishView(container, model,MainController).render('selectDishView');
+    new HomeView(container).render(homeView);
+    new SearchView(container, model, MainController).render(searchView);
+    new InstructionView(container, model, MainController).render(instructionView);
+    new DetailsView(container, model, MainController).render(null, detailsView); // TODO pass actual dishID
+    new OverviewView(container, model, MainController).render(overviewView);
+    new SelectDishView(container, model, MainController).render(selectDishView);
 
-        /*
-    function hideViews() {
-        homeView.hide('homeView');
-        detailsView.hide('detailsView');
-        instructionView.hide('instructionsView');
-        overviewView.hide('overviewView');
-        searchView.hide('searchView');
-        selectDishView.hide('selectDishView');
-    }
-
-    function displayView(viewName) {
-        //first hide all views.
-        hideViews();
-
-        if (viewName === 'detailsView') {
-            detailsView.show('detailsView');
-        }
-        if (viewName === 'homeView') {
-            homeView.show('homeView');
-        }
-        if (viewName === 'instructionsView') {
-            instructionView.show('instructionsView');
-        }
-        if (viewName === 'overviewView') {
-            overviewView.show('overviewView');
-        }
-        if (viewName === 'searchView') {
-            searchView.show('searchView');
-        }
-        if (viewName === 'selectDishView') {
-            selectDishView.show('selectDishView');
-        }
-    }
-
-*/
 
     show = function (divId) {
         document.getElementById(divId).style.display = "block";
@@ -63,39 +34,39 @@ window.onload = function () {
     };
 
     function hideViews() {
-        hide('homeView');
-        //hide('detailsView');
-        //hide('instructionsView');
-        //hide('overviewView');
-        //hide('searchView');
-        //hide('selectDishView');
+        hide(homeView);
+        hide(detailsView);
+        hide(instructionView);
+        hide(overviewView);
+        hide(searchView);
+        hide(selectDishView);
     }
 
     function displayView(viewName) {
         //first hide all views.
         hideViews();
 
-        if (viewName === 'detailsView') {
-            show('detailsView');
+        if (viewName === detailsView) {
+            show(detailsView);
         }
-        if (viewName === 'homeView') {
-            show('homeView');
+        if (viewName === homeView) {
+            show(homeView);
         }
-        if (viewName === 'instructionsView') {
-            show('instructionsView');
+        if (viewName === instructionsView) {
+            show(instructionView);
         }
-        if (viewName === 'overviewView') {
-            show('overviewView');
+        if (viewName === overviewView) {
+            show(overviewView);
         }
-        if (viewName === 'searchView') {
-            show('searchView');
+        if (viewName === searchView) {
+            show(searchView);
         }
-        if (viewName === 'selectDishView') {
-            show('selectDishView');
+        if (viewName === selectDishView) {
+            show(selectDishView);
         }
     }
 
 
-    hideViews();
+    //hideViews();
     //displayView("homeView");
 };

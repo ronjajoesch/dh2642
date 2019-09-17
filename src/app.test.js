@@ -468,7 +468,7 @@ describe("DinnerPlanner App", () => {
     });
 
     it("has a sidebar", () => {
-      const sidebar = document.getElementById("sideBarView");
+      const sidebar = document.getElementById("selectDishView");
       expect(sidebar).to.not.be.a("null");
     });
 

@@ -28,14 +28,15 @@ class DetailsView {
 
 
     render(dishId, divId) {
+
+        const selectDishDiv = this.container.querySelector(".row");
+        const mainDiv = selectDishDiv.appendChild(document.createElement('div'));
+        mainDiv.className = "row col-xs-12 col-sm-7 col-md-7 col-lg-8";
+        mainDiv.setAttribute('id', divId);
+
         if (dishId !== undefined && dishId !== null) {
             this.model.getDish(dishId).then((dish) => {
-                var menu = this.model.getFullMenu();
 
-                const selectDishDiv = this.container.querySelector(".row");
-                const mainDiv = selectDishDiv.appendChild(document.createElement('div'));
-                mainDiv.className = "row col-xs-12 col-sm-7 col-md-7 col-lg-8";
-                mainDiv.setAttribute('id', divId);
                 const leftDetailsDiv = mainDiv.appendChild(document.createElement('div'));
                 leftDetailsDiv.className = "col-xs-12 col-sm-12 col-md-6 col-lg-6";
 
@@ -91,11 +92,8 @@ class DetailsView {
             this.afterRender();
         }
         else{
-            console.log("ERROR: You have not selected a specific dish.");
-            const selectDishDiv = this.container.querySelector(".row");
-            let h4 = selectDishDiv.appendChild(document.createElement("h4"));
+            let h4 = mainDiv.appendChild(document.createElement("h4"));
             h4.innerText = "ERROR: You have not selected a specific dish.";
-
         }
     }
 
@@ -113,12 +111,4 @@ class DetailsView {
         title3.innerText = text;
     }
 
-    show = function (divId) {
-        document.getElementById(divId).style.display = "block";
-    };
-
-    hide = function (divId) {
-        document.getElementById(divId).style.display = "none";
-        ;
-    };
 }

@@ -1,5 +1,6 @@
 var DishSearchController = function (view, model, mainController) {
 
+  // attach an event listener to the button
     view.container.on('click', '#searchView', function() {
         mainController.currentDishId = $(this).attr('data-dishid');
         mainController.changeTo('dishDetails');

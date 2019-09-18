@@ -37,6 +37,12 @@ window.onload = function () {
     let searchController = new SearchController(searchViewInstance, model);
     searchController.eventListener(mainController);
 
+    //for instruction view
+    
+    let instructionController = new InstructionController(instructionViewInstance, model);
+    instructionController.eventListener(mainController);
+
+
     let show = function (divId) {
         document.getElementById(divId).style.display = "block";
     };

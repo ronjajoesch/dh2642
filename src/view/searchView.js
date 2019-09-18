@@ -3,6 +3,7 @@ class SearchView {
         this.container = container;
         this.model = model;
         model.addObserver(this);
+        this.confirmButton = null;
     }
 
     update(model, changeDetails){
@@ -54,9 +55,9 @@ class SearchView {
         this.displayMenuSelected(this.model);
 
       const buttonDiv = sideMenu.appendChild(document.createElement('div'));
-      buttonDiv.innerHTML = `<button id="startBtn" type="button" class="btn btn-md btn-primary">Confirm dinner</button>`;
+      buttonDiv.innerHTML = `<button id="confirmBtn" type="button" class="btn btn-md btn-primary">Confirm dinner</button>`;
 
-
+        this.confirmButton= buttonDiv.querySelector("#confirmBtn");
         this.afterRender();
   }
 

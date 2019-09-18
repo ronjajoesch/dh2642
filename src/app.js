@@ -34,6 +34,8 @@ window.onload = function () {
     let homeController = new HomeController(homeViewInstance, model);
     homeController.eventListener(mainController);
 
+    let searchController = new SearchController(searchViewInstance, model);
+    searchController.eventListener(mainController);
 
     let show = function (divId) {
         document.getElementById(divId).style.display = "block";

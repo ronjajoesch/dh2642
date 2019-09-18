@@ -10,7 +10,7 @@ class HomeView {
         const mainDiv = selectDishDiv.appendChild(document.createElement('div'));
         mainDiv.setAttribute("id", id);
 
-        const insideDiv = selectDishDiv.appendChild(document.createElement('div'));
+        const insideDiv = mainDiv.appendChild(document.createElement('div'));
         insideDiv.className = "container text-center full-vh d-flex align-items-center justify-content-center flex-column";
         const p = insideDiv.appendChild(document.createElement("p"));
         p.innerText = "  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus " +

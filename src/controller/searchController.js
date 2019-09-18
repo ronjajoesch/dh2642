@@ -1,16 +1,15 @@
-var DishSearchController = function (view, model, mainController) {
+class SearchController {
+    constructor(view, model) {
+        this.model = model;
+        this.view = view;
+    }
 
-  // attach an event listener to the button
-    view.container.on('click', '#searchView', function() {
-        //TODO check this
-        mainController.currentDishId = $(this).attr('data-dishid');
-        mainController.changeTo('dishDetails');
-    });
-  
+    eventListener(mainController) {
+        this.view.confirmButton.addEventListener('click', function () {
+            mainController.currentDishId = null;
+            mainController.displayView('overviewView');
+        });
 
-    view.searchSubmit.on('click', function() {
-      var dishType = view.searchType.val();
-      var dishFilter = view.searchFilter.val();
-      view.render(dishType, dishFilter);
-    });
-  }
+
+    };
+}

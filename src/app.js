@@ -43,7 +43,7 @@ window.onload = async function () {
 
 
     let show = function (divId) {
-        document.getElementById(divId).style.display = "block";
+        document.getElementById(divId).style.display = "";
     };
 
     let hide = function (divId) {
@@ -85,8 +85,8 @@ window.onload = async function () {
         }
     }
 
-    //displayView(homeView);
-    displayView(selectDishView);
+    displayView(homeView);
+    //displayView(selectDishView);
     //displayView(overviewView);
     //displayView(instructionView);
     //displayView(detailsView);

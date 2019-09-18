@@ -4,12 +4,10 @@ class HomeController {
         this.view = view;
     }
 
-     eventListener(mainController) {
-         this.view.startBtn.addEventListener('click',function() {
-            mainController.currentDishId = null;
+    eventListener(mainController) {
+        this.view.startBtn.addEventListener('click', function () {
             mainController.displayView('selectDishView');
         });
-
 
     };
 }

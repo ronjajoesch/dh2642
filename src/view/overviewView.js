@@ -3,6 +3,7 @@ class OverviewView {
         this.container = container;
         this.model = model;
         model.addObserver(this);
+        this.printButton = null;
     }
 
     update(model, changeDetails) {
@@ -69,6 +70,7 @@ class OverviewView {
         button.setAttribute("id", "toPrintBtn");
         button.className = "btn btn-lg btn-primary";
         button.innerText = "Print Full recipe";
+        this.printButton = button;
 
         this.afterRender();
 

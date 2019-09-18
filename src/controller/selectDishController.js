@@ -8,7 +8,6 @@ class SelectDishController {
             let self = this;
             this.view.dishList.forEach(function (dish) {
                 dish.addEventListener('click', function () {
-                    mainController.currentDishId = dish.id;
                     self.model.setSelectedDish(dish.id);
                     mainController.displayView('detailsView');
                 });

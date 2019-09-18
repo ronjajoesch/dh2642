@@ -39,8 +39,11 @@ window.onload = async function () {
     let selectController = new SelectDishController(selectDishViewInstance, model);
     selectController.eventListener(mainController);
 
-    //register event observers
+    let overviewController = new OverviewController(overviewViewInstance,model);
+    overviewController.eventListener(mainController);
 
+    let instructionController = new InstructionController(instructionViewInstance, model);
+    instructionController.eventListener(mainController);
 
     let show = function (divId) {
         document.getElementById(divId).style.display = "";

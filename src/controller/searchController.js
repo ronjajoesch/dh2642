@@ -6,7 +6,6 @@ class SearchController {
 
     eventListener(mainController) {
         this.view.confirmButton.addEventListener('click', function () {
-            mainController.currentDishId = null;
             mainController.displayView('overviewView');
         });
 

@@ -3,8 +3,7 @@ class InstructionView {
         this.container = container;
         this.model = model;
         model.addObserver(this);
-        this.printRecieptButton = null;
-
+        this.backButton = null;
     }
 
     update(model, changeDetails){
@@ -54,8 +53,7 @@ class InstructionView {
         this.displayDishes(this.model);
 
         this.afterRender();
-        // this.printRecieptButton= buttonDiv.querySelector("#toPrintBtn");
-        this.printRecieptButton = button;
+        this.backButton = button;
         return this;
     }
 

@@ -4,11 +4,12 @@ class InstructionController {
         this.view = view;
     }
 
+
     eventListener(mainController) {
-        this.view.printRecieptButton.addEventListener('click', function () {
-            console.log('thissssssss');
-            // mainController.currentDishId = null;
-            // mainController.displayView('instructionsView');
+        this.view.backButton.addEventListener('click', function () {
+            mainController.displayView('selectDishView');
+
         });
+
     };
 }

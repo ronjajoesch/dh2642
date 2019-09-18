@@ -17,15 +17,24 @@ window.onload = function () {
         overviewView = 'overviewView',
         selectDishView = 'selectDishView';
 
-    let homeViewInstance = new HomeView(container).render(homeView);
-    new SearchView(container, model, mainController).render(searchView);
-    new InstructionView(container, model, mainController).render(instructionView);
-    new DetailsView(container, model, mainController).render(null, detailsView); // TODO pass actual dishID
-    new OverviewView(container, model, mainController).render(overviewView);
-    new SelectDishView(container, model, mainController).render(selectDishView);
+    let homeViewInstance = new HomeView(container);
+    homeViewInstance.render(homeView);
+    let searchViewInstance = new SearchView(container, model, mainController)
+    searchViewInstance.render(searchView);
+    let instructionViewInstance = new InstructionView(container, model, mainController)
+    instructionViewInstance.render(instructionView);
+    let detailsViewInstance = new DetailsView(container, model, mainController)
+    detailsViewInstance.render(null, detailsView); // TODO pass actual dishID
+    let overviewViewInstance = new OverviewView(container, model, mainController)
+    overviewViewInstance.render(overviewView);
+    let selectDishViewInstance = new SelectDishView(container, model, mainController)
+    selectDishViewInstance.render(selectDishView);
 
     //include controllers
-    new HomeController(model, container).eventListener(homeView,model,mainController);
+    let homeController = new HomeController(homeViewInstance, model);
+
+    homeController.eventListener(homeViewInstance, mainController);
+
 
     let show = function (divId) {
         document.getElementById(divId).style.display = "block";

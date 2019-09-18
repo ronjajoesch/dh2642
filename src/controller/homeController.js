@@ -1,16 +1,16 @@
 class HomeController {
-    constructor(container, model) {
-        this.container = container;
+    constructor(view, model) {
         this.model = model;
+        this.view = view;
     }
 
-     eventListener(divId, model, mainController) {
-
-         document.getElementById('startBtn').addEventListener('onclick',function() {
+     eventListener(view,mainController) {
+        console.log(this.view.startBtn);
+        view.startBtn.addEventListener('click',function() {
             mainController.currentDishId = null;
-            console.log("click");
             mainController.displayView('selectDishView');
         });
+
 
     };
 }

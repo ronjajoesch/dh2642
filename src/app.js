@@ -25,7 +25,7 @@ window.onload = function () {
     new SelectDishView(container, model, mainController).render(selectDishView);
 
     //include controllers
-    //new HomeController(model, container).eventListener(homeViewInstance,model,mainController);
+    new HomeController(model, container).eventListener(homeView,model,mainController);
 
     let show = function (divId) {
         document.getElementById(divId).style.display = "block";

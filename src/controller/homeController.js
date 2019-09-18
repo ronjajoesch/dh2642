@@ -4,10 +4,11 @@ class HomeController {
         this.model = model;
     }
 
-     eventListener(view, model, mainController) {
+     eventListener(divId, model, mainController) {
 
-        view.container.on('click', '#startBtn', function() {
+         document.getElementById('startBtn').addEventListener('onclick',function() {
             mainController.currentDishId = null;
+            console.log("click");
             mainController.displayView('selectDishView');
         });
 

@@ -5,31 +5,33 @@ window.onload = function () {
 
     const container = document.getElementsByClassName("page-content")[0];
 
-    var MainController = {
+    var mainController = {
         currentDishId: null,
         displayView: displayView
     };
 
     let searchView = 'searchView',
-        homeView = "homeView",
+        homeView = 'homeView',
         instructionView = 'instructionView',
         detailsView = 'detailsView',
         overviewView = 'overviewView',
         selectDishView = 'selectDishView';
 
-    new HomeView(container).render(homeView);
-    new SearchView(container, model, MainController).render(searchView);
-    new InstructionView(container, model, MainController).render(instructionView);
-    new DetailsView(container, model, MainController).render(null, detailsView); // TODO pass actual dishID
-    new OverviewView(container, model, MainController).render(overviewView);
-    new SelectDishView(container, model, MainController).render(selectDishView);
+    let homeViewInstance = new HomeView(container).render(homeView);
+    new SearchView(container, model, mainController).render(searchView);
+    new InstructionView(container, model, mainController).render(instructionView);
+    new DetailsView(container, model, mainController).render(null, detailsView); // TODO pass actual dishID
+    new OverviewView(container, model, mainController).render(overviewView);
+    new SelectDishView(container, model, mainController).render(selectDishView);
 
+    //include controllers
+    //new HomeController(model, container).eventListener(homeViewInstance,model,mainController);
 
-    show = function (divId) {
+    let show = function (divId) {
         document.getElementById(divId).style.display = "block";
     };
 
-    hide = function (divId) {
+    let hide = function (divId) {
         document.getElementById(divId).style.display = "none";
     };
 

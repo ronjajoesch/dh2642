@@ -13,4 +13,4 @@
       mainController.currentDishId = dishId;
       model.addDishToMenu(dishId);
     });
-  }
+  };

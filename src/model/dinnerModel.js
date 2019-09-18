@@ -175,7 +175,7 @@ class DinnerModel extends Observable {
                 })
                 .catch(function (err) {
                     console.log(err);
-                });
+                }).finally();
 
         return promise;
     }

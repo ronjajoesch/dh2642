@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = async function () {
     console.log("start");
     //We instantiate our model
     const model = new DinnerModel();
@@ -28,7 +28,7 @@ window.onload = function () {
     let overviewViewInstance = new OverviewView(container, model, mainController)
     overviewViewInstance.render(overviewView);
     let selectDishViewInstance = new SelectDishView(container, model, mainController)
-    selectDishViewInstance.render(selectDishView);
+    await selectDishViewInstance.render(selectDishView);
 
     //include controllers
     let homeController = new HomeController(homeViewInstance, model);
@@ -37,9 +37,8 @@ window.onload = function () {
     let searchController = new SearchController(searchViewInstance, model);
     searchController.eventListener(mainController);
 
-    let selectController = new SelectDishController(selectDishViewInstance,model);
+    let selectController = new SelectDishController(selectDishViewInstance, model);
     selectController.eventListener(mainController);
-
 
 
     let show = function (divId) {
@@ -85,9 +84,8 @@ window.onload = function () {
         }
     }
 
-
-    displayView(homeView);
-    //displayView(selectDishView);
+    //displayView(homeView);
+    displayView(selectDishView);
     //displayView(overviewView);
     //displayView(instructionView);
     //displayView(detailsView);

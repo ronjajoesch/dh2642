@@ -13,6 +13,10 @@ class DetailsView{
             this.changeNumGuests(model);
         }
 
+        if(changeDetails.type === "selectedDish"){
+            this.changeSelectedDish();
+        }
+
         //TODO think if we need more functionality here
     }
 
@@ -27,12 +31,26 @@ class DetailsView{
     }
 
 
-    render(dishId, divId) {
+    render(divId) {
 
         const selectDishDiv = this.container.querySelector(".row");
         const mainDiv = selectDishDiv.appendChild(document.createElement('div'));
         mainDiv.className = "row col-xs-12 col-sm-7 col-md-7 col-lg-8";
         mainDiv.setAttribute('id', divId);
+        this.changeSelectedDish();
+
+        this.afterRender();
+    }
+
+    afterRender() {
+        let loadingIndicator = document.getElementById("loader");
+        loadingIndicator.style.display = "none";
+
+    }
+
+    changeSelectedDish(){
+        const mainDiv = this.container.querySelector('#detailsView');
+        let dishId = this.model.selectedDish;
 
         if (dishId !== undefined && dishId !== null) {
             this.model.getDish(dishId).then((dish) => {
@@ -89,20 +107,12 @@ class DetailsView{
                 const td44 = table.appendChild(document.createElement("td"));
                 td44.innerText = "Total Cost: " + +dish.pricePerServing * this.model.nGuest;
             });
-            this.afterRender();
+
         }
         else{
-            let h4 = mainDiv.appendChild(document.createElement("h4"));
-            h4.innerText = "ERROR: You have not selected a specific dish.";
+            console.log("You have not selected a specific dish.");
         }
     }
-
-    afterRender() {
-        let loadingIndicator = document.getElementById("loader");
-        loadingIndicator.style.display = "none";
-
-    }
-
     changeNumGuests(model) {
         let title3 = document.getElementById("people-title");
         title3.value = this.model.getNumberOfGuests();

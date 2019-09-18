@@ -5,8 +5,7 @@ window.onload = async function () {
 
     const container = document.getElementsByClassName("page-content")[0];
 
-    var mainController = {
-        currentDishId: null,
+    let mainController = {
         displayView: displayView
     };
 
@@ -24,7 +23,7 @@ window.onload = async function () {
     let instructionViewInstance = new InstructionView(container, model, mainController)
     instructionViewInstance.render(instructionView);
     let detailsViewInstance = new DetailsView(container, model, mainController)
-    detailsViewInstance.render(null, detailsView); // TODO pass actual dishID
+    detailsViewInstance.render(detailsView); // TODO pass actual dishID
     let overviewViewInstance = new OverviewView(container, model, mainController)
     overviewViewInstance.render(overviewView);
     let selectDishViewInstance = new SelectDishView(container, model, mainController)
@@ -39,6 +38,8 @@ window.onload = async function () {
 
     let selectController = new SelectDishController(selectDishViewInstance, model);
     selectController.eventListener(mainController);
+
+    //register event observers
 
 
     let show = function (divId) {

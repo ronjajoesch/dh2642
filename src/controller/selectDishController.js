@@ -5,10 +5,12 @@ class SelectDishController {
     }
 
     eventListener(mainController) {
+            let self = this;
             this.view.dishList.forEach(function (dish) {
-                addEventListener('click', function () {
+                dish.addEventListener('click', function () {
                     mainController.currentDishId = dish.id;
-                    mainController.displayView('overviewView');
+                    self.model.setSelectedDish(dish.id);
+                    mainController.displayView('detailsView');
                 });
             });
 

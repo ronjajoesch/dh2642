@@ -35,6 +35,12 @@ class DinnerModel extends Observable {
 
         self.nGuest = 1;
         self.menu = [];
+        self.selectedDish=null;
+    }
+
+    setSelectedDish(id){
+        this.selectedDish=id;
+        this.notifyObservers({type: "selectedDish", index: id});
     }
 
     setNumberOfGuests(num) {

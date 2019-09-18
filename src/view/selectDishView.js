@@ -61,13 +61,16 @@ class SelectDishView {
 
             });
 
-            let titles = data.map(function (dish) {
-                return dish.title;
+            let dishes = data.map(function (dish) {
+                return [dish.id,dish.title];
             });
 
             var self = this;
-            titles.forEach(function (title, index) {
+            dishes.forEach(function (dish,index) {
+                let id = dish[0];
+                let title = dish[1];
                 let childElement = document.createElement("div");
+                childElement.setAttribute("id",id)
                 childElement.className = "dish";
                 let img;
                 img = self.get_image_element(imagesSrcs[index], 100, 100);  // TODO object-fit: cover
@@ -75,11 +78,6 @@ class SelectDishView {
                 let captionElement = document.createElement("figcaption");
                 captionElement.innerText = ""+title;
                 childElement.appendChild(captionElement);
-
-                //add if description is available  --> don't delete
-                /*let descriptionElement = document.createElement("p");
-                descriptionElement.innerText = description[index];
-                childElement.appendChild(descriptionElement);*/
 
                 contentDiv.appendChild(childElement);
             });

@@ -37,6 +37,11 @@ window.onload = function () {
     let searchController = new SearchController(searchViewInstance, model);
     searchController.eventListener(mainController);
 
+    let selectController = new SelectDishController(selectDishViewInstance,model);
+    selectController.eventListener(mainController);
+
+
+
     let show = function (divId) {
         document.getElementById(divId).style.display = "block";
     };

@@ -32,8 +32,7 @@ window.onload = function () {
 
     //include controllers
     let homeController = new HomeController(homeViewInstance, model);
-
-    homeController.eventListener(homeViewInstance, mainController);
+    homeController.eventListener(mainController);
 
 
     let show = function (divId) {

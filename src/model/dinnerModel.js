@@ -1,4 +1,3 @@
-
 class Observable {
     constructor() {
         this._observers = [];
@@ -36,11 +35,11 @@ class DinnerModel extends Observable {
 
         self.nGuest = 1;
         self.menu = [];
-        self.selectedDish=null;
+        self.selectedDish = null;
     }
 
-    setSelectedDish(id){
-        this.selectedDish=id;
+    setSelectedDish(id) {
+        this.selectedDish = id;
         this.notifyObservers({type: "selectedDish", index: id});
     }
 
@@ -77,7 +76,7 @@ class DinnerModel extends Observable {
         let total = 0;
         let self = this;
         this.menu.map(function (dish) {
-            total += dish.pricePerServing*self.nGuest;
+            total += dish.pricePerServing * self.nGuest;
         });
         return Math.round(total * 100) / 100;
     }
@@ -91,7 +90,8 @@ class DinnerModel extends Observable {
                 this.menu.push(dishObject);
             } else {
                 let item = this.menu.find(function (item) {
-                    return item.dishTypes.find(type=> type === dishObject.dishTypes[0]);
+                    let type = item.dishTypes.find(type => type === dishObject.dishTypes[0]);
+                    return item.dishTypes[0] === dishObject.dishTypes[0];
                 });
                 if (item != null) {
                     this.removeDishFromMenu(item);
@@ -100,22 +100,14 @@ class DinnerModel extends Observable {
             }
 
         }
-        this.notifyObservers({type:"menu", index:this.menu});
+        this.notifyObservers({type: "menu", index: this.menu});
     }
 
     //Removes dish from menu
-    removeDishFromMenu(dishObject) {
+    removeDishFromMenu(item) {
+        this.menu = this.menu.filter(element => element.id !== item.id);
 
-        let dishObjectIndex = undefined;
-
-        dishObjectIndex = this.menu.findIndex(
-            function (dish) {
-                return dish.id === dishObject.id;
-            }
-        );
-
-        this.menu.pop(dishObjectIndex, 1);
-        this.notifyObservers({type:"menu", index:this.menu});
+        this.notifyObservers({type: "menu", index: this.menu});
     }
 
     //Returns all dishes of specific type (i.e. "starter", "main dish" or "dessert").

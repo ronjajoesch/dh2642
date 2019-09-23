@@ -4,6 +4,9 @@ class SelectDishView {
         this.model = model;
         model.addObserver(this);
         this.dishList = null;
+        this.searchButton = null;
+        this.query = null;
+        this.type = null;
     }
 
     update(model, changeDetails) {
@@ -19,7 +22,7 @@ class SelectDishView {
         return image;
     }
 
-    async render(id, type, query) {
+    async render(id) {
         const selectDishDiv = this.container.querySelector(".row").appendChild(document.createElement('div'));
         selectDishDiv.setAttribute('id', id);
 
@@ -40,22 +43,30 @@ class SelectDishView {
 
         const selectTypeDiv = findDishDiv.appendChild(document.createElement("div"));
         //TODO check which type of dishes exist. Add all options.
-        selectTypeDiv.innerHTML = '<select class="type-of-dish">' +
+        selectTypeDiv.innerHTML = '<select id ="type" class="type-of-dish">' +
             '<option value="Starter">Starter</option>' +
             '<option value="Main Course">Main Course</option>' +
             '<option value="Dessert">Dessert</option></select>';
 
-        contentDiv.setAttribute("id", "dishes-select-dish-div")
-        await this.displayDishesSelection(this.model, type, query);
+        contentDiv.setAttribute("id", "dishes-select-dish-div");
+
+        const buttonDiv = findDishDiv.appendChild(document.createElement('div'));
+        buttonDiv.innerHTML = `<button id="searchBtn" type="button" class="btn btn-sm btn-primary">search</button>`;
+        this.searchButton = buttonDiv.querySelector("#searchBtn");
+        await this.displayDishesSelection(this.model);
 
         this.afterRender();
 
     }
 
-    displayDishesSelection(model, type, query) {
+    displayDishesSelection(model) {
+        this.query = this.container.querySelector("#query").value;
+        this.type = this.container.querySelector("#type").value;
+
         return new Promise(resolve => {
             let contentDiv = document.getElementById("dishes-select-dish-div");
-            model.getAllDishes(type, query).then((data) => {
+            contentDiv.innerHTML = "";
+            model.getAllDishes(this.type, this.query).then((data) => {
                 let imagesSrcs = data.map(function (dish) {
                     return " https://spoonacular.com/recipeImages/" + dish.image;
 

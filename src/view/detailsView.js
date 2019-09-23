@@ -3,6 +3,7 @@ class DetailsView{
         this.container = container;
         this.model = model;
         model.addObserver(this);
+        this.detailsViewBackButton = null;
     }
 
     update(model, changeDetails) {
@@ -38,8 +39,11 @@ class DetailsView{
         mainDiv.className = "row col-xs-12 col-sm-7 col-md-7 col-lg-8";
         mainDiv.setAttribute('id', divId);
         this.changeSelectedDish();
+        
 
         this.afterRender();
+
+       // this.detailsViewBackButton = mainDiv.querySelector("#back"); this doesn't work.
     }
 
     afterRender() {
@@ -75,6 +79,8 @@ class DetailsView{
                 button.className = "btn btn-sm btn-primary";
                 button.innerText = "back to select dish";
 
+                this.detailsViewBackButton = button;
+
                 let instructionDiv = leftDetailsDiv.appendChild(document.createElement("div"));
 
                 let instructionsTitle = instructionDiv.appendChild(document.createElement("h6"));
@@ -107,7 +113,6 @@ class DetailsView{
                 const td44 = table.appendChild(document.createElement("td"));
                 td44.innerText = "Total Cost: " + +dish.pricePerServing * this.model.nGuest;
             });
-
         }
         else{
             console.log("You have not selected a specific dish.");

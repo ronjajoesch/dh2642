@@ -1,16 +1,15 @@
-/*
- var detailsController = function (view, model, mainController) {
-//verify the id in the view.
-// attach an event listener to the button and move back to the search view.
-    view.container.on('click', '#back', function() {
-        mainController.displayView('searchView');
-    });
-  
-//change the id in the view.
-    view.container.on('click', '#add-item-to-cart', function() {
-      var dishId = $(this).attr('data-dishid');
-      //mainController.currentDishId = dishId;
-      model.addDishToMenu(dishId);
-    });
+class DetailsController {
+  constructor(view, model) {
+      this.model = model;
+      this.view = view;
+  }
+
+  eventListener(mainController) {
+    console.log(mainController);
+      // this.view.detailsViewBackButton.addEventListener('click', function () {
+      //   console.log('bing!');
+      //     // mainController.displayView('selectDishView');
+      // });
+
   };
-*/
+}

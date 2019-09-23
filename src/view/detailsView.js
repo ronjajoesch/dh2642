@@ -38,8 +38,18 @@ class DetailsView{
         const mainDiv = selectDishDiv.appendChild(document.createElement('div'));
         mainDiv.className = "row col-xs-12 col-sm-7 col-md-7 col-lg-8";
         mainDiv.setAttribute('id', divId);
+
+        let buttonDiv = mainDiv.appendChild(document.createElement("div"));
+        buttonDiv.className='col-xs-12 col-sm-12 col-md-12 col-lg-12';
+        let button = buttonDiv.appendChild(document.createElement("button"));
+        button.setAttribute("type", "button");
+        button.setAttribute("id", "back");
+        button.className = "btn btn-sm btn-primary";
+        button.innerText = "back to select dish";
+
+        this.detailsViewBackButton = button;
         this.changeSelectedDish();
-        
+
 
         this.afterRender();
 
@@ -72,14 +82,6 @@ class DetailsView{
                 let imgDiv = leftDetailsDiv.appendChild(document.createElement("div"));
                 imgDiv.appendChild(img);
 
-                let buttonDiv = leftDetailsDiv.appendChild(document.createElement("div"));
-                let button = buttonDiv.appendChild(document.createElement("button"));
-                button.setAttribute("type", "button");
-                button.setAttribute("id", "back");
-                button.className = "btn btn-sm btn-primary";
-                button.innerText = "back to select dish";
-
-                this.detailsViewBackButton = button;
 
                 let instructionDiv = leftDetailsDiv.appendChild(document.createElement("div"));
 
@@ -120,10 +122,12 @@ class DetailsView{
     }
     changeNumGuests(model) {
         let title3 = document.getElementById("people-title");
-        title3.value = this.model.getNumberOfGuests();
+        if(title3 != null){
+            title3.value = model.getNumberOfGuests();
 
-        let text = "Ingredients for " + model.getNumberOfGuests() + " people";
-        title3.innerText = text;
+            title3.innerText = "Ingredients for " + model.getNumberOfGuests() + " people";
+        }
+
     }
 
 }

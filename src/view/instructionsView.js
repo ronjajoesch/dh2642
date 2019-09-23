@@ -62,7 +62,7 @@ class InstructionView {
         var self = this;
         let bottomDiv = document.getElementById("dishes-instructions");
 
-        menu.forEach(function(dish,i){
+        menu.forEach(function(dish){
             const dishDiv = bottomDiv.appendChild(document.createElement("div"));
             dishDiv.className = "row";
 

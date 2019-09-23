@@ -20,8 +20,9 @@ class Observable {
     }
 
     notifyObservers(changeDetails) {
+        let self = this;
         this._observers.forEach(function (observer) {
-            observer.update(this, changeDetails);
+            observer.update(self, changeDetails);
         })
     }
 }

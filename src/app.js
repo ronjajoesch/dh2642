@@ -23,7 +23,7 @@ window.onload = async function () {
     let instructionViewInstance = new InstructionView(container, model, mainController)
     instructionViewInstance.render(instructionView);
     let detailsViewInstance = new DetailsView(container, model, mainController)
-    detailsViewInstance.render(detailsView); // TODO pass actual dishID
+    detailsViewInstance.render(detailsView);
     let overviewViewInstance = new OverviewView(container, model, mainController)
     overviewViewInstance.render(overviewView);
     let selectDishViewInstance = new SelectDishView(container, model, mainController)

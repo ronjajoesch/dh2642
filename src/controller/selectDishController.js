@@ -6,25 +6,33 @@ class SelectDishController {
 
      async eventListener(mainController) {
             let self = this;
-            //TODO -> does not work on reload
-            this.view.dishList.forEach(function (dish) {
-                dish.addEventListener('click', function () {
-                    self.model.setSelectedDish(dish.id);
-                    mainController.displayView('detailsView');
-                });
-            });
+
+            this.addDishesListener(mainController);
 
             this.view.searchButton.addEventListener('click', async function(){
                 await self.view.showDishes();
+                self.addDishesListener(mainController);
 
-                self.view.dishList.forEach(function (dish) {
-                    dish.addEventListener('click', function () {
-                        self.model.setSelectedDish(dish.id);
-                        mainController.displayView('detailsView');
-                    });
-                });
             })
 
     };
+
+    addDishesListener(mainController){
+        let self = this;
+        this.view.dishList.forEach(function (dish) {
+            //picture & figcaption
+            dish.firstChild.addEventListener('click', function () {
+                self.model.setSelectedDish(dish.id);
+                mainController.displayView('detailsView');
+
+            });
+            //add button
+            dish.lastChild.addEventListener('click', function () {
+                self.model.getDish(dish.id).then((dishObject)=>{
+                    self.model.addDishToMenu(dishObject);
+                });
+            });
+        });
+    }
 
 }

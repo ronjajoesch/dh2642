@@ -86,14 +86,18 @@ class SelectDishView {
                     let title = dish[1];
                     let childElement = document.createElement("div");
                     childElement.className = "dish";
-                    childElement.setAttribute("id", id)
+                    childElement.setAttribute("id", id);
+                    let childChildElement = document.createElement("div");
                     let img;
                     img = self.get_image_element(imagesSrcs[index], 100, 100);  // TODO object-fit: cover
-                    childElement.appendChild(img);
+                    childChildElement.appendChild(img);
                     let captionElement = document.createElement("figcaption");
                     captionElement.innerText = "" + title;
-                    childElement.appendChild(captionElement);
-
+                    childChildElement.appendChild(captionElement);
+                    childElement.appendChild(childChildElement);
+                    let addButton = document.createElement("button");
+                    addButton.innerText="add";
+                    childElement.appendChild(addButton);
                     contentDiv.appendChild(childElement);
                 });
 

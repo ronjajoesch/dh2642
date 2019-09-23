@@ -9,6 +9,11 @@ class SearchController {
             mainController.displayView('overviewView');
         });
 
+        let self = this;
+        this.view.selectGuests.addEventListener('change', function () {
+            let value = self.view.selectGuests.value;
+            self.model.setNumberOfGuests(value);
 
+        })
     };
 }

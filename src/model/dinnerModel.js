@@ -75,9 +75,10 @@ class DinnerModel extends Observable {
     //Returns the total price of the menu (all the ingredients multiplied by number of guests).
     getTotalMenuPrice() {
         let total = 0;
+        let self = this;
         this.menu.map(function (dish) {
-            total += dish.pricePerServing;
-        })
+            total += dish.pricePerServing*self.nGuest;
+        });
         return total;
     }
 

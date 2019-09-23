@@ -84,7 +84,7 @@ class SearchView {
             td2.innerText = el.title;
             const td3 = tr2.appendChild(document.createElement("td"));
             td3.className = "value-starter-value"; //TODO change to actual type
-            td3.innerText = "SEK " + el.pricePerServing;
+            td3.innerText = "SEK " + el.pricePerServing*model.getNumberOfGuests();
         });
 
         this.displayTotal(model);

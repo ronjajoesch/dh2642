@@ -88,11 +88,12 @@ class OverviewView {
 
     loadDishesAndTotal(model) {
         let menu = model.getFullMenu();
+        console.log(menu);
         var self = this;
         let totalPrice = 0;
 
         let divDishes = document.getElementById("div-dishes");
-
+        divDishes.innerHTML="";
         menu.forEach(function (dish, index) {
             let childElement = document.createElement("div");
             childElement.className = "dish";
@@ -107,13 +108,12 @@ class OverviewView {
             // This part is for displaying the individual Prices.
             let priceElement = document.createElement("div");
             priceElement.className = "value-main-course-price";
-            priceElement.innerText = "SEK" + " " + dish.pricePerServing;
+            priceElement.innerText = "SEK" + " " + dish.pricePerServing*model.getNumberOfGuests();
             childElement.appendChild(priceElement);
             divDishes.appendChild(childElement);
-            totalPrice += dish.pricePerServing;
 
             let totalPricediv = document.getElementById("total-price-overview");
-            totalPricediv.innerText = totalPrice;
+            totalPricediv.innerText = model.getTotalMenuPrice();
         });
     }
 

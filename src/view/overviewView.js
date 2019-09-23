@@ -88,8 +88,7 @@ class OverviewView {
 
     loadDishesAndTotal(model) {
         let menu = model.getFullMenu();
-        console.log(menu);
-        var self = this;
+        let self = this;
         let totalPrice = 0;
 
         let divDishes = document.getElementById("div-dishes");

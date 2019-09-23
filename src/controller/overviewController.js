@@ -4,7 +4,6 @@ class OverviewController {
         this.view = view;
     }
 
-
     eventListener(mainController) {
         this.view.printButton.addEventListener('click', function () {
             mainController.displayView('instructionView');

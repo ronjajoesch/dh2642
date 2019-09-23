@@ -18,6 +18,18 @@ class DetailsView{
             this.changeSelectedDish();
         }
 
+        if(changeDetails.type === "menu"){
+              if(localStorage.menuItems){
+            var a = [];
+            // Parse the serialized data back into an aray of objects
+            a = JSON.parse(localStorage.getItem('menuItems'));
+            // Push the new data (whether it be an object or anything else) onto the array
+            a.push(model.menu[model.menu.length - 1]);
+            console.log(a);
+            localStorage.setItem('menuItems', JSON.stringify(a));
+        }
+
+        }
         //TODO think if we need more functionality here
     }
 
@@ -34,6 +46,8 @@ class DetailsView{
 
     render(divId) {
 
+        var retrievedObject = localStorage.getItem('menuItems');
+        console.log(retrievedObject);
         const selectDishDiv = this.container.querySelector(".row");
         const mainDiv = selectDishDiv.appendChild(document.createElement('div'));
         mainDiv.className = "row col-xs-12 col-sm-7 col-md-7 col-lg-8";
@@ -131,3 +145,5 @@ class DetailsView{
     }
 
 }
+
+

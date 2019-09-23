@@ -79,7 +79,7 @@ class DinnerModel extends Observable {
         this.menu.map(function (dish) {
             total += dish.pricePerServing*self.nGuest;
         });
-        return total;
+        return Math.round(total * 100) / 100;
     }
 
     addDishToMenu(dishObject) {

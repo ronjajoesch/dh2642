@@ -14,7 +14,6 @@ class SearchView {
             this.changeNumGuests(model);
         }
         if (changeDetails.type === "menu") {
-            console.log(model);
             this.displayMenuSelected(model);
 
         }

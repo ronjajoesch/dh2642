@@ -91,9 +91,9 @@ class DinnerModel extends Observable {
                 this.menu.push(dishObject);
             } else {
                 let item = this.menu.find(function (item) {
-                    return item.dishTypes == dishObject.dishTypes;  //TODO check what types there are and maybe adjust code
+                    return item.dishTypes.find(type=> type === dishObject.dishTypes[0]);
                 });
-                if (item != null && item != undefined) {
+                if (item != null) {
                     this.removeDishFromMenu(item);
                 }
                 this.menu.push(dishObject);

@@ -4,7 +4,7 @@ class SelectDishController {
         this.view = view;
     }
 
-    eventListener(mainController) {
+     async eventListener(mainController) {
             let self = this;
             //TODO -> does not work on reload
             this.view.dishList.forEach(function (dish) {
@@ -14,11 +14,17 @@ class SelectDishController {
                 });
             });
 
-            this.view.searchButton.addEventListener('click', function(){
-                self.view.displayDishesSelection(self.model);
+            this.view.searchButton.addEventListener('click', async function(){
+                await self.view.showDishes();
+
+                self.view.dishList.forEach(function (dish) {
+                    dish.addEventListener('click', function () {
+                        self.model.setSelectedDish(dish.id);
+                        mainController.displayView('detailsView');
+                    });
+                });
             })
 
-
-
     };
+
 }

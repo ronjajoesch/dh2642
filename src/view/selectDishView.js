@@ -22,7 +22,7 @@ class SelectDishView {
         return image;
     }
 
-    async render(id) {
+     async render(id) {
         const selectDishDiv = this.container.querySelector(".row").appendChild(document.createElement('div'));
         selectDishDiv.setAttribute('id', id);
 
@@ -53,10 +53,14 @@ class SelectDishView {
         const buttonDiv = findDishDiv.appendChild(document.createElement('div'));
         buttonDiv.innerHTML = `<button id="searchBtn" type="button" class="btn btn-sm btn-primary">search</button>`;
         this.searchButton = buttonDiv.querySelector("#searchBtn");
+
+        await this.showDishes();
+
+    }
+
+    async showDishes(){
         await this.displayDishesSelection(this.model);
-
         this.afterRender();
-
     }
 
     displayDishesSelection(model) {

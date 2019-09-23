@@ -45,6 +45,9 @@ window.onload = async function () {
     let instructionController = new InstructionController(instructionViewInstance, model);
     instructionController.eventListener(mainController);
 
+    let detailsController = new DetailsController(detailsViewInstance, model);
+    detailsController.eventListener(mainController);
+
     let show = function (divId) {
         document.getElementById(divId).style.display = "";
     };

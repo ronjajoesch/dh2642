@@ -19,7 +19,12 @@ class DetailsView{
         }
 
         if(changeDetails.type === "menu"){
-              if(localStorage.menuItems){
+            if(!localStorage.menuItems){
+            var a = [];
+            a.push(JSON.parse(localStorage.getItem('menuItems')));
+            localStorage.setItem('menuItems', JSON.stringify(a));
+            }
+            if(localStorage.menuItems){
             var a = [];
             // Parse the serialized data back into an aray of objects
             a = JSON.parse(localStorage.getItem('menuItems'));
@@ -32,7 +37,6 @@ class DetailsView{
         }
         //TODO think if we need more functionality here
     }
-
 
     // TODO object-fit: cover
     get_image_element(src, width, height) {

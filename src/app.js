@@ -2,8 +2,13 @@ window.onload = async function () {
     console.log("start");
     //We instantiate our model
     const model = new DinnerModel();
-
-    const container = document.getElementsByClassName("page-content")[0];
+    //check if the localstorage is available
+    if(localStorage.menuItems){
+        var x = JSON.parse(localStorage.menuItems);
+        var x2 = x.filter(function(e){return e});
+        model.menu = x2;
+    }
+        const container = document.getElementsByClassName("page-content")[0];
 
     let mainController = {
         displayView: displayView
@@ -68,7 +73,12 @@ window.onload = async function () {
     function displayView(viewName) {
         //first hide all views.
         hideViews();
-
+        if(localStorage.menuItems && viewName != overviewView && viewName != instructionView){
+            show(searchView);
+            show(selectDishView);
+            //show(overviewView);
+            viewName = '';
+        }
         if (viewName === detailsView) {
             show(searchView);
             show(detailsView);

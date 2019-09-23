@@ -567,4 +567,19 @@ describe("DinnerPlanner App", () => {
       }
     });
   });
+
+  describe("Select dish View", () => {
+    beforeEach(() => {
+      model.addDishToMenu(dish1);
+      searchView.render();
+    });
+    it("has a dish search container", () => {
+      //added because search container is in this view
+      const selectDishView = new SelectDishView(document.querySelector("#page-content"), model);
+      selectDishView.render();
+
+      const dishSearch = document.getElementById("dishSearchView");
+      expect(dishSearch).to.not.be.a("null");
+    });
+  })
 });

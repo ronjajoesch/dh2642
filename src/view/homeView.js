@@ -5,11 +5,6 @@ class HomeView {
     }
     // An example of creating HTML declaratively. Think about the pros and cons of this approach.
     render(id) {
-        if(!localStorage.menuItems){
-            var a = [];
-            a.push(JSON.parse(localStorage.getItem('menuItems')));
-            localStorage.setItem('menuItems', JSON.stringify(a));
-            }
             
         var defaultmessage = getCookie('homeMessage');
         if(defaultmessage == null || defaultmessage == undefined){

@@ -97,6 +97,7 @@ class SelectDishView {
                     childElement.appendChild(childChildElement);
                     let addButton = document.createElement("button");
                     addButton.innerText="add";
+                    addButton.setAttribute("id","AddButton")
                     childElement.appendChild(addButton);
                     contentDiv.appendChild(childElement);
                 });

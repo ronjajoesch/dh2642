@@ -73,7 +73,7 @@ window.onload = async function () {
     function displayView(viewName) {
         //first hide all views.
         hideViews();
-        if(localStorage.menuItems && viewName != overviewView && viewName != instructionView){
+        if(localStorage.menuItems && viewName != overviewView && viewName != instructionView && viewName != detailsView){
             show(searchView);
             show(selectDishView);
             //show(overviewView);

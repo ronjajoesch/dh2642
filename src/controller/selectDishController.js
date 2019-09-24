@@ -22,6 +22,7 @@ class SelectDishController {
         this.view.dishList.forEach(function (dish) {
             //picture & figcaption
             dish.firstChild.addEventListener('click', function () {
+                console.log("test");
                 self.model.setSelectedDish(dish.id);
                 mainController.displayView('detailsView');
 
@@ -30,6 +31,7 @@ class SelectDishController {
             dish.lastChild.addEventListener('click', function () {
                 self.model.getDish(dish.id).then((dishObject)=>{
                     self.model.addDishToMenu(dishObject);
+
                 });
             });
         });

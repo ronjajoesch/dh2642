@@ -7,7 +7,6 @@ class Observable {
         this._observers.push(observer);
     }
 
-    //TODO test
     removeObserver(observer) {
         let i;
         this._observers.filter(function (value, index) {
@@ -52,11 +51,6 @@ class DinnerModel extends Observable {
 
     getNumberOfGuests() {
         return this.nGuest;
-    }
-
-    //Returns the dish that is on the menu for selected type
-    getSelectedDish(type) {
-        return this.getAllDishes(type);
     }
 
     //Returns all the dishes on the menu.

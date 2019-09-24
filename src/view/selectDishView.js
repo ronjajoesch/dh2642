@@ -85,7 +85,7 @@ class SelectDishView {
                     let id = dish[0];
                     let title = dish[1];
                     let childElement = document.createElement("div");
-                    childElement.className = "dish";
+                    childElement.className = "dish-div";
                     childElement.setAttribute("id", id);
                     let childChildElement = document.createElement("div");
                     let img;
@@ -113,6 +113,6 @@ class SelectDishView {
         let loadingIndicator = document.getElementById("loader");
         loadingIndicator.style.display = "none";
 
-        this.dishList = this.container.querySelectorAll(".dish");
+        this.dishList = this.container.querySelectorAll(".dish-div");
     }
 }

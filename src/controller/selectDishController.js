@@ -22,6 +22,7 @@ class SelectDishController {
         this.view.dishList.forEach(function (dish) {
             //picture & figcaption
             dish.firstChild.addEventListener('click', function () {
+                console.log("test");
                 self.model.setSelectedDish(dish.id);
                 mainController.displayView('detailsView');
 

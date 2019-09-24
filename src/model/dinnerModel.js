@@ -1,40 +1,65 @@
-//DinnerModel class
-class DinnerModel {
-
+class Observable {
     constructor() {
+        this._observers = [];
+    }
+
+    addObserver(observer) {
+        this._observers.push(observer);
+    }
+
+    removeObserver(observer) {
+        let i;
+        this._observers.filter(function (value, index) {
+            if (observer === value) {
+                i = index;
+            }
+        });
+        this._observers.splice(i, 1)
+    }
+
+    notifyObservers(changeDetails) {
+        let self = this;
+        this._observers.forEach(function (observer) {
+            observer.update(self, changeDetails);
+        })
+    }
+}
+
+
+//DinnerModel class
+class DinnerModel extends Observable {
+    constructor() {
+        super();
         var self = this;
 
         self.nGuest = 1;
         self.menu = [];
+        self.selectedDish = null;
+    }
+
+    setSelectedDish(id) {
+        this.selectedDish = id;
+        this.notifyObservers({type: "selectedDish", index: id});
     }
 
     setNumberOfGuests(num) {
-        //TODO Lab 0
         if (num > 0) {
             this.nGuest = num;
         }
+        this.notifyObservers({type: "nGuest", index: this.nGuest});
     }
 
     getNumberOfGuests() {
-        //TODO Lab 0
         return this.nGuest;
-    }
-
-    //Returns the dish that is on the menu for selected type
-    getSelectedDish(type) {
-        //TODO Lab 0
-        return this.getAllDishes(type);
     }
 
     //Returns all the dishes on the menu.
     getFullMenu() {
-        //TODO Lab 0
         return this.menu;
     }
 
     //Returns all ingredients for all the dishes on the menu.
     getAllIngredients() {
-        //TODO Lab 0
         this.menu.map(function (dish) {
             return dish.ingredients;
         })
@@ -42,17 +67,15 @@ class DinnerModel {
 
     //Returns the total price of the menu (all the ingredients multiplied by number of guests).
     getTotalMenuPrice() {
-        //TODO Lab 0
         let total = 0;
+        let self = this;
         this.menu.map(function (dish) {
-            total += dish.pricePerServing;
-        })
-        return total;
+            total += dish.pricePerServing * self.nGuest;
+        });
+        return Math.round(total * 100) / 100;
     }
 
     addDishToMenu(dishObject) {
-        //TODO Lab 0
-
         //Adds the passed dish to the menu. If the dish of that type already exists on the menu
         //it is removed from the menu and the new one added.
 
@@ -61,29 +84,24 @@ class DinnerModel {
                 this.menu.push(dishObject);
             } else {
                 let item = this.menu.find(function (item) {
-                    return item.dishTypes == dishObject.dishTypes;  //TODO check what types there are and maybe adjust code
+                    let type = item.dishTypes.find(type => type === dishObject.dishTypes[0]);
+                    return item.dishTypes[0] === dishObject.dishTypes[0];
                 });
-                if (item != null && item != undefined) {
+                if (item != null) {
                     this.removeDishFromMenu(item);
                 }
                 this.menu.push(dishObject);
             }
 
         }
+        this.notifyObservers({type: "menu", index: this.menu});
     }
 
     //Removes dish from menu
-    removeDishFromMenu(dishObject) {
-        //TODO Lab 0
-        let dishObjectIndex = undefined;
+    removeDishFromMenu(item) {
+        this.menu = this.menu.filter(element => element.id !== item.id);
 
-        dishObjectIndex = this.menu.findIndex(
-            function (dish) {
-                return dish.id === dishObject.id;
-            }
-        );
-
-        this.menu.pop(dishObjectIndex, 1);
+        this.notifyObservers({type: "menu", index: this.menu});
     }
 
     //Returns all dishes of specific type (i.e. "starter", "main dish" or "dessert").
@@ -111,7 +129,7 @@ class DinnerModel {
         } else {
 
             let promise = new Promise(function (resolve, reject) {
-                let Baseurl = "http://localhost:8080/getDish/";        
+                let Baseurl = "http://localhost:8080/getDish/";
                 let corsURL = "https://cors-anywhere.herokuapp.com/";
                 let options;
 
@@ -151,7 +169,7 @@ class DinnerModel {
                 })
                 .catch(function (err) {
                     console.log(err);
-                });
+                }).finally();
 
         return promise;
     }
@@ -175,3 +193,4 @@ deepFreeze(o) {
 }
 
 //deepFreeze(dishesConst);
+

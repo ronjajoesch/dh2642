@@ -2,6 +2,16 @@ class SelectDishView {
     constructor(container, model) {
         this.container = container;
         this.model = model;
+        model.addObserver(this);
+        this.dishList = null;
+        this.searchButton = null;
+        this.query = null;
+        this.type = null;
+    }
+
+    update(model, changeDetails) {
+
+
     }
 
     get_image_element(src, width, height) {
@@ -12,8 +22,10 @@ class SelectDishView {
         return image;
     }
 
-    render() {
+    async render(id) {
         const selectDishDiv = this.container.querySelector(".row").appendChild(document.createElement('div'));
+        selectDishDiv.setAttribute('id', id);
+
         selectDishDiv.className = "col-xs-12 col-sm-7 col-md-7 col-lg-8";
         const heading = selectDishDiv.appendChild(document.createElement('h4'));
         heading.innerText = "Select Dinner";
@@ -31,49 +43,68 @@ class SelectDishView {
 
         const selectTypeDiv = findDishDiv.appendChild(document.createElement("div"));
         //TODO check which type of dishes exist. Add all options.
-        selectTypeDiv.innerHTML = '<select class="type-of-dish">' +
+        selectTypeDiv.innerHTML = '<select id ="type" class="type-of-dish">' +
             '<option value="Starter">Starter</option>' +
             '<option value="Main Course">Main Course</option>' +
             '<option value="Dessert">Dessert</option></select>';
 
-        //TODO interactions
-        let type = "Main Course";
-        let query = "Pizza";
+        contentDiv.setAttribute("id", "dishes-select-dish-div");
 
-        this.model.getAllDishes(type, query).then((data) => {
-            console.log(data);
-            let imagesSrcs = data.map(function (dish) {
-                return " https://spoonacular.com/recipeImages/"+dish.image;
+        const buttonDiv = findDishDiv.appendChild(document.createElement('div'));
+        buttonDiv.innerHTML = `<button id="searchBtn" type="button" class="btn btn-sm btn-primary">search</button>`;
+        this.searchButton = buttonDiv.querySelector("#searchBtn");
 
-            });
+        await this.showDishes();
 
-            let titles = data.map(function (dish) {
-                return dish.title;
-            });
+    }
 
-            var self = this;
-            titles.forEach(function (title, index) {
-                let childElement = document.createElement("div");
-                childElement.className = "dish";
-                let img;
-                img = self.get_image_element(imagesSrcs[index], 100, 100);
-                childElement.appendChild(img);
-                let captionElement = document.createElement("figcaption");
-                captionElement.innerText = title;
-                childElement.appendChild(captionElement);
+    async showDishes() {
+        await this.displayDishesSelection(this.model);
+        this.afterRender();
+    }
 
-                //add if description is available  --> don't delete
-                /*let descriptionElement = document.createElement("p");
-                descriptionElement.innerText = description[index];
-                childElement.appendChild(descriptionElement);*/
+    displayDishesSelection(model) {
+        this.query = this.container.querySelector("#query").value;
+        this.type = this.container.querySelector("#type").value;
 
-                contentDiv.appendChild(childElement);
+        return new Promise(resolve => {
+            let contentDiv = document.getElementById("dishes-select-dish-div");
+            contentDiv.innerHTML = "";
+            model.getAllDishes(this.type, this.query).then((data) => {
+                let imagesSrcs = data.map(function (dish) {
+                    return " https://spoonacular.com/recipeImages/" + dish.image;
+
+                });
+
+                let dishes = data.map(function (dish) {
+                    return [dish.id, dish.title];
+                });
+
+                var self = this;
+                dishes.forEach(function (dish, index) {
+                    let id = dish[0];
+                    let title = dish[1];
+                    let childElement = document.createElement("div");
+                    childElement.className = "dish-div";
+                    childElement.setAttribute("id", id);
+                    let childChildElement = document.createElement("div");
+                    let img;
+                    img = self.get_image_element(imagesSrcs[index], 100, 100);  // TODO object-fit: cover
+                    childChildElement.appendChild(img);
+                    let captionElement = document.createElement("figcaption");
+                    captionElement.innerText = "" + title;
+                    childChildElement.appendChild(captionElement);
+                    childElement.appendChild(childChildElement);
+                    let addButton = document.createElement("button");
+                    addButton.innerText = "add";
+                    addButton.setAttribute("id", "AddButton")
+                    childElement.appendChild(addButton);
+                    contentDiv.appendChild(childElement);
+                });
+
+                resolve(data);
             });
         });
-
-
-        this.afterRender();
-
 
     }
 
@@ -82,6 +113,6 @@ class SelectDishView {
         let loadingIndicator = document.getElementById("loader");
         loadingIndicator.style.display = "none";
 
-
+        this.dishList = this.container.querySelectorAll(".dish-div");
     }
 }

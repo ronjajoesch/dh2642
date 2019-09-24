@@ -2,6 +2,19 @@ class InstructionView {
     constructor(container, model) {
         this.container = container;
         this.model = model;
+        model.addObserver(this);
+        this.backButton = null;
+    }
+
+    update(model, changeDetails){
+        // redraw just the portion affected by the changeDetails
+        // or remove all graphics in the view, read the whole model and redraw
+        if(changeDetails.type === "menu"){
+            this.displayDishes(model);
+        }
+        if(changeDetails.type === "nGuest"){
+            this.changeNumGuests(model);
+        }
     }
 
     get_image_element(src, width, height) {
@@ -13,14 +26,20 @@ class InstructionView {
     }
 
 
-    render() {
-        const headingDiv = this.container.appendChild(document.createElement('div'));
+    render(id) {
+        const mainDiv = this.container.querySelector("#no-row");
+        const instructionDiv = mainDiv.appendChild(document.createElement('div'));
+        instructionDiv.setAttribute('id',id);
+
+        const headingDiv = instructionDiv.appendChild(document.createElement('div'));
+
         headingDiv.className ="postIt row";
 
         const titleDiv = headingDiv.appendChild(document.createElement('div'));
         const heading = titleDiv.appendChild(document.createElement('h3'));
         heading.className = "value-num-guests";
-        heading.innerHTML = "My Dinner: "+this.model.nGuest+" people";
+        heading.setAttribute("id","people-title-instruction");
+        this.changeNumGuests(this.model);
 
         const buttonDiv = headingDiv.appendChild(document.createElement('div'));
         let button = buttonDiv.appendChild(document.createElement("button"));
@@ -29,12 +48,21 @@ class InstructionView {
         button.className = "btn btn-sm btn-primary";
         button.innerText = "Go Back and edit dinner";
 
-        const bottomDiv = this.container.appendChild(document.createElement('div'));
+        const bottomDiv = instructionDiv.appendChild(document.createElement('div'));
+        bottomDiv.setAttribute("id","dishes-instructions")
+        this.displayDishes(this.model);
 
-        var menu = this.model.getFullMenu();
+        this.afterRender();
+        this.backButton = button;
+        return this;
+    }
 
+    displayDishes(model){
+        var menu = model.getFullMenu();
         var self = this;
-        menu.forEach(function(dish,i){
+        let bottomDiv = document.getElementById("dishes-instructions");
+        bottomDiv.innerHTML="";
+        menu.forEach(function(dish){
             const dishDiv = bottomDiv.appendChild(document.createElement("div"));
             dishDiv.className = "row";
 
@@ -54,9 +82,11 @@ class InstructionView {
             instruction.innerHTML = html;
 
         });
+    }
 
-
-        this.afterRender();
+    changeNumGuests(model){
+        const heading = document.getElementById("people-title-instruction");
+        heading.innerHTML = "My Dinner: "+model.getNumberOfGuests()+" people";
     }
 
     afterRender() {

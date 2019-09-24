@@ -468,7 +468,7 @@ describe("DinnerPlanner App", () => {
     });
 
     it("has a sidebar", () => {
-      const sidebar = document.getElementById("sideBarView");
+      const sidebar = document.getElementById("selectDishView");
       expect(sidebar).to.not.be.a("null");
     });
 
@@ -521,8 +521,6 @@ describe("DinnerPlanner App", () => {
     });
   });
 
-
-
   describe("Confirmation page", () => {
     beforeEach(() => {
       model.addDishToMenu(dish1);
@@ -567,4 +565,32 @@ describe("DinnerPlanner App", () => {
       }
     });
   });
+
+
+  describe("Select dish View", () => {
+    beforeEach(() => {
+      model.addDishToMenu(dish1);
+      searchView.render();
+    });
+    it("has a dish search container", () => {
+      const selectDishView = new SelectDishView(document.querySelector("#page-content"), model);
+      selectDishView.render();
+      const addButton = document.getElementById("AddButton");
+      expect(addButton).to.not.be.a("null");
+    });
+  })
+
+
+
+  describe("Verify Local Storage", () => {
+    beforeEach(() => {
+      model.addDishToMenu(dish1);
+      searchView.render();
+    });
+    it("has a dish search container", () => {
+      const locaStorageObject = localStorage.getItem('menuItems');
+      expect(locaStorageObject).to.not.be.a(null || undefined);
+    });
+  })
+
 });

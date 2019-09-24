@@ -1,32 +1,65 @@
 class HomeView {
-  constructor(container) {
-    this.container = container;
-    this.startBtn = null;
-  }
+    constructor(container) {
+        this.container = container;
+        this.startBtn = null;
+    }
+    // An example of creating HTML declaratively. Think about the pros and cons of this approach.
+    render(id) {
+            
+        var defaultmessage = getCookie('homeMessage');
+        if(defaultmessage == null || defaultmessage == undefined){
+            setCookie('homeMessage',welcomeMessage,7);
+            defaultmessage = getCookie('homeMessage');
+        }
+        const selectDishDiv = this.container.querySelector("#no-row");
+        const mainDiv = selectDishDiv.appendChild(document.createElement('div'));
+        mainDiv.setAttribute("id", id);
 
-  // An example of creating HTML declaratively. Think about the pros and cons of this approach.
-  render() {
-    var content = /* template */ `
-    <div class="header d-flex align-items-center justify-content-center">
-      <h1>Dinner Planner</h1>
-    </div>
-    <div class="container text-center full-vh d-flex align-items-center justify-content-center flex-column">
-        <p class="text-center p-max-width">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel laoreet orci. Nullam ut iaculis diam. Aliquam
-          magna nulla, congue ut elementum hendrerit, dignissim at mauris. Quisque ac felis sed nibh elementum euismod a sit amet
-          arcu. Maecenas a efficitur leo.
-        </p>
-        <div class="spacing-medium"></div>
-        <button id="startBtn" type="button" class="btn btn-lg btn-primary">Create new dinner</button>
-      </div>
-    `;
-    this.container.innerHTML = content;
-    this.afterRender();
-  }
+        const insideDiv = mainDiv.appendChild(document.createElement('div'));
+        insideDiv.className = "container text-center full-vh d-flex align-items-center justify-content-center flex-column";
+        const p = insideDiv.appendChild(document.createElement("p"));
+        //
+        p.innerText = defaultmessage;
+        console.log('the default message that comes from cookie is', defaultmessage);
+        //
+        const buttonDiv = insideDiv.appendChild(document.createElement('div'));
+        buttonDiv.className="text-center p-max-width";
+        const button = buttonDiv.appendChild(document.createElement("button"));
+        button.setAttribute("id","startBtn");
+        button.setAttribute("type","button");
+        button.className="btn btn-lg btn-primary";
+        button.innerText="Create new dinner";
 
-  afterRender() {
-    this.startBtn = this.container.getElementsByClassName("#startBtn");
-    let loadingIndicator = document.getElementById("loader");
-   // loadingIndicator.style.display = "none";
-  }
+        this.afterRender();
+        this.startBtn = button;
+        return this;
+    }
+
+    afterRender() {
+        let loadingIndicator = document.getElementById("loader");
+        loadingIndicator.style.display = "none";
+    }
+
 }
+
+    // for manging cookies
+function setCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+const welcomeMessage = "Welcome to our app, this message has been stored in your browser cookie for 7 days!";

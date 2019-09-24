@@ -4,9 +4,9 @@ window.onload = async function () {
     const model = new DinnerModel();
     //check if the localstorage is available
     if(localStorage.menuItems){
-        var x = JSON.parse(localStorage.menuItems);
-        var x2 = x.filter(function(e){return e});
-        model.menu = x2;
+        var localStorageObject = JSON.parse(localStorage.menuItems);
+        var filteredLocalStorageObject = localStorageObject.filter(function(e){return e});
+        model.menu = filteredLocalStorageObject;
     }
         const container = document.getElementsByClassName("page-content")[0];
 
@@ -100,10 +100,6 @@ window.onload = async function () {
             show(selectDishView);
         }
     }
-
+    //default view
     displayView(homeView);
-    //displayView(selectDishView);
-    //displayView(overviewView);
-    //displayView(instructionView);
-    //displayView(detailsView);
 };

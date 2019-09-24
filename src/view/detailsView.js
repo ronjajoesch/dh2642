@@ -66,6 +66,10 @@ class DetailsView{
         button.innerText = "back to select dish";
 
         this.detailsViewBackButton = button;
+        let mainDiv1 = mainDiv.appendChild(document.createElement("div"));
+        mainDiv1.className="row";
+        mainDiv1.setAttribute("id","detailsViewLower");
+
         this.changeSelectedDish();
 
 
@@ -81,7 +85,8 @@ class DetailsView{
     }
 
     changeSelectedDish(){
-        const mainDiv = this.container.querySelector('#detailsView');
+        const mainDiv = this.container.querySelector('#detailsViewLower');
+        mainDiv.innerHTML="";
         let dishId = this.model.selectedDish;
 
         if (dishId !== undefined && dishId !== null) {

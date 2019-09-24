@@ -18,23 +18,23 @@ class DetailsView{
             this.changeSelectedDish();
         }
 
-        if(changeDetails.type === "menu"){
-            if(!localStorage.menuItems){
-            var a = [];
-            a.push(JSON.parse(localStorage.getItem('menuItems')));
-            localStorage.setItem('menuItems', JSON.stringify(a));
-            }
-            if(localStorage.menuItems){
-            var a = [];
-            // Parse the serialized data back into an aray of objects
-            a = JSON.parse(localStorage.getItem('menuItems'));
-            // Push the new data (whether it be an object or anything else) onto the array
-            a.push(model.menu[model.menu.length - 1]);
-            console.log(a);
-            localStorage.setItem('menuItems', JSON.stringify(a));
-        }
+        // if(changeDetails.type === "menu"){
+        //     if(!localStorage.menuItems){
+        //     var a = [];
+        //     a.push(JSON.parse(localStorage.getItem('menuItems')));
+        //     localStorage.setItem('menuItems', JSON.stringify(a));
+        //     }
+        //     if(localStorage.menuItems){
+        //     var a = [];
+        //     // Parse the serialized data back into an aray of objects
+        //     a = JSON.parse(localStorage.getItem('menuItems'));
+        //     // Push the new data (whether it be an object or anything else) onto the array
+        //     a.push(model.menu[model.menu.length - 1]);
+        //     console.log(a);
+        //     localStorage.setItem('menuItems', JSON.stringify(a));
+        // }
 
-        }
+        // }
         //TODO think if we need more functionality here
     }
 

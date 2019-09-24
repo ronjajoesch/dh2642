@@ -23,15 +23,15 @@ window.onload = async function () {
 
     let homeViewInstance = new HomeView(container);
     homeViewInstance.render(homeView);
-    let searchViewInstance = new SearchView(container, model, mainController)
+    let searchViewInstance = new SearchView(container, model, mainController);
     searchViewInstance.render(searchView);
-    let instructionViewInstance = new InstructionView(container, model, mainController)
+    let instructionViewInstance = new InstructionView(container, model, mainController);
     instructionViewInstance.render(instructionView);
-    let detailsViewInstance = new DetailsView(container, model, mainController)
+    let detailsViewInstance = new DetailsView(container, model, mainController);
     detailsViewInstance.render(detailsView);
-    let overviewViewInstance = new OverviewView(container, model, mainController)
+    let overviewViewInstance = new OverviewView(container, model, mainController);
     overviewViewInstance.render(overviewView);
-    let selectDishViewInstance = new SelectDishView(container, model, mainController)
+    let selectDishViewInstance = new SelectDishView(container, model, mainController);
     await selectDishViewInstance.render(selectDishView);
 
     //include controllers

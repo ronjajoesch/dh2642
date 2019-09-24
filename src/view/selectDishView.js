@@ -22,7 +22,7 @@ class SelectDishView {
         return image;
     }
 
-     async render(id) {
+    async render(id) {
         const selectDishDiv = this.container.querySelector(".row").appendChild(document.createElement('div'));
         selectDishDiv.setAttribute('id', id);
 
@@ -58,7 +58,7 @@ class SelectDishView {
 
     }
 
-    async showDishes(){
+    async showDishes() {
         await this.displayDishesSelection(this.model);
         this.afterRender();
     }
@@ -96,8 +96,8 @@ class SelectDishView {
                     childChildElement.appendChild(captionElement);
                     childElement.appendChild(childChildElement);
                     let addButton = document.createElement("button");
-                    addButton.innerText="add";
-                    addButton.setAttribute("id","AddButton")
+                    addButton.innerText = "add";
+                    addButton.setAttribute("id", "AddButton")
                     childElement.appendChild(addButton);
                     contentDiv.appendChild(childElement);
                 });

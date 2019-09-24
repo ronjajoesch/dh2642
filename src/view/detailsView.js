@@ -1,4 +1,4 @@
-class DetailsView{
+class DetailsView {
     constructor(container, model) {
         this.container = container;
         this.model = model;
@@ -7,19 +7,16 @@ class DetailsView{
     }
 
     update(model, changeDetails) {
-        // redraw just the portion affected by the changeDetails
-        // or remove all graphics in the view, read the whole model and redraw
-
         if (changeDetails.type === "nGuest") {
             this.changeNumGuests(model);
         }
 
-        if(changeDetails.type === "selectedDish"){
+        if (changeDetails.type === "selectedDish") {
             this.changeSelectedDish();
         }
 
     }
-    
+
     get_image_element(src, width, height) {
         let image = document.createElement("img");
         image.src = src;
@@ -39,7 +36,7 @@ class DetailsView{
         mainDiv.setAttribute('id', divId);
 
         let buttonDiv = mainDiv.appendChild(document.createElement("div"));
-        buttonDiv.className='col-xs-12 col-sm-12 col-md-12 col-lg-12';
+        buttonDiv.className = 'col-xs-12 col-sm-12 col-md-12 col-lg-12';
         let button = buttonDiv.appendChild(document.createElement("button"));
         button.setAttribute("type", "button");
         button.setAttribute("id", "back");
@@ -48,8 +45,8 @@ class DetailsView{
 
         this.detailsViewBackButton = button;
         let mainDiv1 = mainDiv.appendChild(document.createElement("div"));
-        mainDiv1.className="row";
-        mainDiv1.setAttribute("id","detailsViewLower");
+        mainDiv1.className = "row";
+        mainDiv1.setAttribute("id", "detailsViewLower");
 
         this.changeSelectedDish();
 
@@ -63,9 +60,9 @@ class DetailsView{
 
     }
 
-    changeSelectedDish(){
+    changeSelectedDish() {
         const mainDiv = this.container.querySelector('#detailsViewLower');
-        mainDiv.innerHTML="";
+        mainDiv.innerHTML = "";
         let dishId = this.model.selectedDish;
 
         if (dishId !== undefined && dishId !== null) {
@@ -117,14 +114,14 @@ class DetailsView{
                 const td44 = table.appendChild(document.createElement("td"));
                 td44.innerText = "Total Cost: " + +dish.pricePerServing * this.model.nGuest;
             });
-        }
-        else{
+        } else {
             console.log("You have not selected a specific dish.");
         }
     }
+
     changeNumGuests(model) {
         let title3 = document.getElementById("people-title");
-        if(title3 != null){
+        if (title3 != null) {
             title3.value = model.getNumberOfGuests();
 
             title3.innerText = "Ingredients for " + model.getNumberOfGuests() + " people";

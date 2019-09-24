@@ -74,8 +74,6 @@ class DetailsView{
 
 
         this.afterRender();
-
-       // this.detailsViewBackButton = mainDiv.querySelector("#back"); this doesn't work.
     }
 
     afterRender() {

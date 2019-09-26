@@ -16,8 +16,8 @@
 
         props: {
             dishObject: {
-                type: Array,
-                default: () => [{
+                type: Object,
+                default: {
                     "vegetarian": false,
                     "vegan": false,
                     "glutenFree": false,
@@ -449,8 +449,8 @@
                             ]
                         }
                     ]
-                }],
-                //required: true
+                },
+                required: true
             }
         },
 
@@ -464,10 +464,10 @@
         methods: {},
         computed: {
             imgSource() {
-                return this.dishObject[0].image;
+                return this.dishObject.image;
             },
             imgTitle() {
-                return this.dishObject[0].title;
+                return this.dishObject.title;
             }
         }
     }

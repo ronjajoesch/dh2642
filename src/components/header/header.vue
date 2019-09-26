@@ -1,6 +1,6 @@
 <template lang="html">
-  <header>
-    <h1>Hello from header!</h1>
+  <header class="header">
+    <h1>Dinner Planner</h1>
   </header>
 </template>
 
@@ -10,4 +10,5 @@ export default {
 </script>
 
 <style lang="css">
+
 </style>

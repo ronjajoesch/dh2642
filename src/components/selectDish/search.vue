@@ -1,5 +1,5 @@
 <template>
-    <div class="card bg-light card text-center margin">
+    <div class="card bg-light card text-center">
         <div class="card-body padding">
             <form class="form-group margin" @submit.prevent="">
                 <div class="row">

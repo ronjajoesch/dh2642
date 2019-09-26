@@ -1,19 +1,25 @@
 <template>
     <div class="box center-block card table-responsive">
         <div>
-            <label for="nGuests">Rating:</label>
-            <select id="nGuests" class="custom-select" v-model.number="nGuests">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-            </select>
+            <div class="row margin">
+                <div class="margin">
+                    <label for="nGuests"># Guests:</label>
+                </div>
+                <div >
+                    <select id="nGuests" class="custom-select" v-model.number="nGuests">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select>
+                </div>
+            </div>
         </div>
         <table class="table">
             <thead>
@@ -27,8 +33,13 @@
                 <td>{{dish.title}}</td>
                 <td>{{getPriceOfDish(dish)}}</td>
             </tr>
+            <tr>
+                <td><b>Total</b></td>
+                <td><b>{{getTotal()}}</b></td>
+            </tr>
             </tbody>
         </table>
+        <button class="btn btn-outline-dark btn-sm">confirm dinner</button>
     </div>
 </template>
 
@@ -36,7 +47,7 @@
     export default {
         name: "sideMenu",
         props: {
-            nGuests:{
+            nGuests: {
                 type: Number,
                 required: true,
             },
@@ -46,13 +57,14 @@
             }
         },
         data() {
-            return {
-
-            }
+            return {}
         },
         methods: {
-            getPriceOfDish(dish){
+            getPriceOfDish(dish) {
                 return dish.pricePerServing * this.nGuests;
+            },
+            getTotal() {
+                return this.menu.reduce((acc, dish2) => (acc + dish2.pricePerServing) * this.nGuests, 0);
             }
         }
     }
@@ -62,7 +74,15 @@
     .box {
         padding: 10px;
     }
-    .table{
+
+    .table {
         margin-top: 10px;
+    }
+
+    .row {
+        margin: 0px;
+    }
+    .margin{
+        margin: 5px;
     }
 </style>

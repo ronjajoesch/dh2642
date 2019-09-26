@@ -477,6 +477,7 @@
     .dishBox{
         max-width: 250px;
         max-height: 250px;
+        margin: 10px;
     }
 
 .card-body{

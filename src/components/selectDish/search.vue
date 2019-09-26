@@ -1,34 +1,47 @@
 <template>
-    <div class="center-block">
-        <form class="form-group" @submit.prevent="">
-            <div class="row margin">
-                <div class="margin">
-                    <input class="form-control" id="query">
-                </div>
-                <div class="margin">
-                    <select id="type" class="custom-select">
-                        <option value="Starter">Starter</option>
-                        <option value="Main Course">Main Course</option>
-                        <option value="Dessert">Dessert</option>
-                    </select>
-                </div>
+    <div class="card bg-light card text-center margin">
+        <div class="card-body padding">
+            <form class="form-group margin" @submit.prevent="">
+                <div class="row">
+                    <div class="padding">
+                        <input class="form-control" id="query">
+                    </div>
+                    <div class="padding">
+                        <select id="type" class="custom-select" v-model.number="type">
+                            <option>Starter</option>
+                            <option>Main Course</option>
+                            <option>Dessert</option>
+                        </select>
+                    </div>
 
-                <div class="margin">
-                    <input class="btn btn-outline-dark" type="submit" value="Submit">
+                    <div class="padding">
+                        <input class="btn btn-outline-dark" type="submit" value="Submit">
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </template>
 
 <script>
     export default {
-        query: "search"
+        query: "search",
+        data(){
+            return{
+                type:null,
+            }
+        }
     }
 </script>
 
 <style scoped>
-    .margin {
-        margin: 10px;
+    .padding {
+        padding: 5px;
+    }
+    .margin{
+        margin:10px;
+    }
+    .row{
+        margin: 0px;
     }
 </style>

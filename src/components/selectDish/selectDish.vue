@@ -18,6 +18,7 @@
 
         data() {
             return {
+                //TODO API CALL
                 dishes: [{
                     "vegetarian": false,
                     "vegan": false,

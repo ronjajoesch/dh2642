@@ -18,30 +18,14 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Dish</th>
+                <th scope="col">Price</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
+            <tr v-for="dish in menu">
+                <td>{{dish.title}}</td>
+                <td>{{getPriceOfDish(dish)}}</td>
             </tr>
             </tbody>
         </table>
@@ -51,11 +35,25 @@
 <script>
     export default {
         name: "sideMenu",
+        props: {
+            nGuests:{
+                type: Number,
+                required: true,
+            },
+            menu: {
+                type: Array,
+                required: true
+            }
+        },
         data() {
             return {
-                nGuests: null,
-        }
 
+            }
+        },
+        methods: {
+            getPriceOfDish(dish){
+                return dish.pricePerServing * this.nGuests;
+            }
         }
     }
 </script>
@@ -63,5 +61,8 @@
 <style scoped>
     .box {
         padding: 10px;
+    }
+    .table{
+        margin-top: 10px;
     }
 </style>

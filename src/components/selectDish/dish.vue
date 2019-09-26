@@ -41,7 +41,7 @@
 <style scoped>
     .dishBox {
         max-width: 250px;
-        max-height: 250px;
+        max-height: 270px;
         margin: 10px;
     }
 

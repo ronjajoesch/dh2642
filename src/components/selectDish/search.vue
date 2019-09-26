@@ -25,7 +25,7 @@
 
 <script>
     export default {
-        query: "search",
+        name: "search",
         data(){
             return{
                 type:null,

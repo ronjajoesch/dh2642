@@ -29,7 +29,7 @@
         methods: {},
         computed: {
             imgSource() {
-                return this.dishObject.image;
+                return "https://spoonacular.com/recipeImages/"+this.dishObject.image;
             },
             imgTitle() {
                 return this.dishObject.title;
@@ -41,12 +41,16 @@
 <style scoped>
     .dishBox {
         max-width: 250px;
-        max-height: 270px;
         margin: 10px;
     }
 
     .card-body {
         padding: 5px;
+    }
+
+    img{
+        max-width: 250px;
+        max-height: 200px;
     }
 
 </style>

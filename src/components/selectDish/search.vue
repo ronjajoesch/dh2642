@@ -4,10 +4,10 @@
             <form class="form-group margin" @submit.prevent="">
                 <div class="row">
                     <div class="padding">
-                        <input class="form-control" id="query">
+                        <input class="form-control" id="query" v-model="query">
                     </div>
                     <div class="padding">
-                        <select id="type" class="custom-select" v-model.number="type">
+                        <select id="type" class="custom-select" v-model="dishType">
                             <option>Starter</option>
                             <option>Main Course</option>
                             <option>Dessert</option>
@@ -28,7 +28,8 @@
         name: "search",
         data(){
             return{
-                type:null,
+                dishType: null,
+                query: null
             }
         }
     }

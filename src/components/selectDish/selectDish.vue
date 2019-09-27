@@ -11,7 +11,6 @@
 <script>
     import Dish from './dish.vue'
     import SearchBar from './search.vue'
-    import axios from 'axios'
     import ApiService from "../../services/apiService";
 
     export default {
@@ -20,7 +19,7 @@
 
         data() {
             return {
-                dishes : []
+                dishes : [],
             }
         },
         methods:{

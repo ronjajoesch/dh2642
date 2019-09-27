@@ -5,18 +5,25 @@ import Config from "./config";
 
 
 const ApiService = {
-  init() {
-    Vue.use(VueAxios, axios);
-  },
+    init() {
+        Vue.use(VueAxios, axios);
+    },
 
 
-  getAllDishes(){
-    return axios.get(Config.API_BASE_URL+'recipes/search',{headers:{'X-Mashape-Key': '3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767'}})
-        .catch(error => {
-          throw new Error(`ApiService Error: ${error}`);
-        });
+    getAllDishes(dishType, query) {
+        let url;
+        if (dishType == null || query == null) {
+            url = Config.API_BASE_URL + 'recipes/search';
+        } else {
+            url = Config.API_BASE_URL + 'recipes/search' + dishType + "&query=" + query;
+        }
+        return axios.get(url, {headers: {'X-Mashape-Key': Config.API_KEY}})
+            .catch(error => {
+                throw new Error(`ApiService Error: ${error}`);
+            });
 
-  },
+
+    },
 
 };
 

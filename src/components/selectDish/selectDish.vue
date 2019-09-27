@@ -1,6 +1,6 @@
 <template>
     <div>
-        <SearchBar/>
+        <SearchBar v-on:submitButton="newSearch"/>
         <div class="row">
             <Dish v-for="(dish) in dishes" v-bind:dish-object="dish"></Dish>
         </div>
@@ -20,15 +20,25 @@
         data() {
             return {
                 dishes : [],
+                dishType: null,
+                query: null,
+                fromChild: null,
             }
         },
         methods:{
-
+            newSearch(message){
+                this.dishType = message[0].dishType;
+                this.query = message[0].query;
+                this.searchDishes();
+            },
+            searchDishes(){
+                ApiService.getAllDishes(this.dishType,this.query).then(response =>{
+                    this.dishes=response.data.results
+                });
+            }
         },
         mounted(){
-            ApiService.getAllDishes().then(response =>{
-                this.dishes=response.data.results
-            });
+            this.searchDishes();
         }
     }
 </script>

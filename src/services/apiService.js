@@ -15,7 +15,7 @@ const ApiService = {
         if (dishType == null || query == null) {
             url = Config.API_BASE_URL + 'recipes/search';
         } else {
-            url = Config.API_BASE_URL + 'recipes/search' + dishType + "&query=" + query;
+            url = Config.API_BASE_URL + 'recipes/search?' + dishType + "&query=" + query;
         }
         return axios.get(url, {headers: {'X-Mashape-Key': Config.API_KEY}})
             .catch(error => {

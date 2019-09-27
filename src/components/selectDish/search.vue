@@ -15,7 +15,7 @@
                     </div>
 
                     <div class="padding">
-                        <input class="btn btn-outline-dark" type="submit" value="Submit">
+                        <input class="btn btn-outline-dark" type="submit" value="Submit" v-on:click="submitButtonPressed">
                     </div>
                 </div>
             </form>
@@ -30,6 +30,11 @@
             return{
                 dishType: null,
                 query: null
+            }
+        },
+        methods:{
+            submitButtonPressed () {
+                this.$emit("submitButton", [{"dishType": this.dishType, "query":this.query}]);
             }
         }
     }

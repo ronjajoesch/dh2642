@@ -5,7 +5,7 @@
                 <div class="margin">
                     <label for="nGuests"># Guests:</label>
                 </div>
-                <div >
+                <div>
                     <select id="nGuests" class="custom-select" v-model.number="nGuests">
                         <option>1</option>
                         <option>2</option>
@@ -44,27 +44,35 @@
 </template>
 
 <script>
+    import ApiService from "../../services/apiService";
+
     export default {
         name: "sideMenu",
         props: {
-            nGuests: {
-                type: Number,
+            dinnerModel: {
+                type: Object,
                 required: true,
             },
-            menu: {
-                type: Array,
-                required: true
-            }
         },
         data() {
-            return {}
+            return {
+                menu: this.dinnerModel.getFullMenu(),
+                nGuests: this.dinnerModel.getNumberOfGuests(),
+            }
         },
         methods: {
             getPriceOfDish(dish) {
-                return dish.pricePerServing * this.nGuests;
+                //TODO fix price -> maybe save real dish in menu 
+                ApiService.getDish(dish.id).then(response => {
+                        return response.data.pricePerServing * this.nGuests;
+                    }
+                )
             },
             getTotal() {
-                return this.menu.reduce((acc, dish2) => (acc + dish2.pricePerServing) * this.nGuests, 0);
+                //TODO fix price -> maybe save real dish in menu
+                if (this.menu != null) {
+                    return this.menu.reduce((acc, dish2) => (acc + dish2.pricePerServing) * this.nGuests, 0);
+                }
             }
         }
     }
@@ -82,7 +90,8 @@
     .row {
         margin: 0px;
     }
-    .margin{
+
+    .margin {
         margin: 5px;
     }
 </style>

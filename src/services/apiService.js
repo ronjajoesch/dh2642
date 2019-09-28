@@ -25,6 +25,14 @@ const ApiService = {
 
     },
 
+    getDish(id) {
+        let url = Config.API_BASE_URL + 'recipes/' + id + '/information/';
+        return axios.get(url, {headers: {'X-Mashape-Key': Config.API_KEY}})
+            .catch(error => {
+                throw new Error(`ApiService Error: ${error}`);
+            });
+    }
+
 };
 
 export default ApiService;

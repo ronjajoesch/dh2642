@@ -3,7 +3,7 @@
         <img :src="imgSource" class="img-fluid card-img-top">
         <div class="card-body">
             <div class="autoText">{{imgTitle}}</div>
-            <button class="btn btn-outline-dark btn-sm">{{buttonText}}</button>
+            <button class="btn btn-outline-dark btn-sm" v-on:click="addDish">add</button>
         </div>
     </div>
 </template>
@@ -21,12 +21,16 @@
 
         data() {
             return {
-                buttonText: "add"
+
             }
 
         },
 
-        methods: {},
+        methods: {
+            addDish(){
+                this.$emit("addButton", this.dishObject);
+            }
+        },
         computed: {
             imgSource() {
                 return "https://spoonacular.com/recipeImages/"+this.dishObject.image;

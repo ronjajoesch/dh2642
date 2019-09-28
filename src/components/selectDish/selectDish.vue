@@ -2,7 +2,7 @@
     <div>
         <SearchBar v-on:submitButton="newSearch"/>
         <div class="row">
-            <Dish v-for="(dish) in dishes" v-bind:dish-object="dish"></Dish>
+            <Dish v-for="(dish) in dishes" v-bind:dish-object="dish" v-on:addButton="addDish"></Dish>
         </div>
 
     </div>
@@ -16,28 +16,36 @@
     export default {
         components: {Dish, SearchBar},
         name: "selectDish",
-
+        props: {
+            dinnerModel: {
+                type: Object,
+                required: true,
+            },
+        },
         data() {
             return {
-                dishes : [],
+                dishes: [],
                 dishType: null,
                 query: null,
                 fromChild: null,
             }
         },
-        methods:{
-            newSearch(message){
+        methods: {
+            newSearch(message) {
                 this.dishType = message[0].dishType;
                 this.query = message[0].query;
                 this.searchDishes();
             },
-            searchDishes(){
-                ApiService.getAllDishes(this.dishType,this.query).then(response =>{
-                    this.dishes=response.data.results
+            searchDishes() {
+                ApiService.getAllDishes(this.dishType, this.query).then(response => {
+                    this.dishes = response.data.results
                 });
+            },
+            addDish(dish) {
+                this.dinnerModel.addDishToMenu(dish);
             }
         },
-        mounted(){
+        mounted() {
             this.searchDishes();
         }
     }

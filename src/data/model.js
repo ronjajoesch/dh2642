@@ -57,6 +57,10 @@ export default class DinnerModel extends Observable {
         })
     }
 
+    getDishPriceForNGuests(dishObject){
+        return dishObject.pricePerServing * this.getNumberOfGuests();
+    }
+
     //Returns the total price of the menu (all the ingredients multiplied by number of guests).
     getTotalMenuPrice() {
         let total = 0;

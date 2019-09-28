@@ -62,11 +62,7 @@
         },
         methods: {
             getPriceOfDish(dish) {
-                //TODO fix price -> maybe save real dish in menu
-                ApiService.getDish(dish.id).then(response => {
-                        return response.data.pricePerServing * this.nGuests;
-                    }
-                )
+                return this.dinnerModel.getDishPriceForNGuests(dish);
             },
             getTotal() {
                 //TODO fix price -> maybe save real dish in menu

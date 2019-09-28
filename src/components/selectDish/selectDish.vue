@@ -41,8 +41,12 @@
                     this.dishes = response.data.results
                 });
             },
-            addDish(dish) {
-                this.dinnerModel.addDishToMenu(dish);
+            addDish(id) {
+                ApiService.getDish(id).then(response => {
+                        this.dinnerModel.addDishToMenu(response.data);
+                    }
+                );
+
             }
         },
         mounted() {

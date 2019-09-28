@@ -28,7 +28,7 @@
 
         methods: {
             addDish(){
-                this.$emit("addButton", this.dishObject);
+                this.$emit("addButton", this.dishObject.id);
             }
         },
         computed: {

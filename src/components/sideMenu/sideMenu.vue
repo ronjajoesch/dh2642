@@ -6,7 +6,7 @@
                     <label for="nGuests"># Guests:</label>
                 </div>
                 <div>
-                    <select id="nGuests" class="custom-select" v-model.number="nGuests">
+                    <select id="nGuests" class="custom-select" @change="onChange($event)">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -29,7 +29,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="dish in menu">
+            <tr v-for="dish in this.dinnerModel.getFullMenu()">
                 <td>{{dish.title}}</td>
                 <td>{{getPriceOfDish(dish)}}</td>
             </tr>
@@ -56,8 +56,6 @@
         },
         data() {
             return {
-                menu: this.dinnerModel.getFullMenu(),
-                nGuests: this.dinnerModel.getNumberOfGuests(),
             }
         },
         methods: {
@@ -66,9 +64,11 @@
             },
             getTotal() {
                 //TODO fix price -> maybe save real dish in menu
-                if (this.menu != null) {
-                    return this.menu.reduce((acc, dish2) => (acc + dish2.pricePerServing) * this.nGuests, 0);
-                }
+                    return this.dinnerModel.getTotalMenuPrice();
+            },
+            onChange(event){
+                console.log(event.target.value);
+                this.dinnerModel.setNumberOfGuests(event.target.value);
             }
         }
     }

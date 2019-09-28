@@ -27,7 +27,6 @@
                 dishes: [],
                 dishType: null,
                 query: null,
-                fromChild: null,
             }
         },
         methods: {

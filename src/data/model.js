@@ -75,18 +75,16 @@ export default class DinnerModel extends Observable {
         //Adds the passed dish to the menu. If dish of that type already exists in menu
         //it is removed from the menu and the new dish is added
 
-        if (dishObject != null && dishObject != undefined) {
+        if (dishObject != null) {
             if (this.menu.length == 0) {
                 this.menu.push(dishObject);
             } else {
                 let item = this.menu.find(function (item) {
-                    let type = item.dishTypes.find(type => type === dishObject.dishTypes[0]);
-                    return item.dishTypes[0] === dishObject.dishTypes[0];
+                    return item.id === dishObject.id;
                 });
-                if (item != null) {
-                    this.removeDishFromMenu(item);
+                if (item == null) {
+                    this.menu.push(dishObject);
                 }
-                this.menu.push(dishObject);
             }
 
         }

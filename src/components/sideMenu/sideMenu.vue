@@ -26,16 +26,19 @@
             <tr>
                 <th scope="col">Dish</th>
                 <th scope="col">Price</th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr v-for="dish in this.dinnerModel.getFullMenu()">
                 <td>{{dish.title}}</td>
                 <td>{{getPriceOfDish(dish)}}</td>
+                <td><ion-icon name="remove-circle" v-on:click="removeDish(dish)"></ion-icon></td>
             </tr>
             <tr>
                 <td><b>Total</b></td>
                 <td><b>{{getTotal()}}</b></td>
+                <td></td>
             </tr>
             </tbody>
         </table>
@@ -69,10 +72,15 @@
             onChange(event){
                 console.log(event.target.value);
                 this.dinnerModel.setNumberOfGuests(event.target.value);
+            },
+            removeDish(dish){
+                this.dinnerModel.removeDishFromMenu(dish);
             }
         }
     }
 </script>
+
+
 
 <style scoped>
     .box {

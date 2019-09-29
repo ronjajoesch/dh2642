@@ -28,8 +28,8 @@
         name: "search",
         data(){
             return{
-                dishType: null,
-                query: null
+                dishType: "",
+                query: ""
             }
         },
         methods:{

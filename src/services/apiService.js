@@ -12,10 +12,14 @@ const ApiService = {
 
     getAllDishes(dishType, query) {
         let url;
-        if (dishType == null || query == null) {
+
+        if (dishType == null && query == null) {
             url = Config.API_BASE_URL + 'recipes/search';
         } else {
-            url = Config.API_BASE_URL + 'recipes/search?' + dishType + "&query=" + query;
+            console.log(dishType, query);
+            //TODO fix dishType doesn't work
+            url = Config.API_BASE_URL + 'recipes/search?type=' + dishType + "&query=" + query;
+
         }
         return axios.get(url, {headers: {'X-Mashape-Key': Config.API_KEY}})
             .catch(error => {

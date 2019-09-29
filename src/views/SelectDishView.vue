@@ -1,0 +1,39 @@
+<template>
+    <div id="app" class="margin">
+        <Header/>
+        <div class="row">
+            <SideMenu v-bind:dinnerModel="dinnerModel" class=" col-xs-12 col-sm-5 col-md-5 col-lg-4"/>
+            <SelectDish v-bind:dinnerModel="dinnerModel" class="col-xs-12 col-sm-7 col-md-7 col-lg-8"/>
+        </div>
+
+    </div>
+</template>
+
+<script>
+    import SelectDish from '../components/selectDish/selectDish.vue'
+    import SideMenu from '../components/sideMenu/sideMenu.vue'
+    import DinnerModel from '../data/model.js'
+
+    export default {
+        name: 'SelectDishView',
+        components: {
+            SelectDish,
+            SideMenu,
+        },
+        data() {
+            return {
+                dinnerModel: new DinnerModel(),
+            }
+        }
+    }
+</script>
+
+<style scoped>
+    .row {
+        margin: 0px;
+    }
+
+    .margin {
+        margin: 20px;
+    }
+</style>

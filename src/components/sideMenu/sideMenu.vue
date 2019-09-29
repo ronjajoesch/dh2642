@@ -70,7 +70,6 @@
                     return this.dinnerModel.getTotalMenuPrice();
             },
             onChange(event){
-                console.log(event.target.value);
                 this.dinnerModel.setNumberOfGuests(event.target.value);
             },
             removeDish(dish){

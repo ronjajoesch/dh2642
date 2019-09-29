@@ -76,7 +76,7 @@ export default class DinnerModel extends Observable {
         //it is removed from the menu and the new dish is added
 
         if (dishObject != null) {
-            if (this.menu.length == 0) {
+            if (this.menu.length === 0) {
                 this.menu.push(dishObject);
             } else {
                 let item = this.menu.find(function (item) {

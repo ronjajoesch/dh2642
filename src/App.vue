@@ -1,31 +1,41 @@
 <template>
     <div id="app" class="margin">
-        <Header/>
-        <Article/>
-        <div class="row">
-            <SideMenu v-bind:dinnerModel="dinnerModel" class=" col-xs-12 col-sm-5 col-md-5 col-lg-4"/>
-            <SelectDish v-bind:dinnerModel="dinnerModel" class="col-xs-12 col-sm-7 col-md-7 col-lg-8"/>
-        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Dinner Planner</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <router-link to='/' class="nav-link" >Home</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to='/select' class="nav-link">Edit Menu</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to='/select' class="nav-link">Confirmation</router-link>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <router-view>
+
+        </router-view>
 
     </div>
 </template>
 
 <script>
-    import Header from './components/header/header.vue'
-    import SelectDish from './components/selectDish/selectDish.vue'
-    import SideMenu from './components/sideMenu/sideMenu.vue'
-    import DinnerModel from './data/model.js'
 
     export default {
         name: 'app',
         components: {
-            Header,
-            SelectDish,
-            SideMenu,
         },
         data() {
             return {
-                dinnerModel: new DinnerModel(),
             }
         }
     }

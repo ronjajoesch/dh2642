@@ -1,6 +1,6 @@
 <template>
     <div class="dishBox card text-center">
-        <img :src="imgSource" class="img-fluid card-img-top">
+        <img :src="imgSource" v-on:click="router.push({ name: 'details', params: { dish: dish } })" class="img-fluid card-img-top">
         <div class="card-body">
             <div class="autoText">{{imgTitle}}</div>
             <button class="btn btn-outline-dark btn-sm" v-on:click="addDish">add</button>
@@ -9,6 +9,7 @@
 </template>
 
 <script>
+
     export default {
         name: "dish",
 
@@ -21,7 +22,8 @@
 
         data() {
             return {
-
+                dish:this.dishObject,
+                router: this.$router
             }
 
         },

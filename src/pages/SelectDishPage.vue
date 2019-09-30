@@ -1,6 +1,5 @@
 <template>
-    <div id="app" class="margin">
-        <Header/>
+    <div>
         <div class="row">
             <SideMenu v-bind:dinner-model="model" class=" col-xs-12 col-sm-5 col-md-5 col-lg-4"/>
             <SelectDish v-bind:dinner-model="model" class="col-xs-12 col-sm-7 col-md-7 col-lg-8"/>
@@ -12,7 +11,6 @@
 <script>
     import SelectDish from '../components/selectDish/selectDish.vue'
     import SideMenu from '../components/sideMenu/sideMenu.vue'
-    import DinnerModel from '../data/model.js'
 
     export default {
         name: 'SelectDishView',

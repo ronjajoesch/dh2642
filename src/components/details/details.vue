@@ -1,6 +1,6 @@
 <template>
     <div>
-
+        {{this.dishObject}}
     </div>
 </template>
 
@@ -8,10 +8,11 @@
     export default {
         name: "details",
         props: {
+
         },
         data() {
             return {
-                //dishObject: this.$route.params.dishObject,
+                dishObject: this.$route.params.dish,
             }
         },
     }

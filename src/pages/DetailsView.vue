@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <SideMenu v-bind:dinner-model="model" class=" col-xs-12 col-sm-5 col-md-5 col-lg-4"/>
-        <Details v-bind:dish-object="dishObject" class="col-xs-12 col-sm-7 col-md-7 col-lg-8"></Details>
+        <Details class="col-xs-12 col-sm-7 col-md-7 col-lg-8"></Details>
     </div>
 </template>
 
@@ -23,7 +23,6 @@
         data() {
             return {
                 model: this.dinnerModel,
-                dishObject: {}//this.route.params,
             }
         },
     }

@@ -15,7 +15,7 @@
                         <router-link to='/select' class="nav-link">Edit Menu</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to='/select' class="nav-link">Confirmation</router-link>
+                        <router-link to='/confirmation' class="nav-link">Confirmation</router-link>
                     </li>
                 </ul>
             </div>

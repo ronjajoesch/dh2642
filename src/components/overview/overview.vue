@@ -1,10 +1,14 @@
 <template>
-    <div>
+    <div class="margin">
         <h3>Your dinner plans look amazing.</h3>
         <p>The courses are customized for {{getNumberOfGuests()}} people.</p>
         <p>You will be eating the following:</p>
         <div class="row">
-            <Dish v-for="(dish) in (this.dinnerModel.getFullMenu())" v-bind:dish-object="dish" v-bind:dinnerModel="dinnerModel"></Dish>
+            <Dish v-for="(dish) in (this.dinnerModel.getFullMenu())" v-bind:dish-object="dish"
+                  v-bind:dinnerModel="dinnerModel"></Dish>
+        </div>
+        <div id="total">
+            <b>Total Price: {{this.dinnerModel.getTotalMenuPrice()}}</b>
         </div>
     </div>
 </template>
@@ -30,5 +34,11 @@
 </script>
 
 <style scoped>
+    .margin {
+        margin: 15px;
+    }
 
+    #total {
+        margin-top: 20px;
+    }
 </style>

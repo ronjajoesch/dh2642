@@ -2,8 +2,8 @@
     <div id="app" class="margin">
         <Header/>
         <div class="row">
-            <SideMenu v-bind:dinnerModel="dinnerModel" class=" col-xs-12 col-sm-5 col-md-5 col-lg-4"/>
-            <SelectDish v-bind:dinnerModel="dinnerModel" class="col-xs-12 col-sm-7 col-md-7 col-lg-8"/>
+            <SideMenu v-bind:dinner-model="model" class=" col-xs-12 col-sm-5 col-md-5 col-lg-4"/>
+            <SelectDish v-bind:dinner-model="model" class="col-xs-12 col-sm-7 col-md-7 col-lg-8"/>
         </div>
 
     </div>
@@ -20,9 +20,20 @@
             SelectDish,
             SideMenu,
         },
+        props: {
+            dinnerModel: {
+                type: Object,
+                required: true,
+            },
+        },
         data() {
             return {
-                dinnerModel: new DinnerModel(),
+                model: this.dinnerModel,
+            }
+        },
+        methods:{
+            test(){
+
             }
         }
     }

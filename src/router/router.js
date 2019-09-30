@@ -1,14 +1,10 @@
-import Vue from "vue";
-import Router from 'vue-router'
-import SelectDish from '../components/selectDish/selectDish.vue'
-import SideMenu from '../components/sideMenu/sideMenu.vue'
-import Home from "../views/Home.vue";
-import Overview from "../components/overview/overview.vue";
-import SelectDishView from "../views/SelectDishView.vue"
+import Home from "../pages/Home.vue";
+import SelectDishPage from "../pages/SelectDishPage.vue"
+import OverViewPage from "../pages/OverviewPage.vue"
 
 import DinnerModel from '../data/model.js'
 
-const model = new DinnerModel();
+let model = new DinnerModel();
 
 
 const routes = [
@@ -18,9 +14,15 @@ const routes = [
     },
     {
         path: "/select",
-        component: SelectDishView,
+        component: SelectDishPage,
         props: {dinnerModel: model}
-    }];
+    },
+    {
+        path: "/confirmation",
+        component: OverViewPage,
+        props: {dinnerModel: model}
+    }
+];
 
 
 export default routes;

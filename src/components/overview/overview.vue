@@ -1,6 +1,6 @@
 <template>
     <div class="margin">
-        <h3>Your dinner plans look amazing.</h3>
+        <p class="heading">Your dinner plans look amazing.</p>
         <p>The courses are customized for {{getNumberOfGuests()}} people.</p>
         <p>You will be eating the following:</p>
         <div class="row">
@@ -40,5 +40,9 @@
 
     #total {
         margin-top: 20px;
+    }
+
+    .heading{
+        font-size: 1.25rem;
     }
 </style>

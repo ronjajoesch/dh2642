@@ -17,6 +17,9 @@
                     <li class="nav-item">
                         <router-link to='/confirmation' class="nav-link">Confirmation</router-link>
                     </li>
+                    <li class="nav-item">
+                        <router-link to='/instructions' class="nav-link">Instructions</router-link>
+                    </li>
                 </ul>
             </div>
         </nav>

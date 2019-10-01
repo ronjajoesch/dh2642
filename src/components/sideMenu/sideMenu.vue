@@ -42,7 +42,7 @@
             </tr>
             </tbody>
         </table>
-        <button class="btn btn-outline-dark btn-sm">confirm dinner</button>
+        <button class="btn btn-outline-dark btn-sm" @click="$router.push('confirmation')">confirm dinner</button>
     </div>
 </template>
 

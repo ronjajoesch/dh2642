@@ -47,6 +47,25 @@ export default class DinnerModel extends Observable {
     }
 
     getFullMenu() {
+        
+        //case first time opening the website. we create localStorage.
+        if(!localStorage.menuItems){
+            localStorage.setItem('menuItems',JSON.stringify(this.menu));
+            return this.menu;
+        }
+        //case localStorage exist, but model is empty. in this case the user has added something to localStorage in the past.
+        else if(localStorage.menuItems && this.menu.length == 0){
+            var localStorageValue = localStorage.getItem('menuItems');
+            this.menu = JSON.parse(localStorageValue);
+            return this.menu;
+        }
+        //regular case, when both model and local storage are present.
+        else if(localStorage.menuItems){
+            localStorage.setItem('menuItems',JSON.stringify(this.menu));
+            var localStorageValue = localStorage.getItem('menuItems');
+            this.menu = JSON.parse(localStorageValue);
+            return this.menu;
+        }
         return this.menu;
     }
 

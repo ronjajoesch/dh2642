@@ -9,8 +9,27 @@
              <br/>
              <h5>Instructions</h5>
              <h6>{{this.insturctions}}</h6>
+            <!-- Start Table-->
+            <table border="1|0">
+                <thead>
+                    <tr>
+                    <th>Ingredient Name</th>
+                    <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody v-for="item in ingredients" :key="item">
+                    <tr>
+                    <td> 
+                        {{item.name}}
+                    </td>
+                    <td>
+                        {{item.amount}} {{item.unit}}
+                    </td>
+                    </tr>
+               </tbody>
+            </table>
+<!-- end table -->
         </div>
-        <!-- {{this.dishObject}} -->
     </div>
 </template>
 
@@ -20,6 +39,7 @@ import ApiService from '../../services/apiService';
         name: "details",
         props: {
             insturctions : String,
+            ingredients : []
         },
         data() {
             return {
@@ -30,6 +50,7 @@ import ApiService from '../../services/apiService';
             getDishData(){
                 ApiService.getDish(this.dishObject.id).then(response => {
                 this.insturctions = response.data.instructions;
+                this.ingredients = response.data.extendedIngredients;
                 })
             }
         },

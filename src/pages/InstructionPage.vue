@@ -1,5 +1,5 @@
 <template>
-    <Instructions></Instructions>
+    <Instructions v-bind:dinner-model="dinnerModel"></Instructions>
 </template>
 
 <script>
@@ -7,7 +7,18 @@
 
     export default {
         name: "InstructionPage",
-        components: {Instructions}
+        components: {Instructions},
+        props: {
+            dinnerModel: {
+                type: Object,
+                required: true,
+            },
+        },
+        methods: {
+            getNumberOfGuests() {
+                return this.dinnerModel.getNumberOfGuests();
+            }
+        }
     }
 </script>
 

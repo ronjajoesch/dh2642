@@ -10,6 +10,9 @@
         <div id="total">
             <b>Total Price: {{this.dinnerModel.getTotalMenuPrice()}}</b>
         </div>
+        <div>
+          <button class="btn btn-outline-dark btn-sm" @click="$router.push('instructions')">confirm and print instructions</button>
+        </div>
     </div>
 </template>
 

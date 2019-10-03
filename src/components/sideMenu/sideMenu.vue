@@ -6,7 +6,7 @@
                     <label for="nGuests"># Guests:</label>
                 </div>
                 <div>
-                    <select id="nGuests" class="custom-select" @change="onChange($event)">
+                    <select id="nGuests" class="custom-select" @change="onChange($event)" v-model="this.dinnerModel.nGuest">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -18,6 +18,7 @@
                         <option>9</option>
                         <option>10</option>
                     </select>
+
                 </div>
             </div>
         </div>

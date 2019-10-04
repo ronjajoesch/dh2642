@@ -43,25 +43,6 @@ export default class DinnerModel extends Observable {
     }
 
     getNumberOfGuests() {
-        //
-        if(!localStorage.numberOfGuests){
-            localStorage.setItem('numberOfGuests', this.nGuest);
-            return this.nGuest;
-        }
-        //case localStorage exist, but model is empty. in this case the user has added something to localStorage in the past.
-        else if(localStorage.numberOfGuests && this.nGuest == 1){
-            var localStorageValue = localStorage.getItem('numberOfGuests');
-            this.nGuest = Number(localStorageValue)
-            return this.nGuest;
-        }
-        //regular case, when both model and local storage are present.
-        else if(localStorage.numberOfGuests){
-            localStorage.setItem('numberOfGuests',this.nGuest);
-            var localStorageValue = localStorage.getItem('numberOfGuests');
-            this.nGuest = Number(localStorageValue);
-            return this.nGuest;
-        }
-        //
         return this.nGuest;
     }
 

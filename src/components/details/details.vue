@@ -4,7 +4,7 @@
             <br/>
             <h4>{{this.dishObject.title}}</h4>
             <br/>
-             <img :src="imgSource" height="400" width="300"></img>
+             <img :src="imgSource" height="450" width="450"></img>
              <br/>
              <br/>
              <h5>Instructions</h5>
@@ -12,7 +12,7 @@
             <!-- Start Table-->
             <table border="1|0">
                 <thead>
-                    <tr>
+                    <tr style="background-color:gainsboro">
                     <th>Ingredient Name</th>
                     <th>Amount</th>
                     </tr>

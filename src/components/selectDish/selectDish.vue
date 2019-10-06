@@ -2,7 +2,7 @@
     <div>
         <SearchBar v-on:submitButton="newSearch"/>
         <div class="row">
-            <Dish v-for="(dish) in dishes" v-bind:dish-object="dish" v-on:addButton="addDish"></Dish>
+            <Dish v-for="(dish) in dishes" v-bind:dish-object="dish" v-on:addButton="addDish" :key="unique"></Dish>
         </div>
 
     </div>
@@ -38,6 +38,7 @@
             searchDishes() {
                 ApiService.getAllDishes(this.dishType, this.query).then(response => {
                     this.dishes = response.data.results
+                    // return response.data.results;
                 });
             },
             addDish(id) {
@@ -48,9 +49,14 @@
 
             }
         },
-        mounted() {
+        // mounted() {
+        //     this.searchDishes();
+        // },
+        // We search for dishes at Render instead of mounted to avoid displaying wrong dishes after search
+        render(){
             this.searchDishes();
         }
+        
     }
 </script>
 

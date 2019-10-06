@@ -7,10 +7,10 @@
              <img :src="imgSource" height="450" width="450"></img>
              <br/>
              <br/>
-             <h5>Instructions</h5>
+             <h5 style="font-weight:bold">Instructions</h5>
              <h6>{{this.insturctions}}</h6>
             <!-- Start Table-->
-            <table border="1|0">
+            <table border="1|0" style="width:-webkit-fill-available">
                 <thead>
                     <tr style="background-color:gainsboro">
                     <th>Ingredient Name</th>

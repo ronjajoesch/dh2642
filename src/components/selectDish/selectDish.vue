@@ -1,7 +1,9 @@
 <template>
     <div>
         <SearchBar v-on:submitButton="newSearch"/>
-        <div class="row">
+        <div v-if="loading" class="spinner-border">
+        </div>
+        <div class="row" v-if="!loading">
             <Dish v-for="(dish) in dishes" v-bind:dish-object="dish" v-on:addButton="addDish" :key="unique"></Dish>
         </div>
 
@@ -27,6 +29,7 @@
                 dishes: [],
                 dishType: null,
                 query: null,
+                loading: false,
             }
         },
         methods: {
@@ -36,9 +39,10 @@
                 this.searchDishes();
             },
             searchDishes() {
+                this.loading = true;
                 ApiService.getAllDishes(this.dishType, this.query).then(response => {
-                    this.dishes = response.data.results
-                    // return response.data.results;
+                    this.dishes = response.data.results;
+                    this.loading = false;
                 });
             },
             addDish(id) {
@@ -47,7 +51,7 @@
                     }
                 );
 
-            }
+            },
         },
         // mounted() {
         //     this.searchDishes();

@@ -4,7 +4,7 @@
         <div v-if="loading" class="spinner-border">
         </div>
         <div class="row" v-if="!loading">
-            <Dish v-for="(dish) in dishes" v-bind:dish-object="dish" v-on:addButton="addDish" :key="unique"></Dish>
+            <Dish v-for="(dish) in dishes" v-bind:dish-object="dish" v-on:addButton="addDish" :key="dish"></Dish>
         </div>
 
     </div>
